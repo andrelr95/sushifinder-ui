@@ -17,6 +17,13 @@ $break-large: 1200px;
   padding: 0;
   box-sizing: border-box;
 }
+html, body{
+  background-color: $background-main;
+}
+
+html.login, body.login{
+  background-color: $background-login;
+}
 
 .box-wrapper {
   padding: 15px;
@@ -70,13 +77,6 @@ p.price {
   background-color: $background-login;
 }
 
-// html, body{
-//   background-color: $background-main;
-// }
-
-// html.login, body.login{
-//   background-color: $background-login;
-// }
 
 label {
   color: #D75D6A;

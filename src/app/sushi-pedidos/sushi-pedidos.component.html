@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+      <div class="box-wrapper">
+        <h1>Pedido</h1>
+        <h1>TOTAL: R$ 35,00</h1>
+        <button class="btn btn-success">FINALIZAR PEDIDO</button>
+        <div class="box-wrapper">
+          <h1>Itens</h1>
+
+          <div class="box-wrapper">
+            <div class="box-content col-md-2 col-sm-4">
+              <img src="img/temak-sushi-140x140.jpg" alt="temaki-sushi">
+            </div>
+            <div class="box-content col-md-6 col-sm-5">
+              <h3>Descrição: </h3>
+              <p>TEMAKI SUSHI</p>
+              <h3>Ingredientes: </h3>
+              <p>Sushi - Ingredientes: Arroz e Peixe</p>
+            </div>
+            <div class="box-content col-md-4 col-sm-3">
+              <p class="price">R$ 26,99</p>
+              <div class="input-group margin-default">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]">
+                    <span class="glyphicon glyphicon-minus"></span>
+                  </button>
+                </span>
+                <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="50">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </span>
+              </div>
+              <button class="btn btn-login btn-danger btn-custom">Retirar item do pedido</button>
+            </div>
+          </div>
+          <div class="box-wrapper">
+            <div class="box-content col-md-2 col-sm-4">
+              <img src="img/cerveja-devassa-lata-350ml.png" alt="temaki-sushi">
+            </div>
+            <div class="box-content col-md-6 col-sm-5">
+              <h3>Descrição: </h3>
+              <p>DEVASSA</p>
+            </div>
+            <div class="box-content col-md-4 col-sm-3">
+              <p class="price">R$ 4,99</p>
+              <div class="input-group margin-default">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]">
+                    <span class="glyphicon glyphicon-minus"></span>
+                  </button>
+                </span>
+                <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="50">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </span>
+              </div>
+              <button class="btn btn-login btn-danger btn-custom">Retirar item do pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

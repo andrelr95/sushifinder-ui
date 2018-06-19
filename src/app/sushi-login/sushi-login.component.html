@@ -1,21 +1,19 @@
-
   <div class="container login-box">
     <div class="row">
       <div class="login-box-body">
         <img src="assets/img/logo-small-no-bg.png" class="img-responsive center-block" alt="Responsive image">
         <hr class="light">
-        <form class="form" (ngSubmit)="submitForm()">
+        <form class="form" (ngSubmit)="onSignUp(f)" #f="ngForm">
           <div class="form-group">
-            <label for="inputEmail" class="control-label">Usuário</label>
+            <label for="email" class="control-label">Usuário</label>
             <div>
-              <input type="text" class="form-control input-custom" id="inputEmail">
+              <input type="email" class="form-control input-custom" id="email" name=email ngModel>
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPassword" class="control-label">Senha</label>
+            <label for="password" class="control-label">Senha</label>
             <div>
-              <input type="password" class="form-control input-custom" id="inputPassword"
-              [(ngModel)]="model.password">
+              <input type="password" class="form-control input-custom" id="password" name="password" ngModel>
             </div>
           </div>
           <p class="text-center">
@@ -23,7 +21,7 @@
           </p>
           <div class="form-group">
             <div>
-              <a class="btn btn-login btn-block btn-custom">Cadastre-se</a>
+              <button type class="btn btn-login btn-block btn-custom">Cadastre-se</button>
               <button type="submit" class="btn btn-login btn-block btn-custom">Entrar</button>
             </div>
           </div>

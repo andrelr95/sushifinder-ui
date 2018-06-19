@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sushi-login',
@@ -7,17 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SushiLoginComponent implements OnInit {
 
-  model:any = {
-    password: '',
-  };
+  password: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  submitForm() {
-    console.log(this.model.password);
+  onSignUp(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    console.log(form);
   }
 
 
