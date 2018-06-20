@@ -8,19 +8,27 @@ $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
 $color-box-shadow: #9D444E;
 
+
+
 li {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-style: solid;
     border-color: $border-form;
     border-width: 0.5px;
 }
 
-li:hover{
+li a:hover{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-style: solid;
     border-color: $border-form;
     border-width: 0.5px;
 }
 
 li a.active {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-style: solid;
     border-color: $border-form;
     border-width: 0.5px;

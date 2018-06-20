@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SushiNavComponent } from '../sushi-nav/sushi-nav.component';
+import { SushiMainNavComponent } from './sushi-main-nav/sushi-main-nav.component';
+
 
 @NgModule({
   imports: [
     CommonModule
     ],
-  declarations: []
+  declarations: [
+    SushiMainNavComponent
+  ]
 })
 export class SushiMainModule { }

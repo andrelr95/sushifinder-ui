@@ -12,6 +12,9 @@ import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
 import { SushiEstoqueComponent } from './sushi-estoque/sushi-estoque.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { SushiMainComidaComponent } from './sushi-main/sushi-main-comida/sushi-main-comida.component';
+import { SushiMainBebidaComponent } from './sushi-main/sushi-main-bebida/sushi-main-bebida.component';
+import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-nav.component';
  
 
 @NgModule({
@@ -22,7 +25,10 @@ import { RouterModule } from '@angular/router';
     SushiNavComponent,
     SushiCadastroComponent,
     SushiPedidosComponent,
-    SushiEstoqueComponent
+    SushiEstoqueComponent,
+    SushiMainComidaComponent,
+    SushiMainBebidaComponent,
+    SushiMainNavComponent
   ],
   imports: [
     BrowserModule,
