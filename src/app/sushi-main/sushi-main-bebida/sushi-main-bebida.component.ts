@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Bebida } from '../../models/bebida.model';
+import { BEBIDAS } from '../../mocks/bebidas-mock';
 
 @Component({
   selector: 'app-sushi-main-bebida',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sushi-main-bebida.component.scss']
 })
 export class SushiMainBebidaComponent implements OnInit {
+
+  bebidas: Bebida[] = BEBIDAS;
 
   constructor() { }
 

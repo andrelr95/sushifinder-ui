@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Comida } from '../../models/comida.model';
+import { Ingrediente } from '../../models/ingredientes.model';
+import { COMIDAS } from '../../mocks/comidas-mock';
+
 @Component({
   selector: 'app-sushi-main-comida',
   templateUrl: './sushi-main-comida.component.html',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiMainComidaComponent implements OnInit {
 
+  ingredientes: Ingrediente[] = [
+    new Ingrediente('Arroz', 'ingrediente', 10, true),
+    new Ingrediente('Sushi', 'ingrediente', 10, true),
+    new Ingrediente('Alga', 'ingrediente', 10, true)
+  ];
+
+  comidas: Comida[] = COMIDAS;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLog(){
+    console.log(this.comidas);
   }
 
 }
