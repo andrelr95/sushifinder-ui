@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { SushiMainComidaComponent } from './sushi-main/sushi-main-comida/sushi-main-comida.component';
 import { SushiMainBebidaComponent } from './sushi-main/sushi-main-bebida/sushi-main-bebida.component';
 import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-nav.component';
+import { SushiEstoqueElementComponent } from './sushi-estoque/sushi-estoque-element/sushi-estoque-element.component';
  
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-na
     SushiEstoqueComponent,
     SushiMainComidaComponent,
     SushiMainBebidaComponent,
-    SushiMainNavComponent
+    SushiMainNavComponent,
+    SushiEstoqueElementComponent
   ],
   imports: [
     BrowserModule,

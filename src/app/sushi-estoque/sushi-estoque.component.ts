@@ -11,27 +11,29 @@ import { NgForm } from '@angular/forms';
 })
 export class SushiEstoqueComponent implements OnInit {
 
-  ingredientes: Ingrediente[] = INGREDIENTES;
+  ingredienteElements: Ingrediente[] = INGREDIENTES;
+
+  ingredienteDescricao = '';
+  ingredienteQuantidade = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onLog(){
-    console.log(this.ingredientes);
+  onLog(index){
+    console.log(index);
   }
 
-  onAdd(form: NgForm){
-    let ingrediente = {
-      descricao: form.value.ingredienteDescricao,
-      qtdeEstoque: form.value.ingredienteQuantidade,
-      ativo: true,
-      tipo: 'bebida'
-    }
-
-    this.ingredientes.push(ingrediente);
-    console.log(form.value.ingredienteDescricao);
+  onEditIngrediente(ingrediente: Ingrediente, i:any){
+    console.log(ingrediente, i);
+    this.ingredienteDescricao = ingrediente.descricao;
+    this.ingredienteQuantidade = ingrediente.qtdeEstoque;
   }
 
+  onAdd(){
+    this.ingredienteElements.push(new Ingrediente(this.ingredienteDescricao, 'ingrediente', this.ingredienteQuantidade, true));
+    this.ingredienteDescricao = '';
+    this.ingredienteQuantidade = 0;
+  }
 }
