@@ -8,6 +8,7 @@ import { SushiEstoqueComponent } from "./sushi-estoque/sushi-estoque.component";
 import { SushiPedidosComponent } from "./sushi-pedidos/sushi-pedidos.component";
 import { SushiMainComidaComponent } from "./sushi-main/sushi-main-comida/sushi-main-comida.component";
 import { SushiMainBebidaComponent } from "./sushi-main/sushi-main-bebida/sushi-main-bebida.component";
+import { SushiMainItemComponent } from "./sushi-main/sushi-main-item/sushi-main-item.component";
 
 const appRoutes: Routes = [
     { path: 'main', component: SushiMainComponent, children: [

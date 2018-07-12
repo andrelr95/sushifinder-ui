@@ -12,7 +12,8 @@ import { NgForm } from '@angular/forms';
 export class SushiEstoqueComponent implements OnInit {
 
   ingredienteElements: Ingrediente[] = INGREDIENTES;
-
+  ingredienteIndex: number = 0;
+  ingredienteSelected: Ingrediente;
   ingredienteDescricao = '';
   ingredienteQuantidade = 0;
 
@@ -25,10 +26,16 @@ export class SushiEstoqueComponent implements OnInit {
     console.log(index);
   }
 
-  onEditIngrediente(ingrediente: Ingrediente, i:any){
+  onSelectIngrediente(ingrediente: Ingrediente, i:any){
     console.log(ingrediente, i);
+    this.ingredienteIndex = i;
+    this.ingredienteSelected = ingrediente
+
     this.ingredienteDescricao = ingrediente.descricao;
     this.ingredienteQuantidade = ingrediente.qtdeEstoque;
+  }
+
+  onEdit(){
   }
 
   onAdd(){

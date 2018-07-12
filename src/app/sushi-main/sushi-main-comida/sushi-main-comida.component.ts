@@ -17,15 +17,16 @@ export class SushiMainComidaComponent implements OnInit {
     new Ingrediente('Alga', 'ingrediente', 10, true)
   ];
 
-  comidas: Comida[] = COMIDAS;
+  comidaItems: Comida[] = COMIDAS;
   
   constructor() { }
 
   ngOnInit() {
+    console.log(this.comidaItems);
   }
 
   onLog(){
-    console.log(this.comidas);
+    console.log(this.comidaItems);
   }
 
 }

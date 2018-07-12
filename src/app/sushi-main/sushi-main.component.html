@@ -1,7 +1,12 @@
 
-<div class="container form-box">
+<div class="container">
     <div class="row">
-    <app-sushi-main-nav></app-sushi-main-nav>
+        <div class="col-md-9 col-md-pull-2 form-box">
+            <app-sushi-main-nav></app-sushi-main-nav>
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-4 col-md-push-7 form-box" style="position: fixed;">
+            <app-sushi-carrinho></app-sushi-carrinho>
+        </div>
     </div>
-    <router-outlet></router-outlet>    
 </div>

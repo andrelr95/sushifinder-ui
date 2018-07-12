@@ -2,11 +2,11 @@
 
 
 /* You can add global styles to this file, and also import other style files */
-$background-main: #E4DFDC;
-$background-form: #FAF5F1;
+$background-main: #464646;
+$background-form: #F9EFEF;
 $background-main-active: #E4DFDC;
 $border-form: #CDC9C6;
-$background-login: #D75D6A;
+$background-login: #D80000;
 $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
 $color-box-shadow: #9D444E;
@@ -67,7 +67,7 @@ p.price {
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: $background-main;
+  color: $color-font-light;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
@@ -99,6 +99,8 @@ hr {
 
 .btn {
   margin-bottom: 5px;
+  opacity: 0.6;
+  transition: 0.3s;
 }
 
 .btn:hover {
@@ -156,12 +158,12 @@ hr {
 }
 
 .form-box {
-  border-radius: 20px;
+  border-radius: 2px;
   border-style: solid;
   border-color: $border-form;
   border-width: 0.5px;
   background-color: $background-form;
-  padding: 50px 60px;
+  padding: 0;
 }
 
 .btn.btn-login{

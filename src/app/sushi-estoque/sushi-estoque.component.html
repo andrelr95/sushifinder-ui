@@ -3,7 +3,7 @@
     <h1>Estoque</h1>
     <app-sushi-estoque-element *ngFor="let ingredienteElement of ingredienteElements; index as i"
     [ingredienteElement]="ingredienteElement"
-    (ingredienteSelected)="onEditIngrediente($event, i)"></app-sushi-estoque-element>   
+    (ingredienteSelected)="onSelectIngrediente($event, i)"></app-sushi-estoque-element>   
   </div>
   <div class="row border-box">
     <button type="submit" class="btn btn-login btn-custom col-md-2 col-md-offset-10 col-sm-12 col-xs-12" (click)="onLog()">LOG</button>
@@ -22,6 +22,7 @@
         <input type="text" class="form-control input-custom"  
         id="ingredienteQuantidade" name="ingredienteQuantidade" placeholder="4" [(ngModel)]="ingredienteQuantidade">
       </div>
+      <button type="button" (click)="onEdit()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Editar Ingrediente</button>
       <button type="button" (click)="onAdd()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Adicionar Ingrediente</button>
   </div>
 </div>

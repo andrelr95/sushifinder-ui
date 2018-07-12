@@ -29,9 +29,4 @@ export class SushiEstoqueElementComponent implements OnInit {
   onEdit(descricao: string, qtdeEstoque: any){
     console.log(descricao, qtdeEstoque);
   }
-
-  // onAddIngrediente() {
-    
-  // }
-
 }
