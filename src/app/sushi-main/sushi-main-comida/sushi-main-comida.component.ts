@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Comida } from '../../models/comida.model';
-import { Ingrediente } from '../../models/ingredientes.model';
-import { COMIDAS } from '../../mocks/produtos-mock';
-import { INGREDIENTES_COMIDA } from '../../mocks/ingredientes-mock';
+import { SushiMainService } from '../sushi-main.service';
+import { Comida } from './../../models/comida.model';
 
 @Component({
   selector: 'app-sushi-main-comida',
@@ -11,19 +8,17 @@ import { INGREDIENTES_COMIDA } from '../../mocks/ingredientes-mock';
   styleUrls: ['./sushi-main-comida.component.scss']
 })
 export class SushiMainComidaComponent implements OnInit {
-
-  ingredientes: Ingrediente[] = INGREDIENTES_COMIDA
-
-  comidaItems: Comida[] = COMIDAS;
   
-  constructor() { }
+  comidaItens: Comida[];
+
+  constructor(private sushiMainService: SushiMainService) { }
 
   ngOnInit() {
-    console.log(this.comidaItems);
+    this.comidaItens = this.sushiMainService.getComidas();
   }
 
   onLog(){
-    console.log(this.comidaItems);
+    console.log();
   }
 
 }

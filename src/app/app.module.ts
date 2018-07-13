@@ -18,6 +18,7 @@ import { SushiMainBebidaComponent } from './sushi-main/sushi-main-bebida/sushi-m
 import { SushiMainItemComponent } from './sushi-main/sushi-main-item/sushi-main-item.component';
 import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-nav.component';
 import { SushiEstoqueElementComponent } from './sushi-estoque/sushi-estoque-element/sushi-estoque-element.component';
+import { SushiMainService } from './sushi-main/sushi-main.service';
  
 
 @NgModule({
@@ -43,7 +44,7 @@ import { SushiEstoqueElementComponent } from './sushi-estoque/sushi-estoque-elem
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SushiMainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
