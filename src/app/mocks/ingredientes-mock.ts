@@ -21,7 +21,18 @@ export const INGREDIENTES: Ingrediente[] = [
 export const INGREDIENTES_COMIDA: Ingrediente[] = [
     new Ingrediente('Arroz', 'ingrediente', 10, true),
     new Ingrediente('Sushi', 'ingrediente', 10, true),
-    new Ingrediente('Alga', 'ingrediente', 10, true)
+    new Ingrediente('Alga', 'ingrediente', 10, true),
+]
+
+export const INGREDIENTES_TEMAKI: Ingrediente[] = [
+    new Ingrediente('Alga', 'ingrediente', 20, true),
+    new Ingrediente('Salmão', 'ingrediente', 40, true),
+    new Ingrediente('Arroz', 'ingrediente', 10, true),
+]
+
+export const INGREDIENTES_SASHIMI: Ingrediente[] = [
+    new Ingrediente('Salmão', 'ingrediente', 40, true),
+    new Ingrediente('Arroz', 'ingrediente', 10, true),
 ]
 
 export const INGREDIENTES_BEBIDA_COCA: Ingrediente[] = [

@@ -1,12 +1,13 @@
 <li class="row">
     <div class="col-md-2">
-        <img [src]="comida.img" class="img-responsive" alt="temaki-sushi">
+        <img [src]="produto.img" class="img-responsive" alt="{{produto.descricao}}">
     </div>
     <div class="col-md-6">
-        <h3>{{comida.descricao}}</h3>
-        <span *ngFor="let ingrediente of comida.ingredientes"class="badge">{{ingrediente.descricao}}</span>
+        <h3 style="font-weight: bold;">{{produto.descricao}}</h3>
+        <span *ngFor="let ingrediente of produto.ingredientes"class="badge">{{ingrediente.descricao}}</span>
     </div>
-    <div class="col-md-4">
-        <button class="btn btn-login btn-custom" (click)="onLog()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar item</button>
+    <div class="col-md-4 text-center">
+        <h3 style="font-weight: bold;">{{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</h3>
+        <button class="btn btn-custom" (click)="onLog()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> QUERO!</button>
     </div>
 </li>

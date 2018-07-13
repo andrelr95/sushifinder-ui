@@ -1,19 +1,6 @@
 import { Ingrediente } from '../models/ingredientes.model';
+import { Produto } from './produto.model';
 
-export class Comida {
-    public descricao: string;
-    public preco: number;
-    public ativo: boolean;
-    public tipo: string;
-    public img: string;
-    public ingredientes: Ingrediente[];
+export class Comida extends Produto {
 
-    constructor(desc: string, preco: number, ativo: boolean, tipo: string, img:string ,ingredientes: Ingrediente[]){
-        this.descricao = desc;
-        this.preco = preco;
-        this.ativo = ativo;
-        this.img = img;
-        this.tipo = tipo;
-        this.ingredientes = ingredientes;
-    }
 }

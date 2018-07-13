@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Comida } from '../../models/comida.model';
 import { Ingrediente } from '../../models/ingredientes.model';
-import { COMIDAS } from '../../mocks/comidas-mock';
+import { COMIDAS } from '../../mocks/produtos-mock';
+import { INGREDIENTES_COMIDA } from '../../mocks/ingredientes-mock';
 
 @Component({
   selector: 'app-sushi-main-comida',
@@ -11,11 +12,7 @@ import { COMIDAS } from '../../mocks/comidas-mock';
 })
 export class SushiMainComidaComponent implements OnInit {
 
-  ingredientes: Ingrediente[] = [
-    new Ingrediente('Arroz', 'ingrediente', 10, true),
-    new Ingrediente('Sushi', 'ingrediente', 10, true),
-    new Ingrediente('Alga', 'ingrediente', 10, true)
-  ];
+  ingredientes: Ingrediente[] = INGREDIENTES_COMIDA
 
   comidaItems: Comida[] = COMIDAS;
   

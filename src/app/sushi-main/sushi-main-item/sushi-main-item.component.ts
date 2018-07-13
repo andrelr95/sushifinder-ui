@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Comida } from '../../models/comida.model';
+import { Produto } from '../../models/produto.model';
 
 @Component({
   selector: 'app-sushi-main-item',
@@ -8,14 +9,14 @@ import { Comida } from '../../models/comida.model';
 })
 export class SushiMainItemComponent implements OnInit {
 
-  @Input() comida: Comida;
+  @Input() produto: Produto;
 
   constructor() { }
 
   ngOnInit() {
   }
   onLog(){
-    console.log(this.comida);
+    console.log(this.produto);
   }
 
 }

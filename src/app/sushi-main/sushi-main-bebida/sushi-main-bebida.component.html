@@ -1,16 +1,4 @@
-<div *ngFor="let bebida of bebidas" class="row">
-  <div class="box-wrapper">
-    <div class="box-content col-md-2 col-sm-4">
-      <img [src]="bebida.img" alt="temaki-sushi">
-    </div>
-    <div class="box-content col-md-6 col-sm-5">
-      <h3>Descrição: </h3>
-      <p>{{bebida.descricao}}</p>
-    </div>
-    <div class="box-content col-md-4 col-sm-3">
-      <p class="price">{{bebida.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
-      <button class="btn btn-login btn-block btn-custom">Adicionar item ao pedido</button>
-    </div>
-  </div>
-</div>
-  
+<ul class="container-fluid">
+  <app-sushi-main-item *ngFor="let bebidaItem of bebidaItens"
+    [produto]="bebidaItem"></app-sushi-main-item>
+</ul>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bebida } from '../../models/bebida.model';
-import { BEBIDAS } from '../../mocks/bebidas-mock';
+import { BEBIDAS } from '../../mocks/produtos-mock';
 
 @Component({
   selector: 'app-sushi-main-bebida',
@@ -9,11 +9,12 @@ import { BEBIDAS } from '../../mocks/bebidas-mock';
 })
 export class SushiMainBebidaComponent implements OnInit {
 
-  bebidas: Bebida[] = BEBIDAS;
+  bebidaItens: Bebida[] = BEBIDAS;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.bebidaItens);
   }
 
 }

@@ -99,7 +99,6 @@ hr {
 
 .btn {
   margin-bottom: 5px;
-  opacity: 0.6;
   transition: 0.3s;
 }
 
@@ -162,8 +161,18 @@ hr {
   border-style: solid;
   border-color: $border-form;
   border-width: 0.5px;
-  background-color: $background-form;
+  background-color: #FFF;
   padding: 0;
+}
+
+.btn.btn-custom {
+  color: $color-font-light;
+  background-color: $background-login;
+}
+
+.btn.btn-custom:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
 }
 
 .btn.btn-login{
