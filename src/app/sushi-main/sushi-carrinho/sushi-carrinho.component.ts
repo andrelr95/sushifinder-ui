@@ -10,6 +10,7 @@ import { SushiMainService } from '../sushi-main.service';
 export class SushiCarrinhoComponent implements OnInit {
 
   selectedProduto: Produto;
+  carrinho: Produto[] = [];
 
   constructor(private sushiMainService: SushiMainService) { }
 
@@ -17,8 +18,8 @@ export class SushiCarrinhoComponent implements OnInit {
     this.sushiMainService.produtoSelected
       .subscribe(
         (produto: Produto) => {
-          this.selectedProduto = produto;
-          console.log("PRODUTO SUBSCRIBED", produto);
+          this.carrinho.push(produto);
+          console.log("PRODUTO SUBSCRIBED", this.carrinho);
         }
       )
   }
