@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Produto } from '../../models/produto.model';
+import { SushiMainService } from '../sushi-main.service';
 
 @Component({
   selector: 'app-sushi-carrinho',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiCarrinhoComponent implements OnInit {
 
-  constructor() { }
+  selectedProduto: Produto;
+
+  constructor(private sushiMainService: SushiMainService) { }
 
   ngOnInit() {
+    this.sushiMainService.produtoSelected
+      .subscribe(
+        (produto: Produto) => {
+          this.selectedProduto = produto;
+          console.log("PRODUTO SUBSCRIBED", produto);
+        }
+      )
   }
+
 
 }
