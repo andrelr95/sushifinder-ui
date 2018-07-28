@@ -12,7 +12,7 @@ export class SushiCarrinhoComponent implements OnInit {
 
   selectedProduto: Produto;
   // carrinho: Produto[] = [];
-  itensCarrinho: ItemSacola [] = [];
+  itensCarrinho: ItemSacola[] = [];
   precoTotal: number = 0;
 
   constructor(private sushiMainService: SushiMainService) { }
@@ -41,6 +41,19 @@ export class SushiCarrinhoComponent implements OnInit {
       )
   }
 
+  onRemoveFromCart(item: ItemSacola) {
+    console.log(item);
 
-
+    this.itensCarrinho.forEach((itemCarrinho) => {
+      if(itemCarrinho.produto.id === item.produto.id){
+        if(itemCarrinho.quantidade === 1){
+          this.itensCarrinho.splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === item.produto.id));
+        } else {
+          itemCarrinho.quantidade -= 1;
+          itemCarrinho.precoItem = itemCarrinho.precoItem - itemCarrinho.produto.preco 
+        }
+      }
+    })
+    this.itensCarrinho.length === 0 ? this.precoTotal = 0 : this.precoTotal = this.itensCarrinho.map((item) => item.precoItem).reduce((i,c) => i + c);
+  }
 }
