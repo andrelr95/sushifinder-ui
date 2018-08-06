@@ -21,7 +21,12 @@
 </div>
     <ng-template #noItens> <h3>Não há itens no carrinho</h3></ng-template>
     <hr class="hr-custom">
-    <div class="row">
-        <h3>TOTAL: {{precoTotal | currency:'BRL':'symbol':'1.2-2'}}</h3>
+    <div class="row box">
+        <div class="col-md-7">
+            <h3>Preço Total: {{precoTotal | currency:'BRL':'symbol':'1.2-2'}}</h3>
+        </div>
+        <div class="col-md-5">
+            <button class="btn btn-success" style=" margin-top: 10px;">Confirmar Pedido</button>
+        </div>
     </div>
 </div>

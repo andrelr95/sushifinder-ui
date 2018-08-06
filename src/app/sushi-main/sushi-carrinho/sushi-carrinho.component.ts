@@ -11,7 +11,6 @@ import { ItemSacola } from '../../models/item-sacola.model';
 export class SushiCarrinhoComponent implements OnInit {
 
   selectedProduto: Produto;
-  // carrinho: Produto[] = [];
   itensCarrinho: ItemSacola[] = [];
   precoTotal: number = 0;
 
@@ -20,23 +19,23 @@ export class SushiCarrinhoComponent implements OnInit {
   ngOnInit() {
     this.sushiMainService.produtoSelected
       .subscribe((produto: Produto) => {
-          if(this.itensCarrinho.findIndex((item) => item.produto.id === produto.id) === -1){
+          if(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === produto.id) === -1){
             this.itensCarrinho.push(new ItemSacola(produto, 1, produto.preco));
           } else {
-            this.itensCarrinho = this.itensCarrinho.map(item => {              
-              if(item.produto.id !== produto.id) return item;
+            this.itensCarrinho = this.itensCarrinho.map(itemCarrinho => {              
+              if(itemCarrinho.produto.id !== produto.id) return itemCarrinho;
               
               return {
-                ...item,
-                quantidade: item.quantidade += 1,
-                precoItem: item.quantidade*item.produto.preco
+                ...itemCarrinho,
+                quantidade: itemCarrinho.quantidade += 1,
+                precoItem: itemCarrinho.quantidade*itemCarrinho.produto.preco
               }
             })
           }
           
-          this.precoTotal = this.itensCarrinho.map((item) => item.precoItem).reduce((i,c) => i + c);
+          this.precoTotal = this.itensCarrinho.map((itemCarrinho) => itemCarrinho.precoItem).reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual);
 
-          console.log("PRODUTO SUBSCRIBED", this.itensCarrinho);
+          console.log("ngOnInit - SUBSCRIVE -> ", this.itensCarrinho);
         }
       )
   }
@@ -47,13 +46,18 @@ export class SushiCarrinhoComponent implements OnInit {
     this.itensCarrinho.forEach((itemCarrinho) => {
       if(itemCarrinho.produto.id === item.produto.id){
         if(itemCarrinho.quantidade === 1){
-          this.itensCarrinho.splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === item.produto.id));
+          this.itensCarrinho
+            .splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === item.produto.id), 1);
         } else {
           itemCarrinho.quantidade -= 1;
           itemCarrinho.precoItem = itemCarrinho.precoItem - itemCarrinho.produto.preco 
         }
       }
     })
-    this.itensCarrinho.length === 0 ? this.precoTotal = 0 : this.precoTotal = this.itensCarrinho.map((item) => item.precoItem).reduce((i,c) => i + c);
+    this.itensCarrinho.length === 0 ? 
+      this.precoTotal = 0 : 
+      this.precoTotal = this.itensCarrinho
+        .map((item) => item.precoItem)
+        .reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual);
   }
 }

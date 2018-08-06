@@ -16,3 +16,12 @@ hr.hr-custom{
     margin-left: 35px;
     margin-right: 35px;
 }
+
+.row.box {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: $color-box-shadow;
+    border-radius: 5px;
+}

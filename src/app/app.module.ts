@@ -40,7 +40,6 @@ import { SushiMainService } from './sushi-main/sushi-main.service';
   imports: [
     BrowserModule,
     FormsModule,
-
     HttpClientModule,
     AppRoutingModule
   ],
