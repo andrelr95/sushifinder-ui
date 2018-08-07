@@ -1,7 +1,8 @@
 <form>
   <div class="container form-box">
     <div class="row">
-      <h1>Cadastro de clientes</h1>
+      <h1>Dados pessoais</h1>
+      <hr>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputEmail">Nome</label>
         <input type="email" class="form-control input-custom" id="inputName" placeholder="Johnny">
@@ -19,38 +20,66 @@
         <input type="text" class="form-control input-custom" id="inputTel" placeholder="01333643503">
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
+        <label for="inputBirthDate">Data de nascimento</label>
+        <input type="text" class="form-control input-custom" id="inputBirthDate" placeholder="28/09/1995">
+      </div>
+      <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputSexo">Sexo</label>
         <select class="form-control">
           <option value="" selected disabled hidden>Selecione</option>
           <option value="M">Masculino</option>
-          <option value="F"> Feminino</option>
+          <option value="F">Feminino</option>
         </select>
       </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control input-custom" id="inputEmail" placeholder="exemplo@exemplo.com">
       </div>
-      <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="inputPassword">Senha</label>
-        <input type="password" class="form-control input-custom" id="inputPassword" placeholder="sua senha">
+      <div class="row">
+        <h1>Dados de login</h1>
+        <hr>
+        <div class="form-group col-md-6 col-xs-12 col-sm-12">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control input-custom" id="inputEmail" placeholder="exemplo@exemplo.com">
+        </div>
+        <div class="form-group col-md-6 col-xs-12 col-sm-12">
+          <label for="inputPassword">Senha</label>
+          <input type="password" class="form-control input-custom" id="inputPassword" placeholder="sua senha">
+        </div>
       </div>
-    </div>
+
     <div class="row">
+      <h1>Endereço</h1>
+      <hr>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="inputEmail">Endereço</label>
-        <input type="email" class="form-control input-custom" id="inputAddress" placeholder="Rua Exemplo, 269 - Av Exemplos, 3658">
+        <label for="inputAddress">Endereço</label>
+        <input type="text" class="form-control input-custom" id="inputAddress" placeholder="Rua Exemplo / Av Exemplos">
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
-        <label for="inputEmail">Número</label>
-        <input type="email" class="form-control input-custom" id="inputAddressNumber" placeholder="5324">
+        <label for="inputAddressNumber">Número</label>
+        <input type="text" class="form-control input-custom" id="inputAddressNumber" placeholder="5324">
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
-        <label for="inputEmail">Complemento</label>
-        <input type="email" class="form-control input-custom" id="inputAddressNumberComplement" placeholder="Bloco A - apt. 55A">
+        <label for="inputAddressNumberComplement">Complemento</label>
+        <input type="text" class="form-control input-custom" id="inputAddressNumberComplement" placeholder="Bloco A - apt. 55A">
+      </div>
+      <div class="form-group col-md-3 col-xs-12 col-sm-12">
+        <label for="inputAddressZipCode">CEP</label>
+        <input type="text" class="form-control input-custom" id="inputAddressZipCode" placeholder="11533280">
+      </div>
+      <div class="form-group col-md-3 col-xs-12 col-sm-12">
+        <label for="inputBairro">Bairro</label>
+        <input type="text" class="form-control input-custom" id="inputBairro" placeholder="Jardim Olívia">
+      </div>
+      <div class="form-group col-md-3 col-xs-12 col-sm-12">
+        <label for="inputCity">Cidade</label>
+        <input type="text" class="form-control input-custom" id="inputCity" placeholder="Santos">
+      </div>
+      <div class="form-group col-md-3 col-xs-12 col-sm-12">
+        <label for="inputState">Estado</label>
+        <input type="text" class="form-control input-custom" id="inputState" placeholder="SP">
       </div>
     </div>
-    <button type="submit" class="btn btn-login btn-custom col-md-2 col-md-offset-10 col-sm-12 col-xs-12">Cadastrar</button>
+    <div class="col-md-12 col-sm-12 col-xs-12 no-gap">
+        <button type="submit" class="btn btn-custom pull-left">Voltar</button>
+        <button type="submit" class="btn btn-custom pull-right">Cadastrar</button>  
+    </div>
   </div>
 </form>
