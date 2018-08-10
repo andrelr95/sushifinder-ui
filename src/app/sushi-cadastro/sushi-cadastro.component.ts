@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sushi-cadastro',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiCadastroComponent implements OnInit {
 
+  public date: Date = new Date();
+
   constructor() { }
 
   ngOnInit() {
+  
+  }
+
+  onSignUp(form: NgForm){
+    console.log(form.value)
   }
 
 }

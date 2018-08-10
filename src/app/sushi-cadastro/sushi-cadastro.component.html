@@ -1,31 +1,32 @@
-<form>
+<form class="form" (ngSubmit)="onSignUp(form)" #form="ngForm"> 
   <div class="container form-box">
     <div class="row">
       <h1>Dados pessoais</h1>
       <hr>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="inputEmail">Nome</label>
-        <input type="email" class="form-control input-custom" id="inputName" placeholder="Johnny">
+        <label for="inputName">Nome</label>
+        <input type="text" class="form-control input-custom" id="inputName" name="inputName" placeholder="Johnny" ngModel>
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputSurname">Sobrenome</label>
-        <input type="email" class="form-control input-custom" id="inputSurname" placeholder="Smith">
+        <input type="text" class="form-control input-custom" id="inputSurname" name="inputSurname" placeholder="Smith" ngModel>
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputCpf">CPF</label>
-        <input type="text" class="form-control input-custom" id="inputCpf" placeholder="43215822236">
+        <input type="text" class="form-control input-custom" id="inputCpf" mask="000.000.000-00" name="inputCpf" placeholder="43215822236" ngModel>
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputTel">Telefone</label>
-        <input type="text" class="form-control input-custom" id="inputTel" placeholder="01333643503">
+        <input type="text" class="form-control input-custom" mask="(00) 9 0000-0000" id="inputTel" name="inputTel" placeholder="(13) 9 8110-3636" ngModel>
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputBirthDate">Data de nascimento</label>
-        <input type="text" class="form-control input-custom" id="inputBirthDate" placeholder="28/09/1995">
+        <input type="text" class="form-control input-custom" mask="00/00/0000" id="inputBirthDate" name="inputBirthDate" placeholder="28/09/1995" ngModel>
+        <!-- <ng-datepicker [(ngModel)]="date" name="inputBirthDate" style="display:inherit"/> -->
       </div>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputSexo">Sexo</label>
-        <select class="form-control">
+        <select class="form-control" id="inputSexo" name="inputSexo" ngModel>
           <option value="" selected disabled hidden>Selecione</option>
           <option value="M">Masculino</option>
           <option value="F">Feminino</option>
@@ -37,11 +38,11 @@
         <hr>
         <div class="form-group col-md-6 col-xs-12 col-sm-12">
           <label for="inputEmail">Email</label>
-          <input type="email" class="form-control input-custom" id="inputEmail" placeholder="exemplo@exemplo.com">
+          <input type="email" class="form-control input-custom" id="inputEmail" name="inputEmail" placeholder="exemplo@exemplo.com" ngModel>
         </div>
         <div class="form-group col-md-6 col-xs-12 col-sm-12">
           <label for="inputPassword">Senha</label>
-          <input type="password" class="form-control input-custom" id="inputPassword" placeholder="sua senha">
+          <input type="password" class="form-control input-custom" id="inputPassword" name="inputPassword" placeholder="sua senha" ngModel>
         </div>
       </div>
 
@@ -50,35 +51,35 @@
       <hr>
       <div class="form-group col-md-6 col-xs-12 col-sm-12">
         <label for="inputAddress">Endereço</label>
-        <input type="text" class="form-control input-custom" id="inputAddress" placeholder="Rua Exemplo / Av Exemplos">
+        <input type="text" class="form-control input-custom" id="inputAddress" name="inputAddress" placeholder="Rua Exemplo / Av Exemplos" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputAddressNumber">Número</label>
-        <input type="text" class="form-control input-custom" id="inputAddressNumber" placeholder="5324">
+        <input type="text" class="form-control input-custom" id="inputAddressNumber" name="inputAddressNumber" placeholder="5324" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputAddressNumberComplement">Complemento</label>
-        <input type="text" class="form-control input-custom" id="inputAddressNumberComplement" placeholder="Bloco A - apt. 55A">
+        <input type="text" class="form-control input-custom" id="inputAddressNumberComplement" name="inputAddressNumberComplement" placeholder="Bloco A - apt. 55A" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputAddressZipCode">CEP</label>
-        <input type="text" class="form-control input-custom" id="inputAddressZipCode" placeholder="11533280">
+        <input type="text" class="form-control input-custom" mask="00000-000" id="inputAddressZipCode" name="inputAddressZipCode" placeholder="11533280" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputBairro">Bairro</label>
-        <input type="text" class="form-control input-custom" id="inputBairro" placeholder="Jardim Olívia">
+        <input type="text" class="form-control input-custom" id="inputBairro" name="inputBairro" placeholder="Jardim Olívia" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputCity">Cidade</label>
-        <input type="text" class="form-control input-custom" id="inputCity" placeholder="Santos">
+        <input type="text" class="form-control input-custom" id="inputCity" name="inputCity" placeholder="Santos" ngModel>
       </div>
       <div class="form-group col-md-3 col-xs-12 col-sm-12">
         <label for="inputState">Estado</label>
-        <input type="text" class="form-control input-custom" id="inputState" placeholder="SP">
+        <input type="text" class="form-control input-custom" mask="SS" id="inputState" name="inputState" placeholder="SP" ngModel>
       </div>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 no-gap">
-        <button type="submit" class="btn btn-custom pull-left">Voltar</button>
+        <button type="button" class="btn btn-custom pull-left">Voltar</button>
         <button type="submit" class="btn btn-custom pull-right">Cadastrar</button>  
     </div>
   </div>
