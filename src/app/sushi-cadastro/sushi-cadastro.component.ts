@@ -8,12 +8,10 @@ import { NgForm } from '@angular/forms';
 })
 export class SushiCadastroComponent implements OnInit {
 
-  public date: Date = new Date();
-
   constructor() { }
 
   ngOnInit() {
-  
+
   }
 
   onSignUp(form: NgForm){
