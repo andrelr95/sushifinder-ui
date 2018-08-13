@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { AppComponent } from './app.component';
 import { SushiLoginComponent } from './sushi-login/sushi-login.component';
@@ -42,6 +43,7 @@ import { SushiMainService } from './sushi-main/sushi-main.service';
   imports: [
     BrowserModule,
     FormsModule,
+    FontAwesomeModule,
     NgDatepickerModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,

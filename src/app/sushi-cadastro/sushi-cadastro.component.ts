@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Cliente } from '../models/cliente.model';
 import { Endereco } from '../models/endereco.model';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Pessoa } from '../models/pessoa.model';
 
 @Component({
@@ -10,6 +11,8 @@ import { Pessoa } from '../models/pessoa.model';
   styleUrls: ['./sushi-cadastro.component.scss']
 })
 export class SushiCadastroComponent implements OnInit {
+
+  faCoffee = faCoffee;
 
   constructor() { }
 
