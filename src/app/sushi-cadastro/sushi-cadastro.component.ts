@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Cliente } from '../models/cliente.model';
+import { Endereco } from '../models/endereco.model';
+import { Pessoa } from '../models/pessoa.model';
 
 @Component({
   selector: 'app-sushi-cadastro',
@@ -14,8 +17,28 @@ export class SushiCadastroComponent implements OnInit {
 
   }
 
-  onSignUp(form: NgForm){
-    console.log(form.value)
+  onSignUp({ value }: NgForm){
+    console.log(value);
+    const { 
+      inputAddress, 
+      inputAddressNumber, 
+      inputAddressNumberComplement, 
+      inputAddressZipCode, 
+      inputBairro,
+      inputBirthDate,
+      inputCity,
+      inputCpf,
+      inputEmail,
+      inputName,
+      inputPassword,
+      inputSexo,
+      inputState,
+      inputSurname,
+      inputTel } = value;
+    const endereco = new Endereco(inputAddress, inputAddressNumber, inputAddressNumberComplement, inputBairro, inputCity, inputState, inputAddressZipCode);
+    const pessoa = new Pessoa(inputName, inputSurname, inputCpf, inputTel, inputSexo, inputEmail, inputBirthDate, [endereco]);
+    const andre = new Cliente(inputPassword, ['customer'], pessoa);
+    console.log(JSON.stringify(andre));
   }
 
 }
