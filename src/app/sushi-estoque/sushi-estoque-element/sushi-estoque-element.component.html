@@ -1,8 +1,10 @@
-<div class="list-group">
-  <a class="list-group-item" (click)="onSelectIngredienete()">
-  <h4 class="list-group-item-heading">{{ingredienteElement.descricao}}</h4>
-  <h4 class="list-group-item-heading">{{i}}</h4>
-  <p class="list-group-item-text">Quantidade em estoque: {{ingredienteElement.qtdeEstoque}}</p>
-</a>
+<div class="col-md-12">
+  <div class="list-group">
+    <a class="list-group-item" (click)="onSelectIngredienete()">
+      <h4 class="list-group-item-heading">{{ingredienteElement.descricao}}</h4>
+      <h4 class="list-group-item-heading">{{i}}</h4>
+      <p class="list-group-item-text">Quantidade em estoque: {{ingredienteElement.qtdeEstoque}}</p>
+    </a>
+  </div>
 </div>
 <!-- (click)="onEdit(ingredienteElement.descricao, ingredienteElement.qtdeEstoque)" -->

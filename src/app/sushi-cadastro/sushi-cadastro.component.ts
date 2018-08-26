@@ -16,12 +16,15 @@ export class SushiCadastroComponent implements OnInit {
 
   constructor() { }
 
+  model: any = {};
+
   ngOnInit() {
 
   }
 
   onSignUp({ value }: NgForm){
     console.log(value);
+    console.log(this.model);
     const { 
       inputAddress, 
       inputAddressNumber, 
@@ -40,7 +43,7 @@ export class SushiCadastroComponent implements OnInit {
       inputTel } = value;
     const endereco = new Endereco(inputAddress, inputAddressNumber, inputAddressNumberComplement, inputBairro, inputCity, inputState, inputAddressZipCode);
     const pessoa = new Pessoa(inputName, inputSurname, inputCpf, inputTel, inputSexo, inputEmail, inputBirthDate, [endereco]);
-    const andre = new Cliente(inputPassword, ['customer'], pessoa);
+    const andre = new Cliente(inputPassword, pessoa);
     console.log(JSON.stringify(andre));
   }
 

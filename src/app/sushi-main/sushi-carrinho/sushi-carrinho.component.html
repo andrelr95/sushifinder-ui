@@ -4,19 +4,15 @@
     <div *ngIf="itensCarrinho.length !== 0; else noItens">
     <div class="row" *ngFor="let itemCarrinho of itensCarrinho"> 
         <div class="col-md-1">
-            <button type="button" (click)="onRemoveFromCart(itemCarrinho)" class="btn btn-danger" style="margin-top:
-            10px; margin-bottom: 10px;"><span class="glyphicon glyphicon-remove"></span></button>
-        </div>
-        <div class="col-md-3">
-            <h3>{{itemCarrinho.produto.descricao}}</h3>
+            <button type="button" (click)="onRemoveFromCart(itemCarrinho)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-5">
-            <h3><span *ngFor="let ingrediente of itemCarrinho.produto.ingredientes" class="badge">{{ingrediente.descricao}}</span></h3>
+            <p>{{itemCarrinho.produto.descricao}}</p>
         </div>
-        <div class="col-md-2">
-            <h3>{{itemCarrinho.precoItem | currency:'BRL':'symbol':'1.2-2'}}</h3>
+        <div class="col-md-3">
+            <p>{{itemCarrinho.precoItem | currency:'BRL':'symbol':'1.2-2'}}</p>
         </div>
-        <div class="col-md-1"><h4>x{{itemCarrinho.quantidade}}</h4></div>
+        <div class="col-md-1"><p>x{{itemCarrinho.quantidade}}</p></div>
     </div>
 </div>
     <ng-template #noItens> <h3>Não há itens no carrinho</h3></ng-template>

@@ -1,18 +1,13 @@
 import { Pessoa } from './pessoa.model';
-import { Endereco } from './endereco.model';
 
 export class Cliente {
     senha: string;
     roles: string[];
     pessoa: Pessoa;
 
-    constructor(
-        senha: string, 
-        roles: string[],
-        pessoa: Pessoa
-        ){
+    constructor(senha: string, pessoa: Pessoa){
         this.senha = senha;
-        this.roles = roles;
+        this.roles = ['customer'];
         this.pessoa = pessoa;
     }
 }

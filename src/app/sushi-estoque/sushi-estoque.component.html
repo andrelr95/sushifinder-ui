@@ -1,28 +1,22 @@
-<div class="container form-box">
-  <div class="row">
-    <h1>Estoque</h1>
-    <app-sushi-estoque-element *ngFor="let ingredienteElement of ingredienteElements; index as i"
-    [ingredienteElement]="ingredienteElement"
-    (ingredienteSelected)="onSelectIngrediente($event, i)"></app-sushi-estoque-element>   
+<div class="container">
+  <div class="row form-box border-box">
+      <h1>Estoque</h1>
+      <app-sushi-estoque-element *ngFor="let ingredienteElement of ingredienteElements; index as i" [ingredienteElement]="ingredienteElement"
+        (ingredienteSelected)="onSelectIngrediente($event, i)"></app-sushi-estoque-element>
   </div>
-  <div class="row border-box">
+  <div class="row form-box border-box">
     <button type="submit" class="btn btn-login btn-custom col-md-2 col-md-offset-10 col-sm-12 col-xs-12" (click)="onLog()">LOG</button>
-      <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="ingredienteDescricao">Descrição</label>
-        <input 
-        type="text" 
-        class="form-control input-custom"
-        id="ingredienteDescricao" 
-        name="ingredienteDescricao" 
-        placeholder="Feijão" 
+    <div class="form-group col-md-6 col-xs-12 col-sm-12">
+      <label for="ingredienteDescricao">Descrição</label>
+      <input type="text" class="form-control input-custom" id="ingredienteDescricao" name="ingredienteDescricao" placeholder="Feijão"
         [(ngModel)]="ingredienteDescricao">
-      </div>
-      <div class="form-group col-md-6 col-xs-12 col-sm-12">
-        <label for="ingredienteQuantidade">Quantidade</label>
-        <input type="text" class="form-control input-custom"  
-        id="ingredienteQuantidade" name="ingredienteQuantidade" placeholder="4" [(ngModel)]="ingredienteQuantidade">
-      </div>
-      <button type="button" (click)="onEdit()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Editar Ingrediente</button>
-      <button type="button" (click)="onAdd()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Adicionar Ingrediente</button>
+    </div>
+    <div class="form-group col-md-6 col-xs-12 col-sm-12">
+      <label for="ingredienteQuantidade">Quantidade</label>
+      <input type="text" class="form-control input-custom" id="ingredienteQuantidade" name="ingredienteQuantidade" placeholder="4"
+        [(ngModel)]="ingredienteQuantidade">
+    </div>
+    <button type="button" (click)="onEdit()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Editar Ingrediente</button>
+    <button type="button" (click)="onAdd()" class="btn btn-login btn-custom col-md-2 col-sm-12 col-xs-12">Adicionar Ingrediente</button>
   </div>
 </div>

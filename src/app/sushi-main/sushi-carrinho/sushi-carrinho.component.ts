@@ -33,9 +33,11 @@ export class SushiCarrinhoComponent implements OnInit {
             })
           }
           
-          this.precoTotal = this.itensCarrinho.map((itemCarrinho) => itemCarrinho.precoItem).reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual);
+          this.precoTotal = this.itensCarrinho
+            .map((itemCarrinho) => itemCarrinho.precoItem)
+              .reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual);
 
-          console.log("ngOnInit - SUBSCRIVE -> ", this.itensCarrinho);
+          console.log("ngOnInit - SUBSCRIBE -> ", this.itensCarrinho);
         }
       )
   }
