@@ -1,0 +1,21 @@
+$color-primary: #D80000;
+$color-secundary: #E6E6E6;
+$color-secundary-oposite: #111111;
+
+p {
+    margin: 0;
+}
+
+.row .inner-row {
+    width: inherit;
+    margin: 10px;
+} 
+
+.inner-row .inner-border {
+    border-style: solid;
+    border-width: 0.5px;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 0px 2px $color-primary;
+    border-color: $color-primary;
+}
