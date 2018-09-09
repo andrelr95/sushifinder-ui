@@ -10,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 export class SushiLoginComponent implements OnInit {
 
   password: string;
+  errorMessage: string = '';
 
   constructor(private authService: AuthService) { }
 
@@ -20,7 +21,17 @@ export class SushiLoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    this.authService.signInUser(email, password).then((response) => console.log(response));
+    this.authService.signInUser(email, password)
+      .then((response) => {
+        localStorage.setItem('token', response['token']);
+        localStorage.setItem('user', response['data']);
+        this.authService.setUserLogged(true);
+        console.log(this.authService.isLogged());
+        console.log('LOGUEI')
+      })
+      .catch((error) => {
+        this.errorMessage = error.error['message'];
+      })
     
   }
 

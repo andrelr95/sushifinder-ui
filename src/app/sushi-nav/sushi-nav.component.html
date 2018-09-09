@@ -18,11 +18,11 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/cadastro" routerLinkActive="active" >CADASTRO</a></li>
-          <li><a routerLink="/main/comidas" routerLinkActive="active" >MAIN</a></li>
-          <li><a routerLink="/login" routerLinkActive="active" >LOGIN</a></li>
-          <li><a routerLink="/estoque" routerLinkActive="active" >ESTOQUE</a></li>
-          <li><a routerLink="/pedidos" routerLinkActive="active" >PEDIDOS</a></li>
+          <li *ngIf="!isLogged"><a routerLink="/cadastro" routerLinkActive="active" >CADASTRO</a></li>
+          <li *ngIf="isLogged"><a routerLink="/main/comidas" routerLinkActive="active" >MAIN</a></li>
+          <li *ngIf="!isLogged"><a routerLink="/login" routerLinkActive="active" >LOGIN</a></li>
+          <li *ngIf="isLogged"><a routerLink="/estoque" routerLinkActive="active" >ESTOQUE</a></li>
+          <li *ngIf="isLogged"><a routerLink="/pedidos" routerLinkActive="active" >PEDIDOS</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->

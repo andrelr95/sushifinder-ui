@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-sushi-nav',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  isLogged: boolean = false;
 
   ngOnInit() {
+    this.isLogged = this.authService.isLogged();
+    console.log("INICIEL");
   }
 
 }

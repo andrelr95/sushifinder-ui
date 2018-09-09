@@ -3,6 +3,7 @@
       <div class="login-box-body">
         <img src="assets/img/logo-small-no-bg.png" class="img-responsive center-block" alt="Responsive image">
         <hr class="light">
+        <p *ngIf="errorMessage.length !== 0"><u>{{errorMessage}}</u></p>
         <form class="form" (ngSubmit)="onSignUp(f)" #f="ngForm">
           <div class="form-group">
             <label for="email" class="control-label">Usuário</label>
