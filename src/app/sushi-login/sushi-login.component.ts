@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-sushi-login',
@@ -10,7 +11,7 @@ export class SushiLoginComponent implements OnInit {
 
   password: string;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,7 +19,9 @@ export class SushiLoginComponent implements OnInit {
   onSignUp(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    console.log(form);
+
+    this.authService.signInUser(email, password).then((response) => console.log(response));
+    
   }
 
 

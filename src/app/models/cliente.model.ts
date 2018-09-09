@@ -7,7 +7,7 @@ export class Cliente {
 
     constructor(senha: string, pessoa: Pessoa){
         this.senha = senha;
-        this.roles = ['customer'];
+        this.roles = ['user'];
         this.pessoa = pessoa;
     }
 }
