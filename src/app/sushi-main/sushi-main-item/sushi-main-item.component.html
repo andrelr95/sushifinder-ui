@@ -1,4 +1,4 @@
-<li class="row">
+<div class="row">
     <div class="col-md-2">
         <img [src]="produto.img" class="img-responsive" alt="{{produto.descricao}}">
     </div>
@@ -10,4 +10,4 @@
         <h3 style="font-weight: bold;">{{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</h3>
         <button class="btn btn-custom" (click)="onSelected()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> QUERO!</button>
     </div>
-</li>
+</div>

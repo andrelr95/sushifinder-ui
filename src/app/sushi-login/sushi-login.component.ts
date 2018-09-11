@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sushi-login',
@@ -12,7 +13,7 @@ export class SushiLoginComponent implements OnInit {
   password: string;
   errorMessage: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,9 +26,7 @@ export class SushiLoginComponent implements OnInit {
       .then((response) => {
         localStorage.setItem('token', response['token']);
         localStorage.setItem('user', response['data']);
-        this.authService.setUserLogged(true);
-        console.log(this.authService.isLogged());
-        console.log('LOGUEI')
+        this.router.navigate(['/main/comidas']);
       })
       .catch((error) => {
         this.errorMessage = error.error['message'];

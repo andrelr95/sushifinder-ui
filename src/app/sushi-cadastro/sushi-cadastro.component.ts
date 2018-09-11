@@ -57,11 +57,12 @@ export class SushiCadastroComponent implements OnInit {
     this.authService.signUpUser(andre)
       .toPromise()
       .then( (response) => {
-          this.successMessage = response['message'];
-          this.showSuccessMessage = true;
-          this.showErrorMessage = !this.showSuccessMessage;
-          this.isLoading = false;
-
+          setTimeout(() => {
+            this.successMessage = response['message'];
+            this.showSuccessMessage = true;
+            this.showErrorMessage = !this.showSuccessMessage;
+            this.isLoading = false;
+          }, 2000);
         } )
       .catch( (error) => {
         this.isLoading = false;

@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthService {
 
-    isUserLogged: boolean = false;
+    serverUrl: string = "http://localhost:3000";
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -13,9 +13,8 @@ export class AuthService {
         })
     }
 
-    serverUrl: string = "http://localhost:3000"
 
-    constructor( private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
     getToken(){
         return localStorage.getItem('token');
@@ -25,12 +24,8 @@ export class AuthService {
         return localStorage.getItem('user');
     }
 
-    isLogged(){
-        return this.isUserLogged
-    }
-
-    setUserLogged(status: boolean){
-        this.isUserLogged = status;
+    isAuthenticated(){
+        return this.getToken() != null;
     }
 
     signUpUser(cliente: Cliente){
@@ -42,9 +37,12 @@ export class AuthService {
             "usuario": email,
             "senha": password
         }
-
         return this.http.post(this.serverUrl + '/authenticate', body, this.httpOptions)
             .toPromise();
+    }
+
+    signOutUser(){
+        localStorage.clear();
     }
 
 }

@@ -23,6 +23,7 @@ import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-na
 import { SushiEstoqueElementComponent } from './sushi-estoque/sushi-estoque-element/sushi-estoque-element.component';
 import { SushiMainService } from './sushi-main/sushi-main.service';
 import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
  
 
 @NgModule({
@@ -50,7 +51,7 @@ import { AuthService } from './auth/auth.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SushiMainService, AuthService],
+  providers: [SushiMainService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,16 +9,17 @@ import { SushiPedidosComponent } from "./sushi-pedidos/sushi-pedidos.component";
 import { SushiMainComidaComponent } from "./sushi-main/sushi-main-comida/sushi-main-comida.component";
 import { SushiMainBebidaComponent } from "./sushi-main/sushi-main-bebida/sushi-main-bebida.component";
 import { SushiMainItemComponent } from "./sushi-main/sushi-main-item/sushi-main-item.component";
+import { AuthGuard } from "./auth/auth-guard.service";
 
 const appRoutes: Routes = [
-    { path: 'main', component: SushiMainComponent, children: [
+    { path: 'main', canActivate: [AuthGuard],component: SushiMainComponent, children: [
        { path: 'comidas', component: SushiMainComidaComponent },
        { path: 'bebidas', component: SushiMainBebidaComponent } 
     ] },
     { path: 'cadastro', component: SushiCadastroComponent },
     { path: 'login', component: SushiLoginComponent },
-    { path: 'estoque', component: SushiEstoqueComponent },
-    { path: 'pedidos', component: SushiPedidosComponent }    
+    { path: 'estoque', canActivate: [AuthGuard], component: SushiEstoqueComponent },
+    { path: 'pedidos', canActivate: [AuthGuard], component: SushiPedidosComponent }    
 ];
 
 @NgModule({
