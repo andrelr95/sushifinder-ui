@@ -1,0 +1,16 @@
+<h1>Gerenciar</h1>
+<hr>
+<label for="buscaItem">Buscar item do estoque</label>
+<div class="inner-addon right-addon">
+  <i class="fas fa-search"></i>
+  <input type="text" class="form-control input-custom" id="buscaItem" name="buscaItem" placeholder="Digite algo aqui..." [(ngModel)]="buscaItem">
+</div>
+<hr>
+<label for="ingredienteNome">Adicionar Ingrediente</label>
+<input type="text" class="form-control input-custom" id="ingredienteNome" name="ingredienteNome" placeholder="Arroz" [(ngModel)]="ingredienteNome">
+<label for="ingredienteQuantidade">Quantidade</label>
+<input type="text" class="form-control input-custom" id="ingredienteQuantidade" name="ingredienteQuantidade" placeholder="4" [(ngModel)]="ingredienteQuantidade">
+<button type="button" (click)="onEdit()" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+    Salvar item
+  </span></button>
+<div class="alert alert-success text-center" role="alert">Salvo com sucesso!</div>

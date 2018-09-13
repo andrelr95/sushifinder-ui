@@ -1,18 +1,17 @@
 import { Cliente } from "../models/cliente.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment as ENV } from "../../environments/environment";
+const { host, path } = ENV.sushiFinderApi;
 
 @Injectable()
 export class AuthService {
-
-    serverUrl: string = "http://localhost:3000";
-
+    
     httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json'
         })
     }
-
 
     constructor(private http: HttpClient) {}
 
@@ -29,7 +28,7 @@ export class AuthService {
     }
 
     signUpUser(cliente: Cliente){
-        return this.http.post(this.serverUrl + '/clientes', cliente, this.httpOptions)
+        return this.http.post(host + path.authenticate, cliente, this.httpOptions)
     }
 
     signInUser(email: string, password: string){
@@ -37,7 +36,7 @@ export class AuthService {
             "usuario": email,
             "senha": password
         }
-        return this.http.post(this.serverUrl + '/authenticate', body, this.httpOptions)
+        return this.http.post(host + path.authenticate, body, this.httpOptions)
             .toPromise();
     }
 

@@ -1,4 +1,4 @@
-
+/* You can add global styles to this file, and also import other style files */
 $background-main: #464646;
 $background-form: #F9EFEF;
 $background-main-active: #E4DFDC;
@@ -8,9 +8,13 @@ $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
 $color-box-shadow: #9D444E;
 $color-primary: #D80000;
-$color-secundary: #E6E6E6;
+$color-secundary: #FCFDFD;
 $color-secundary-oposite: #111111;
 
+$navbar-admin-color-primary: #3083C8;
+$navbar-admin-color-secunday: $color-secundary;
+$navbar-default-color-primary: $color-primary;
+$navbar-default-color-secundary: $color-secundary;
 $break-small: 360px;
 $break-large: 1200px;
 

@@ -14,3 +14,11 @@ $color-box-shadow: #9D444E;
     border-style: solid;
     padding: 10px 15px;
 }
+
+.thumbnail {
+    margin-left: 5px;
+    &.max-size {
+        height: 850px;
+        overflow-y: auto;
+    }
+}

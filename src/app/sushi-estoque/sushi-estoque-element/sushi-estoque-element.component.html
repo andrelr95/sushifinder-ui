@@ -1,6 +1,9 @@
-<div class="col-md-12">
-  <div class="list-group">
+<div class="list-group">
+  <div>
     <a class="list-group-item" (click)="onSelectIngredienete()">
+      <button class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
+        Excluir item
+        </span></button>
       <h4 class="list-group-item-heading">{{ingredienteElement.descricao}}</h4>
       <h4 class="list-group-item-heading">{{i}}</h4>
       <p class="list-group-item-text">Quantidade em estoque: {{ingredienteElement.qtdeEstoque}}</p>

@@ -10,6 +10,15 @@ $background-login: #D80000;
 $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
 $color-box-shadow: #9D444E;
+$color-primary: #D80000;
+$color-secundary: #FCFDFD;
+$color-secundary-oposite: #111111;
+
+$navbar-admin-color-primary: #3083C8;
+$navbar-admin-color-secunday: $color-secundary;
+$navbar-default-color-primary: $color-primary;
+$navbar-default-color-secundary: $color-secundary;
+
 
 $break-small: 360px;
 $break-large: 1200px;
@@ -19,6 +28,7 @@ $break-large: 1200px;
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body{
   background-color: $background-main;
 }
@@ -71,12 +81,12 @@ p.price {
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-  background-color: $background-main;
-  color: $background-login;
+  background-color: $color-font-light;
+  color: $navbar-default-color-primary;
 }
 
 .navbar {
-  background-color: $background-login;
+  background-color: $navbar-default-color-primary;
 }
 
 
@@ -98,12 +108,12 @@ hr {
 }
 
 .btn {
+  margin-top: 5px;
   margin-bottom: 5px;
   transition: 0.3s;
 }
 
 .btn:hover {
-
   color: $color-font-light;
   background-color: black;
 
@@ -120,12 +130,19 @@ hr {
   height: 400px;
 }
 
+ul.nav.navbar-nav li a.active {
+  background-color: $navbar-default-color-secundary;
+  color: $navbar-default-color-primary;
+}
+
 .navbar-default .navbar-toggle .icon-bar {
   background-color: $background-main;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-  background-color: $color-box-shadow;
+  background-color: $navbar-default-color-secundary;
+  color: $navbar-default-color-primary;
+
 }
 
 .form-control.input-custom:focus {
@@ -172,7 +189,7 @@ hr {
 
 .btn.btn-custom:hover {
   transition: 0.3s;
-  transform: scale(1.1);
+  transform: scale(0.95);
 }
 
 .btn.btn-login{
@@ -180,12 +197,12 @@ hr {
   border-style: solid;
   border-width: 1px;
   color: $background-login;
-  background-color: $background-form;
+  background-color: transparent;
   border-color: $background-login;
 }
 
 .btn.btn-login.btn-custom:hover {
-  color: $background-main;
+  color: $color-font-light;
   background-color: $background-login;
   border-color: $background-main;
 }

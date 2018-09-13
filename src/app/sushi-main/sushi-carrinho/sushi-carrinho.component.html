@@ -4,7 +4,7 @@
     <div *ngIf="itensCarrinho.length !== 0; else noItens">
     <div class="row" *ngFor="let itemCarrinho of itensCarrinho"> 
         <div class="col-md-1">
-            <button type="button" (click)="onRemoveFromCart(itemCarrinho)"><span class="glyphicon glyphicon-remove"></span></button>
+            <button type="button" class="btn btn-danger btn-xs" (click)="onRemoveFromCart(itemCarrinho)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-5">
             <p>{{itemCarrinho.produto.descricao}}</p>

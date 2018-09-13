@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { ElementHandleEventFn } from '@angular/core/src/view';
+import { SushiEstoqueService } from '../sushi-estoque.service';
 
 @Component({
   selector: 'app-sushi-estoque-element',
@@ -16,8 +17,9 @@ export class SushiEstoqueElementComponent implements OnInit {
   quantidadeEstoque = 0;
 
   constructor() { }
-
+  
   ngOnInit() {
+
   }
 
   onSelectIngredienete(){
