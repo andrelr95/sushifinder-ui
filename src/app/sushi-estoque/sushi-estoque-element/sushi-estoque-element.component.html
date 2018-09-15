@@ -1,7 +1,7 @@
 <div class="list-group">
   <div>
     <a class="list-group-item" (click)="onSelectIngredienete()">
-      <button class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
+      <button *ngIf="ingredienteElement.ativo; else empty;" class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
         Excluir item
         </span></button>
       <h4 class="list-group-item-heading">{{ingredienteElement.descricao}}</h4>
@@ -10,4 +10,8 @@
     </a>
   </div>
 </div>
+
+<ng-template #empty>
+  <h1>ESGOTADO</h1>
+</ng-template>
 <!-- (click)="onEdit(ingredienteElement.descricao, ingredienteElement.qtdeEstoque)" -->

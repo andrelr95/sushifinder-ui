@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Ingrediente } from '../models/ingredientes.model';
-// import { INGREDIENTES } from '../mocks/ingredientes-mock';
+import { INGREDIENTES } from '../mocks/ingredientes-mock';
 import { SushiEstoqueService } from "../sushi-estoque/sushi-estoque.service";
 import { NgForm } from '@angular/forms';
 
@@ -22,8 +22,8 @@ export class SushiEstoqueComponent implements OnInit {
 
   ngOnInit() {
     this.sushiEstoqueService.getEstoque()
-      .then((response) => {
-        console.log(response);
+      .then((response: Ingrediente[]) => {
+        this.ingredienteElements = response;
       })
       .catch((err) => {
         console.log(err);
