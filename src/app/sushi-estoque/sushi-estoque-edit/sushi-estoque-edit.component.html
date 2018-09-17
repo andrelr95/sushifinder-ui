@@ -6,11 +6,31 @@
   <input type="text" class="form-control input-custom" id="buscaItem" name="buscaItem" placeholder="Digite algo aqui..." [(ngModel)]="buscaItem">
 </div>
 <hr>
-<label for="ingredienteNome">Adicionar Ingrediente</label>
-<input type="text" class="form-control input-custom" id="ingredienteNome" name="ingredienteNome" placeholder="Arroz" [(ngModel)]="ingredienteNome">
-<label for="ingredienteQuantidade">Quantidade</label>
-<input type="text" class="form-control input-custom" id="ingredienteQuantidade" name="ingredienteQuantidade" placeholder="4" [(ngModel)]="ingredienteQuantidade">
-<button type="button" (click)="onEdit()" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
-    Salvar item
-  </span></button>
-<div class="alert alert-success text-center" role="alert">Salvo com sucesso!</div>
+
+<form (ngSubmit)="onSaveItem(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="ingredienteNome">Adicionar Ingrediente</label>
+    <input type="text" class="form-control input-custom" id="ingredienteNome" name="descricao" placeholder="Arroz" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="ingredienteQuantidade">Quantidade</label>
+    <input type="text" class="form-control input-custom" id="ingredienteQuantidade" name="qtdeEstoque" placeholder="4" ngModel>
+  </div>
+  <div class="form-group radio-inline">
+    <div class="radio" *ngFor="let tipoItem of tiposItem">
+      <label>
+        <input 
+          type="radio" 
+          name="tipo" 
+          id="radio" 
+          ngModel="ingrediente"
+          [value]="tipoItem"
+          >{{tipoItem | titlecase}}
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+      Salvar item
+    </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
+</form>
+<div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>

@@ -47,12 +47,12 @@ import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     FontAwesomeModule,
     NgDatepickerModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [SushiMainService, AuthService, AuthGuard, SushiEstoqueService],
   bootstrap: [AppComponent]

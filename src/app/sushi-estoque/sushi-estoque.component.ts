@@ -30,19 +30,6 @@ export class SushiEstoqueComponent implements OnInit {
       })
   }
 
-  onLog(index){
-    console.log(index);
-  }
-
-  onSelectIngrediente(ingrediente: Ingrediente, i:any){
-    console.log(ingrediente, i);
-    this.ingredienteIndex = i;
-    this.ingredienteSelected = ingrediente
-
-    this.ingredienteDescricao = ingrediente.descricao;
-    this.ingredienteQuantidade = ingrediente.qtdeEstoque;
-  }
-
   onEdit(){
   }
 

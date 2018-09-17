@@ -24,7 +24,11 @@ export class SushiEstoqueService {
   }
 
   updateEstoque(item: Ingrediente) {
-    
+    //TODO Update Logic
+  }
+
+  saveEstoqueItem(item: Ingrediente) {
+    return this.http.post(host + path.estoque, item, this.httpOptions).toPromise();
   }
 }
 

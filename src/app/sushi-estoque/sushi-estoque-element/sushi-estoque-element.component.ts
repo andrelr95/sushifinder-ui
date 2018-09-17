@@ -28,7 +28,5 @@ export class SushiEstoqueElementComponent implements OnInit {
     this.ingredienteSelected.emit(this.ingredienteElement);
   }
 
-  onEdit(descricao: string, qtdeEstoque: any){
-    console.log(descricao, qtdeEstoque);
-  }
+
 }
