@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SushiEstoqueService } from '../sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { NgModel, NgForm } from '@angular/forms';
@@ -17,6 +17,7 @@ export class SushiEstoqueEditComponent implements OnInit {
   successMessage: string = '';
   tiposItem = ['ingrediente', 'bebida'];
   
+
   ngOnInit() {
   }
   
@@ -28,15 +29,15 @@ export class SushiEstoqueEditComponent implements OnInit {
     this.isLoading = true;
     form.value['ativo'] = this.isActiveItem(form.value['qtdeEstoque']);
     console.log(form.value);
-    // this.sushiEstoqueService.saveEstoqueItem(form.value)
-    //   .then( (response) => {
-    //     this.showSuccessMessage = true;
-    //     this.isLoading = false;
-    //     this.successMessage = response['message'];
-    //     setTimeout(() => {
-    //       this.showSuccessMessage = false;
-    //     }, 1500);
-    //   })
+    this.sushiEstoqueService.saveEstoqueItem(form.value)
+      .then( (response) => {
+        this.showSuccessMessage = true;
+        this.isLoading = false;
+        this.successMessage = response['message'];
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+        }, 1500);
+      })
   }
 
 }

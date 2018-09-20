@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Ingrediente } from '../models/ingredientes.model';
 import { INGREDIENTES } from '../mocks/ingredientes-mock';
@@ -12,13 +12,13 @@ import { NgForm } from '@angular/forms';
 })
 export class SushiEstoqueComponent implements OnInit {
 
+  constructor(private sushiEstoqueService: SushiEstoqueService) { }
+
   ingredienteElements: Ingrediente[];
   ingredienteIndex: number = 0;
   ingredienteSelected: Ingrediente;
   ingredienteDescricao = '';
   ingredienteQuantidade = 0;
-
-  constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
   ngOnInit() {
     this.sushiEstoqueService.getEstoque()
@@ -28,14 +28,5 @@ export class SushiEstoqueComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       })
-  }
-
-  onEdit(){
-  }
-
-  onAdd(){
-    this.ingredienteElements.push(new Ingrediente(this.ingredienteDescricao, 'ingrediente', this.ingredienteQuantidade, true));
-    this.ingredienteDescricao = '';
-    this.ingredienteQuantidade = 0;
   }
 }

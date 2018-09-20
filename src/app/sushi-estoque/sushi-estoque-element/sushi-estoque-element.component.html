@@ -4,7 +4,7 @@
       <button (click)="onDeleteItem()" *ngIf="ingredienteElement.ativo; else empty;" class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
         Excluir item
         </span></button>
-      <h4 class="list-group-item-heading">{{ingredienteElement.descricao}}</h4>
+      <h4 class="list-group-item-heading">{{ingredienteElement.descricao}} <span class="label label-default">{{ingredienteElement.tipo | titlecase}}</span></h4>
       <h4 class="list-group-item-heading">{{i}}</h4>
       <p class="list-group-item-text">Quantidade em estoque: {{ingredienteElement.qtdeEstoque}}</p>
     </a>
