@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment as ENV } from "../../environments/environment";
 import { AuthService } from '../auth/auth.service';
 import { Ingrediente } from '../models/ingredientes.model';
@@ -16,8 +16,18 @@ export class SushiEstoqueService {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
       'x-access-token': this.authService.getToken()
-    })
+    }),
+    params: undefined
   } 
+
+  getEstoqueByDescription(term: string) {
+    term = term.trim()
+
+    return this.http.get(host + path.estoque, {
+      headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
+      params: new HttpParams().set('descricao', term)
+    }).toPromise()
+  }
 
   getEstoque() {
     return this.http.get(host + path.estoque, this.httpOptions).toPromise();
