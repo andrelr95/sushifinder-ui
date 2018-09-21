@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Ingrediente } from '../models/ingredientes.model';
 import { INGREDIENTES } from '../mocks/ingredientes-mock';
@@ -14,19 +14,25 @@ export class SushiEstoqueComponent implements OnInit {
 
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
-  ingredienteElements: Ingrediente[];
-  ingredienteIndex: number = 0;
-  ingredienteSelected: Ingrediente;
-  ingredienteDescricao = '';
-  ingredienteQuantidade = 0;
+  ingredientes: Ingrediente[];
 
   ngOnInit() {
-    this.sushiEstoqueService.getEstoque()
-      .then((response: Ingrediente[]) => {
-        this.ingredienteElements = response;
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    this.getIngredients();
   }
+
+  getIngredients() {
+    this.sushiEstoqueService.getEstoque()
+    .then((response: Ingrediente[]) => {
+      this.ingredientes = response;
+      console.log('UPDATED INGREDIENT LIST');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  onUpdateIngredientList() {
+    this.getIngredients();
+  }
+  
 }

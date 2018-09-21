@@ -3,12 +3,12 @@
     <div class="col-md-8 col-xs-12 col-sm-12 thumbnail max-size">
       <h1>Estoque</h1>
       <app-sushi-estoque-element 
-        *ngFor="let ingredienteElement of ingredienteElements; index as i" 
-        [ingredienteElement]="ingredienteElement">
+        *ngFor="let ingredienteElement of ingredientes; index as i" 
+        [ingrediente]="ingredienteElement">
       </app-sushi-estoque-element>
     </div>
     <div class="col-md-3 col-xs-12 col-sm-12 thumbnail">
-      <app-sushi-estoque-edit></app-sushi-estoque-edit>
+      <app-sushi-estoque-edit (updateIngredientList)="onUpdateIngredientList()"></app-sushi-estoque-edit>
     </div>
   </div>
 </div>

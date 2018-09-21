@@ -10,23 +10,12 @@ import { SushiEstoqueService } from '../sushi-estoque.service';
 })
 export class SushiEstoqueElementComponent implements OnInit {
   
-  @Input() ingredienteElement: Ingrediente;
-  @Output() ingredienteSelected = new EventEmitter<Ingrediente>();
-
-  descricao = '';
-  quantidadeEstoque = 0;
+  @Input() ingrediente: Ingrediente;
 
   constructor() { }
   
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
-
-  onSelectIngredienete(){
-    
-    console.log(this.ingredienteElement);
-    this.ingredienteSelected.emit(this.ingredienteElement);
-  }
-
+  
 
 }

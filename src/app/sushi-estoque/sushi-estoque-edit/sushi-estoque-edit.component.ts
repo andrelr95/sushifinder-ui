@@ -12,12 +12,13 @@ export class SushiEstoqueEditComponent implements OnInit {
 
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
+  @Output() updateIngredientList = new EventEmitter<void>();
+
   isLoading: boolean = false;
   showSuccessMessage: boolean = false;
   successMessage: string = '';
   tiposItem = ['ingrediente', 'bebida'];
   
-
   ngOnInit() {
   }
   
@@ -35,6 +36,7 @@ export class SushiEstoqueEditComponent implements OnInit {
         this.isLoading = false;
         this.successMessage = response['message'];
         setTimeout(() => {
+          this.updateIngredientList.emit();
           this.showSuccessMessage = false;
         }, 1500);
       })

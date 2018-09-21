@@ -1,12 +1,12 @@
 <div class="list-group">
   <div>
-    <a class="list-group-item" (click)="onSelectIngredienete()">
-      <button (click)="onDeleteItem()" *ngIf="ingredienteElement.ativo; else empty;" class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
+    <a class="list-group-item">
+      <button (click)="onDeleteItem()" *ngIf="ingrediente.ativo; else empty;" class="btn btn-danger btn-xs pull-right"><span><i class="fas fa-trash-alt"></i>
         Excluir item
         </span></button>
-      <h4 class="list-group-item-heading">{{ingredienteElement.descricao}} <span class="label label-default">{{ingredienteElement.tipo | titlecase}}</span></h4>
+      <h4 class="list-group-item-heading">{{ingrediente.descricao}} <span class="label label-default">{{ingrediente.tipo | titlecase}}</span></h4>
       <h4 class="list-group-item-heading">{{i}}</h4>
-      <p class="list-group-item-text">Quantidade em estoque: {{ingredienteElement.qtdeEstoque}}</p>
+      <p class="list-group-item-text">Quantidade em estoque: {{ingrediente.qtdeEstoque}}</p>
     </a>
   </div>
 </div>
