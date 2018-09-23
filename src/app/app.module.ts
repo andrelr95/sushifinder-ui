@@ -26,6 +26,8 @@ import { SushiMainNavComponent } from './sushi-main/sushi-main-nav/sushi-main-na
 import { SushiMainService } from './sushi-main/sushi-main.service';
 import { SushiNavComponent } from './sushi-nav/sushi-nav.component';
 import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
+import { SushiProibidoComponent } from './sushi-proibido/sushi-proibido.component';
+import { AuthAdminGuard } from './auth/auth-admin-guard.service';
  
 
 @NgModule({
@@ -43,7 +45,8 @@ import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
     SushiMainBebidaComponent,
     SushiMainNavComponent,
     SushiEstoqueElementComponent,
-    SushiEstoqueEditComponent
+    SushiEstoqueEditComponent,
+    SushiProibidoComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [SushiMainService, AuthService, AuthGuard, SushiEstoqueService],
+  providers: [SushiMainService, AuthService, AuthGuard, AuthAdminGuard, SushiEstoqueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

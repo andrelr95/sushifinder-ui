@@ -18,6 +18,7 @@ export class SushiEstoqueComponent implements OnInit {
 
   ngOnInit() {
     this.getIngredients();
+    console.log('NG ON INIT');
   }
 
   getIngredients() {
@@ -29,6 +30,12 @@ export class SushiEstoqueComponent implements OnInit {
     .catch((err) => {
       console.log(err);
     })
+  }
+
+  onShowSearchResult(searchResponse: any){
+      this.ingredientes = searchResponse;
+      console.log('onShowSearchResultParameter: ', searchResponse);
+      console.log('onShowSearchResult: ', this.ingredientes);
   }
 
   onUpdateIngredientList() {

@@ -5,16 +5,21 @@ $border-form: #CDC9C6;
 $background-login: #D75D6A;
 $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
+$primary-color: #3083C8;
+
 $color-box-shadow: #9D444E;
 
 .border-box {
     // border-radius: 10px;
-    border-color: #D75D6A;
+    border-color: $primary-color;
     border-width: 1px;
     border-style: solid;
     padding: 10px 15px;
 }
-
+  
+h1 {
+    color: $primary-color;
+}
 .thumbnail {
     margin-left: 5px;
     &.max-size {

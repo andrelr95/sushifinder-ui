@@ -26,7 +26,8 @@ export class SushiLoginComponent implements OnInit {
       .then((response) => {
         localStorage.setItem('token', response['token']);
         localStorage.setItem('user', response['data']);
-        this.router.navigate(['/main/comidas']);
+        if(this.authService.isAdmin()) this.router.navigate(['/estoque']);
+        else this.router.navigate(['/main/comidas']);
       })
       .catch((error) => {
         this.errorMessage = error.error['message'];
