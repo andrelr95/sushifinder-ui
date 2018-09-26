@@ -17,20 +17,20 @@ export class SushiEstoqueComponent implements OnInit {
   ingredientes: Ingrediente[];
 
   ngOnInit() {
-    this.getIngredients();
-    console.log('NG ON INIT');
+    // this.getIngredients();
+    // console.log('NG ON INIT');
   }
 
-  getIngredients() {
-    this.sushiEstoqueService.getEstoque()
-    .then((response: Ingrediente[]) => {
-      this.ingredientes = response;
-      console.log('UPDATED INGREDIENT LIST');
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
+  // getIngredients() {
+  //   this.sushiEstoqueService.getEstoque()
+  //   .then((response: Ingrediente[]) => {
+  //     this.ingredientes = response;
+  //     console.log('UPDATED INGREDIENT LIST');
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
 
   onShowSearchResult(searchResponse: any){
       this.ingredientes = searchResponse;
@@ -38,8 +38,8 @@ export class SushiEstoqueComponent implements OnInit {
       console.log('onShowSearchResult: ', this.ingredientes);
   }
 
-  onUpdateIngredientList() {
-    this.getIngredients();
-  }
+  // onUpdateIngredientList() {
+  //   this.getIngredients();
+  // }
   
 }

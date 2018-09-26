@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment as ENV } from "../../environments/environment";
 import { AuthService } from '../auth/auth.service';
 import { Ingrediente } from '../models/ingredientes.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 const { host, path } = ENV.sushiFinderApi;
 
 @Injectable()
@@ -22,15 +24,16 @@ export class SushiEstoqueService {
 
   getEstoqueByDescription(term: string) {
     term = term.trim()
-
-    return this.http.get(host + path.estoque, {
+    return this.http.get<Ingrediente[]>(host + path.estoque, {
       headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
       params: new HttpParams().set('descricao', term)
-    }).toPromise()
+    }).pipe(map((object: Object) => {
+      console.log("ANDRE 2 ",object);
+    }));
   }
 
   getEstoque() {
-    return this.http.get(host + path.estoque, this.httpOptions).toPromise();
+    return this.http.get(host + path.estoque, this.httpOptions);
   }
 
   updateEstoque(item: Ingrediente) {
