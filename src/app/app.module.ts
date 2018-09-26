@@ -28,6 +28,7 @@ import { SushiNavComponent } from './sushi-nav/sushi-nav.component';
 import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
 import { SushiProibidoComponent } from './sushi-proibido/sushi-proibido.component';
 import { AuthAdminGuard } from './auth/auth-admin-guard.service';
+import { SushiProdutoComponent } from './sushi-produto/sushi-produto.component';
  
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AuthAdminGuard } from './auth/auth-admin-guard.service';
     SushiMainNavComponent,
     SushiEstoqueElementComponent,
     SushiEstoqueEditComponent,
-    SushiProibidoComponent
+    SushiProibidoComponent,
+    SushiProdutoComponent
   ],
   imports: [
     BrowserModule,

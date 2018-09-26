@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 import { Ingrediente } from '../models/ingredientes.model';
 import { INGREDIENTES } from '../mocks/ingredientes-mock';
@@ -15,6 +15,7 @@ export class SushiEstoqueComponent implements OnInit {
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
   ingredientes: Ingrediente[];
+  ingredienteSelected: Ingrediente;
 
   ngOnInit() {
     this.getIngredients();
@@ -30,6 +31,12 @@ export class SushiEstoqueComponent implements OnInit {
     .catch((err) => {
       console.log(err);
     })
+  }
+
+  onReceiveIngredienteSelected(ingrediente: Ingrediente){
+    console.log('onReceiveIngredienteSelected', ingrediente);
+    this.ingredienteSelected = ingrediente;
+    console.log('ingredienteSelected', this.ingredienteSelected);
   }
 
   onShowSearchResult(searchResponse: any){

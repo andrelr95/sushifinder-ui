@@ -4,14 +4,15 @@
       <h1>Estoque</h1>
       <app-sushi-estoque-element 
         *ngFor="let ingredienteElement of ingredientes; index as i" 
-        [ingrediente]="ingredienteElement">
+        [ingrediente]="ingredienteElement"
+        (ingredienteSelect)="onReceiveIngredienteSelected($event)">
       </app-sushi-estoque-element>
     </div>
     <div class="col-md-3 col-xs-12 col-sm-12 thumbnail">
       <app-sushi-estoque-edit 
         (updateIngredientList)="onUpdateIngredientList()"
-        (searchResultList)="onShowSearchResult($event)">
-
+        (searchResultList)="onShowSearchResult($event)"
+        [ingrediente]="ingredienteSelected">
       </app-sushi-estoque-edit>
     </div>
   </div>

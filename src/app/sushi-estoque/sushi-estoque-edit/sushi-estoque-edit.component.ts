@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { SushiEstoqueService } from '../sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { NgModel, NgForm } from '@angular/forms';
@@ -12,6 +12,8 @@ export class SushiEstoqueEditComponent implements OnInit {
 
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
+  @Input() ingrediente: Ingrediente;
+
   @Output() updateIngredientList = new EventEmitter<void>();
   @Output() searchResultList = new EventEmitter<Ingrediente[]>();
 
@@ -21,7 +23,17 @@ export class SushiEstoqueEditComponent implements OnInit {
   seachText: string = '';
   tiposItem = ['ingrediente', 'bebida'];
 
+
   ngOnInit() {
+    console.log(this.ingrediente);
+  }
+
+  onLog() {
+    console.log(this.ingrediente);
+  }
+
+  onClear(){
+    this.ingrediente = undefined;
   }
 
   isActiveItem(ingredienteQuantidade: number): boolean {
@@ -33,8 +45,8 @@ export class SushiEstoqueEditComponent implements OnInit {
       this.seachText = (<HTMLInputElement>event.target).value;
       this.sushiEstoqueService.getEstoqueByDescription(this.seachText)
         .then((response: Ingrediente[]) => {
-            this.searchResultList.emit(response);
-            console.log('onSearchItem: ', response);
+          this.searchResultList.emit(response);
+          console.log('onSearchItem: ', response);
         });
     }, 1000)
   }
@@ -43,16 +55,32 @@ export class SushiEstoqueEditComponent implements OnInit {
     this.isLoading = true;
     form.value['ativo'] = this.isActiveItem(form.value['qtdeEstoque']);
     console.log(form.value);
-    this.sushiEstoqueService.saveEstoqueItem(form.value)
-      .then((response) => {
-        this.showSuccessMessage = true;
-        this.isLoading = false;
-        this.successMessage = response['message'];
-        setTimeout(() => {
-          this.updateIngredientList.emit();
-          this.showSuccessMessage = false;
-        }, 1500);
-      })
+
+    if (this.ingrediente === undefined) {
+      this.sushiEstoqueService.saveEstoqueItem(form.value)
+        .then((response) => {
+          console.log('CRIANDO');
+          this.showSuccessMessage = true;
+          this.isLoading = false;
+          this.successMessage = response['message'];
+          setTimeout(() => {
+            this.updateIngredientList.emit();
+            this.showSuccessMessage = false;
+          }, 1500);
+        })
+    } else {
+      this.sushiEstoqueService.updateEstoque(form.value, this.ingrediente['_id'])
+        .then((response) => {
+          console.log('ATUALIZANDO');
+          this.showSuccessMessage = true;
+          this.isLoading = false;
+          this.successMessage = response['message'];
+          setTimeout(() => {
+            this.updateIngredientList.emit();
+            this.showSuccessMessage = false;
+          }, 1500);
+        })
+    }
   }
 
 }

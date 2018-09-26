@@ -33,8 +33,12 @@ export class SushiEstoqueService {
     return this.http.get(host + path.estoque, this.httpOptions).toPromise();
   }
 
-  updateEstoque(item: Ingrediente) {
-    //TODO Update Logic
+  updateEstoque(item: any, id: string) {
+    console.log(item, id)
+    const body =  { descricao: item.descricao, qtdeEstoque: item.qtdeEstoque };
+    console.log(id, body);
+    return this.http.put(`${host}${path.estoque}/${id}`, body, this.httpOptions).toPromise()
+
   }
 
   saveEstoqueItem(item: Ingrediente) {

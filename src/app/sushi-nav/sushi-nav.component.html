@@ -28,8 +28,9 @@
             <li ><a (click)="onSignOutUser()">SAIR</a></li>
           </ng-template>
           <ng-template [ngIf]="authService.isAdmin()">
+            <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/produtos" routerLinkActive="active" >PRODUTOS</a></li>
             <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/estoque" routerLinkActive="active" >ESTOQUE</a></li>
-            <li ><a [ngClass]="{admin: authService.isAdmin()}" (click)="onSignOutUser()">SAIR</a></li>
+            <li ><a [ngClass]="{admin: authService.isAdmin()}" (click)="onSignOutUser()">SAIR <span>(ADMIN)</span></a></li>
           </ng-template>
         </ul>
       </div>
