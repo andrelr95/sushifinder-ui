@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgDatepickerModule } from 'ng2-datepicker';
@@ -31,6 +31,7 @@ import { AuthAdminGuard } from './auth/auth-admin-guard.service';
 import { SushiProdutoComponent } from './sushi-produto/sushi-produto.component';
 import { SushiProdutoItemComponent } from './sushi-produto/sushi-produto-item/sushi-produto-item.component';
 import { SushiProdutoEditComponent } from './sushi-produto/sushi-produto-edit/sushi-produto-edit.component';
+import { SushiProdutoService } from './sushi-produto/sushi-produto.service';
  
 
 @NgModule({
@@ -61,9 +62,10 @@ import { SushiProdutoEditComponent } from './sushi-produto/sushi-produto-edit/su
     NgxMaskModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [SushiMainService, AuthService, AuthGuard, AuthAdminGuard, SushiEstoqueService],
+  providers: [SushiMainService, AuthService, AuthGuard, AuthAdminGuard, SushiEstoqueService, SushiProdutoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
