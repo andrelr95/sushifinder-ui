@@ -1,0 +1,36 @@
+<h1>Gerenciar</h1>
+<hr>
+<label for="buscaItem">Buscar produto</label>
+<div class="inner-addon right-addon">
+  <i class="fas fa-search"></i>
+  <input type="text" class="form-control input-custom" id="buscaItem" name="buscaItem" placeholder="Digite algo aqui...">
+</div>
+<hr>
+
+<form (ngSubmit)="onSaveItem(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="ingredienteNome">Nome do produto</label>
+    <input type="text" class="form-control input-custom" id="produtoNome" name="descricao" placeholder="Temaki" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="ingredienteNome">Adicionar Ingredientes</label>
+    <!-- <input type="text" class="form-control input-custom" id="ingredienteNome" name="descricao" placeholder="Arroz" ngModel > -->
+  </div>
+  <div class="form-group">
+    <label for="ingredienteNome">Preço</label>
+    <input type="text" class="form-control input-custom" id="produtoPreco" name="preco" placeholder="30" ngModel>
+  </div>
+  <div class="form-group radio-inline">
+    <div class="radio" *ngFor="let tipoProduto of tipoProdutos">
+      <label>
+        <input type="radio" name="tipo" id="radio" ngModel="comida" [value]="tipoProduto">{{tipoProduto | titlecase}}
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+      Salvar item
+    </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
+</form>
+<div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>
+<button class="btn btn-primary" (click)="onLog()">LOG</button>
+<button class="btn btn-default" (click)="onClear()">LIMPAR</button>

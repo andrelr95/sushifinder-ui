@@ -29,6 +29,8 @@ import { SushiPedidosComponent } from './sushi-pedidos/sushi-pedidos.component';
 import { SushiProibidoComponent } from './sushi-proibido/sushi-proibido.component';
 import { AuthAdminGuard } from './auth/auth-admin-guard.service';
 import { SushiProdutoComponent } from './sushi-produto/sushi-produto.component';
+import { SushiProdutoItemComponent } from './sushi-produto/sushi-produto-item/sushi-produto-item.component';
+import { SushiProdutoEditComponent } from './sushi-produto/sushi-produto-edit/sushi-produto-edit.component';
  
 
 @NgModule({
@@ -48,7 +50,9 @@ import { SushiProdutoComponent } from './sushi-produto/sushi-produto.component';
     SushiEstoqueElementComponent,
     SushiEstoqueEditComponent,
     SushiProibidoComponent,
-    SushiProdutoComponent
+    SushiProdutoComponent,
+    SushiProdutoItemComponent,
+    SushiProdutoEditComponent
   ],
   imports: [
     BrowserModule,
