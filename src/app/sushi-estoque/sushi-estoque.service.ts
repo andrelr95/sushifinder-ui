@@ -22,7 +22,6 @@ export class SushiEstoqueService {
 
   getEstoqueByDescription(term: string) {
     term = term.trim()
-
     return this.http.get(host + path.estoque, {
       headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
       params: new HttpParams().set('descricao', term)
@@ -31,6 +30,15 @@ export class SushiEstoqueService {
 
   getEstoque() {
     return this.http.get(host + path.estoque, this.httpOptions).toPromise();
+  }
+
+  //localhost:3000/estoque/itens/tipo?tipo=ingrediente
+
+  getEstoqueByType(tipo: string) {
+    return this.http.get(host + path.estoque + '/itens/tipo', {
+      headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
+      params: new HttpParams().set('tipo', tipo)
+    }).toPromise()
   }
 
   updateEstoque(item: any, id: string) {
