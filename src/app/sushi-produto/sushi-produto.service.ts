@@ -27,4 +27,12 @@ export class SushiProdutoService {
     return this.http.post(host + '/produtos', item, this.httpOptions).toPromise();
   }
 
+  getProdutos() {
+    return this.http.get(host + '/produtos', this.httpOptions).toPromise();
+  }
+
+  deleteProduto(produto: Produto){
+    return this.http.delete(host + `/produtos/${produto['_id']}`, this.httpOptions).toPromise();
+  }
+
 }

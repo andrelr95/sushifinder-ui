@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SushiEstoqueService } from '../../sushi-estoque/sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
@@ -18,6 +18,11 @@ export class SushiProdutoEditComponent implements OnInit {
   ingredientes: Ingrediente[] = [];
   addProdutoForm: FormGroup;
   selectedIngrediente: Ingrediente;
+  isLoading: boolean = false;
+  showSuccessMessage: boolean = false;
+  successMessage: string = '';
+
+  @Output() updateProductsList = new EventEmitter<void>();
 
   ngOnInit() {
 
@@ -33,6 +38,7 @@ export class SushiProdutoEditComponent implements OnInit {
       'ingredientes': new FormArray([]),
       'tipo': new FormControl('comida')
     });
+
   }
 
   onAddIngrediente(ingrediente) {
@@ -43,14 +49,22 @@ export class SushiProdutoEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addProdutoForm.value['ativo']=true;
-
+    this.isLoading = true;
+    this.addProdutoForm.value['ativo'] = true;
     console.log(this.addProdutoForm.value);
 
     this.sushiProdutoService.saveProdutoItem(this.addProdutoForm.value)
-    .then(response => console.log(response))
+    .then(response => {
+      this.showSuccessMessage = true;
+      this.successMessage = response['message'];
+      this.isLoading = false;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+        this.updateProductsList.emit();
+        
+      }, 1000);
+    })
     .catch(err => console.log(err));
-  
 
   }
 

@@ -9,7 +9,8 @@ export const environment = {
     host: 'http://localhost:3000',
     path: {
       estoque: '/estoque',
-      authenticate: '/authenticate'
+      authenticate: '/authenticate',
+      clientes: '/clientes'
     }
   }
 };

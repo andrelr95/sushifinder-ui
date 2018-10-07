@@ -41,7 +41,7 @@ export class AuthService {
     }
 
     signUpUser(cliente: Cliente){
-        return this.http.post(host + path.authenticate, cliente, this.httpOptions)
+        return this.http.post(host + path.clientes, cliente, this.httpOptions)
     }
 
     signInUser(email: string, password: string){

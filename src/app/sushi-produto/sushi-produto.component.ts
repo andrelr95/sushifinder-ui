@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SushiProdutoService } from './sushi-produto.service';
+import { Produto } from '../models/produto.model';
 
 @Component({
   selector: 'app-sushi-produto',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiProdutoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sushiProdutoService: SushiProdutoService) { }
+
+  produtos: Produto[];
 
   ngOnInit() {
+    this.onGetProducts();
+  }
+
+  onRecieveUpdateEvent(){
+    this.onGetProducts();
+  }
+
+  onGetProducts(){
+    this.sushiProdutoService.getProdutos()
+      .then( (response: Produto[]) => {
+        this.produtos = response;
+        console.log('Recebi a lista de produtos', this.produtos);
+      })
+      .catch( err => console.log('ERRO ->', err));
   }
 
 }
