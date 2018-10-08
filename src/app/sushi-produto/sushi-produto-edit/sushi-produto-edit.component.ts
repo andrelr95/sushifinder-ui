@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SushiEstoqueService } from '../../sushi-estoque/sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
+import { Produto } from '../../models/produto.model';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { SushiProdutoService } from '../sushi-produto.service';
 
@@ -14,18 +15,19 @@ export class SushiProdutoEditComponent implements OnInit {
   constructor(private sushiEstoqueService: SushiEstoqueService,
               private sushiProdutoService: SushiProdutoService) { }
 
-  tipoProdutos: String[] = ['comida', 'bebida'];
+  tipoProdutos: string[] = ['comida', 'bebida'];
   ingredientes: Ingrediente[] = [];
   addProdutoForm: FormGroup;
   selectedIngrediente: Ingrediente;
   isLoading: boolean = false;
+  seachText: string = '';
   showSuccessMessage: boolean = false;
   successMessage: string = '';
 
   @Output() updateProductsList = new EventEmitter<void>();
+  @Output() searchResultList = new EventEmitter<Produto[]>();
 
   ngOnInit() {
-
     this.sushiEstoqueService.getEstoqueByType('ingrediente')
       .then((response: Ingrediente[]) => {
         this.ingredientes = response;
@@ -38,7 +40,6 @@ export class SushiProdutoEditComponent implements OnInit {
       'ingredientes': new FormArray([]),
       'tipo': new FormControl('comida')
     });
-
   }
 
   onAddIngrediente(ingrediente) {
@@ -49,7 +50,6 @@ export class SushiProdutoEditComponent implements OnInit {
   }
 
   onClearIngredients() {
-    
     while((<FormArray>this.addProdutoForm.get('ingredientes')).length !== 0){
       (<FormArray>this.addProdutoForm.get('ingredientes')).removeAt(0);
     }
@@ -72,11 +72,20 @@ export class SushiProdutoEditComponent implements OnInit {
       setTimeout(() => {
         this.showSuccessMessage = false;
         this.updateProductsList.emit();
-        
       }, 1000);
     })
     .catch(err => console.log(err));
 
   }
 
+  onSearchItem(event: KeyboardEvent) {
+    setTimeout(() => {
+      this.seachText = (<HTMLInputElement>event.target).value;
+      this.sushiProdutoService.getProdutosByDescription(this.seachText)
+        .then((response: Produto[]) => {
+          this.searchResultList.emit(response);
+          console.log('onSearchItem: ', response);
+        });
+    }, 1000)
+  }
 }

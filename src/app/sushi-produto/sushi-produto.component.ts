@@ -21,6 +21,12 @@ export class SushiProdutoComponent implements OnInit {
     this.onGetProducts();
   }
 
+  onShowSearchResult(searchResponse: Produto[]){
+    this.produtos = searchResponse;
+    console.log('onShowSearchResultParameter: ', searchResponse);
+    console.log('onShowSearchResult: ', this.produtos);
+}
+
   onGetProducts(){
     this.sushiProdutoService.getProdutos()
       .then( (response: Produto[]) => {

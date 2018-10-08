@@ -3,7 +3,13 @@
 <label for="buscaItem">Buscar produto</label>
 <div class="inner-addon right-addon">
   <i class="fas fa-search"></i>
-  <input type="text" class="form-control input-custom" id="buscaItem" name="buscaItem" placeholder="Digite algo aqui...">
+  <input 
+    type="text" 
+    class="form-control input-custom" 
+    id="buscaItem" 
+    name="buscaItem" 
+    placeholder="Digite algo aqui..."
+    (keyup)="onSearchItem($event)">
 </div>
 <hr>
 

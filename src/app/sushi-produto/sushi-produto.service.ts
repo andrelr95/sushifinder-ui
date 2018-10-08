@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment as ENV } from "../../environments/environment";
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
 import { Produto } from '../models/produto.model';
 const { host, path } = ENV.sushiFinderApi;
@@ -29,6 +29,14 @@ export class SushiProdutoService {
 
   getProdutos() {
     return this.http.get(host + '/produtos', this.httpOptions).toPromise();
+  }
+
+  getProdutosByDescription(term: string){
+    term = term.trim();
+    return this.http.get(host + '/produtos', {
+      headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
+      params: new HttpParams().set('descricao', term)
+    }).toPromise()
   }
 
   deleteProduto(produto: Produto){
