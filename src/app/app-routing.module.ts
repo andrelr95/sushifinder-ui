@@ -15,7 +15,7 @@ import { AuthAdminGuard } from "./auth/auth-admin-guard.service";
 import { SushiProdutoComponent } from "./sushi-produto/sushi-produto.component";
 
 const appRoutes: Routes = [
-    { path: 'main', canActivate: [AuthGuard],component: SushiMainComponent, children: [
+    { path: 'cardapio', canActivate: [AuthGuard],component: SushiMainComponent, children: [
        { path: 'comidas', component: SushiMainComidaComponent },
        { path: 'bebidas', component: SushiMainBebidaComponent } 
     ] },

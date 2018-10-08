@@ -23,7 +23,7 @@
             <li ><a routerLink="/login" routerLinkActive="active" >ENTRAR</a></li>
           </ng-template>
           <ng-template [ngIf]="authService.isAuthenticated() && !authService.isAdmin()">
-            <li ><a routerLink="/main/comidas" routerLinkActive="active" >MAIN</a></li>
+            <li ><a routerLink="/cardapio" routerLinkActive="active" >CARDAPIO</a></li>
             <li ><a routerLink="/pedidos" routerLinkActive="active" >PEDIDOS</a></li>
             <li ><a (click)="onSignOutUser()">SAIR</a></li>
           </ng-template>

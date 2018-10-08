@@ -15,6 +15,7 @@ export class SushiNavComponent implements OnInit {
   isLogged: boolean = false;
 
   ngOnInit() {
+    this.authService.isAdmin() === true ? '#3083C8' : '#D80000';
   }
 
   getAdminColor() {

@@ -31,6 +31,14 @@ export class SushiProdutoService {
     return this.http.get(host + '/produtos', this.httpOptions).toPromise();
   }
 
+  getProdutosByType(type: string) {
+    return this.http.get(host + '/produtos/itens/tipo', {
+      headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
+      params: new HttpParams().set('tipo', type)
+    }).toPromise();
+  }
+  
+
   getProdutosByDescription(term: string){
     term = term.trim();
     return this.http.get(host + '/produtos', {

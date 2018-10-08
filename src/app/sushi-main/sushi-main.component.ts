@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SushiProdutoService } from '../sushi-produto/sushi-produto.service';
+import { Bebida } from '../models/bebida.model';
+import { Comida } from '../models/comida.model';
 
 @Component({
   selector: 'app-sushi-main',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sushiProdutoService: SushiProdutoService) { }
+
+  // bebidaItens: Bebida[];
+  // comidaItens: Comida[];
 
   ngOnInit() {
+    
   }
 
 }

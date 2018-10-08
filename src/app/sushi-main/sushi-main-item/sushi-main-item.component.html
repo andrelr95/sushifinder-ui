@@ -1,8 +1,5 @@
 <div class="row">
-    <div class="col-md-2">
-        <img [src]="produto.img" class="img-responsive" alt="{{produto.descricao}}">
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <h3 style="font-weight: bold;">{{produto.descricao}}</h3>
         <span *ngFor="let ingrediente of produto.ingredientes"class="badge">{{ingrediente.descricao}}</span>
     </div>

@@ -12,7 +12,7 @@ export class SushiEstoqueEditComponent implements OnInit {
 
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
-  @Input() ingrediente: Ingrediente;
+  @Input() ingrediente: Ingrediente = new Ingrediente('','', 0, false);
 
   @Output() updateIngredientList = new EventEmitter<void>();
   @Output() searchResultList = new EventEmitter<Ingrediente[]>();
@@ -25,6 +25,7 @@ export class SushiEstoqueEditComponent implements OnInit {
 
 
   ngOnInit() {
+    this.ingrediente = new Ingrediente('','', 0, false);
     console.log(this.ingrediente);
   }
 
