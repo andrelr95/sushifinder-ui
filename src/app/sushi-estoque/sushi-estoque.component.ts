@@ -39,7 +39,7 @@ export class SushiEstoqueComponent implements OnInit {
     console.log('ingredienteSelected', this.ingredienteSelected);
   }
 
-  onShowSearchResult(searchResponse: any){
+  onShowSearchResult(searchResponse: Ingrediente[]){
       this.ingredientes = searchResponse;
       console.log('onShowSearchResultParameter: ', searchResponse);
       console.log('onShowSearchResult: ', this.ingredientes);

@@ -48,6 +48,17 @@ export class SushiProdutoEditComponent implements OnInit {
     (<FormArray>this.addProdutoForm.get('ingredientes')).push(control)
   }
 
+  onClearIngredients() {
+    
+    while((<FormArray>this.addProdutoForm.get('ingredientes')).length !== 0){
+      (<FormArray>this.addProdutoForm.get('ingredientes')).removeAt(0);
+    }
+  }
+
+  onLog() {
+    console.log(this.addProdutoForm.get('tipo').value === 'comida');
+  }
+
   onSubmit() {
     this.isLoading = true;
     this.addProdutoForm.value['ativo'] = true;

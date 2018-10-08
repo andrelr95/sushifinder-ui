@@ -1,6 +1,7 @@
 <div class="col-md-8">
   <h4 style="font-weight: bold;">{{produtoItem.descricao}}</h4>
   <span class="badge" *ngFor="let ingrediente of produtoItem.ingredientes">{{ingrediente.descricao}}</span>
+  <span class="badge" *ngIf="produtoItem.ingredientes.length === 0">Bebida</span>
 </div>
 <div class="col-md-2 text-center">
   <h4>Preço:</h4>
@@ -11,5 +12,6 @@
   <button (click)="onDeleteItem()" class="btn btn-danger pull-right"><span><i class="fas fa-trash-alt"></i>
       Excluir item
     </span>
+  <span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></span>
   </button>
 </div>

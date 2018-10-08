@@ -19,9 +19,11 @@
       >
   </div>
   <div class="form-group" formArrayName="ingredientes">
-    <label for="ingredienteNome">Ingredientes</label>
+    <label 
+    for="ingredienteNome">Ingredientes</label>
     <select
-      name="ingredientes" 
+      name="ingredientes"
+      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
       class="form-control"
       #ingrediente
       id="produtoIngrediente">
@@ -41,10 +43,16 @@
     </h4>
     <button 
       type="button" 
+      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
       class="btn btn-primary btn-block" 
       (click)="onAddIngrediente(ingrediente)">Adicionar ingrediente
     </button>
-   
+    <button 
+      type="button" 
+      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
+      class="btn btn-primary btn-block" 
+      (click)="onClearIngredients()">Limpar ingrediente
+    </button>
   </div>
   <div class="form-group">
     <label for="ingredienteNome">Preço</label>
@@ -62,7 +70,8 @@
         <input 
           type="radio" 
           formControlName="tipo" 
-          id="radio" 
+          id="radio"
+          
           [value]="tipoProduto">{{tipoProduto | titlecase}}
       </label>
     </div>
