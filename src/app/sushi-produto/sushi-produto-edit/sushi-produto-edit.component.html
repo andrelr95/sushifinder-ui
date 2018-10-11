@@ -34,17 +34,16 @@
       #ingrediente
       id="produtoIngrediente">
       <option 
-        *ngFor="let ingrediente of ingredientes; let i = index"
+        *ngFor="let ingrediente of ingredientes"
         [value]="ingrediente._id"
-        [ngValue]="ingrediente.descricao"
         >{{ingrediente.descricao}}
       </option>
     </select>
     <h4>
       <span 
         class="badge"
-        *ngFor="let ingredienteControl of addProdutoForm.get('ingredientes').controls; let i = index"
-        >{{ingrediente.descricao}}
+        *ngFor="let ingredienteToShow of ingredientesSelectedToShow"
+        >{{ingredienteToShow.descricao}}
       </span>
     </h4>
     <button 

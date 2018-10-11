@@ -4,6 +4,7 @@ import { Ingrediente } from '../../models/ingredientes.model';
 import { Produto } from '../../models/produto.model';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { SushiProdutoService } from '../sushi-produto.service';
+import { Subject, Observable, ObjectUnsubscribedError } from 'rxjs';
 
 @Component({
   selector: 'app-sushi-produto-edit',
@@ -15,17 +16,22 @@ export class SushiProdutoEditComponent implements OnInit {
   constructor(private sushiEstoqueService: SushiEstoqueService,
               private sushiProdutoService: SushiProdutoService) { }
 
+  @Output() updateProductsList = new EventEmitter<void>();
+  @Output() searchResultList = new EventEmitter<Produto[]>();
+
   tipoProdutos: string[] = ['comida', 'bebida'];
-  ingredientes: Ingrediente[] = [];
-  addProdutoForm: FormGroup;
+
   selectedIngrediente: Ingrediente;
+  ingredientes: Ingrediente[] = [];
+  ingredientesSelected: Subject<Ingrediente> = new Subject<Ingrediente>();
+  ingredientesSelectedToShow: Ingrediente[] = [];
+  
+  addProdutoForm: FormGroup;
+
   isLoading: boolean = false;
   seachText: string = '';
   showSuccessMessage: boolean = false;
   successMessage: string = '';
-
-  @Output() updateProductsList = new EventEmitter<void>();
-  @Output() searchResultList = new EventEmitter<Produto[]>();
 
   ngOnInit() {
     this.sushiEstoqueService.getEstoqueByType('ingrediente')
@@ -33,6 +39,11 @@ export class SushiProdutoEditComponent implements OnInit {
         this.ingredientes = response;
       })
       .catch(err => console.log(err));
+
+  
+    this.ingredientesSelected.subscribe((response) => {
+      this.ingredientesSelectedToShow.push(response);
+    })
 
     this.addProdutoForm = new FormGroup({
       'descricao': new FormControl(null),
@@ -43,13 +54,19 @@ export class SushiProdutoEditComponent implements OnInit {
   }
 
   onAddIngrediente(ingrediente) {
-    console.log(ingrediente);
-    const control = new FormControl(ingrediente.value);
+    // console.log(ingrediente.value);
+    const ingredienteId = ingrediente.value;
+    const ingredienteSelected = this.ingredientes.find((ingrediente) => ingrediente['_id'] === ingredienteId);
+    const control = new FormControl(ingredienteId);
+
+    this.ingredientesSelected.next(ingredienteSelected);
+  
     console.log(control);
     (<FormArray>this.addProdutoForm.get('ingredientes')).push(control)
   }
 
   onClearIngredients() {
+    this.ingredientesSelectedToShow = [];
     while((<FormArray>this.addProdutoForm.get('ingredientes')).length !== 0){
       (<FormArray>this.addProdutoForm.get('ingredientes')).removeAt(0);
     }
