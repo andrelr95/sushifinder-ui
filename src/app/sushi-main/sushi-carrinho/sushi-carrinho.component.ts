@@ -10,21 +10,23 @@ import { ItemSacola } from '../../models/item-sacola.model';
 })
 export class SushiCarrinhoComponent implements OnInit {
 
-  selectedProduto: Produto;
+  // selectedProduto: Produto;
   itensCarrinho: ItemSacola[] = [];
   precoTotal: number = 0;
 
   constructor(private sushiMainService: SushiMainService) { }
 
   ngOnInit() {
+
     this.sushiMainService.produtoSelected
       .subscribe((produto: Produto) => {
-          if(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === produto.id) === -1){
+          // debugger;
+          if(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto['_id'] === produto['_id']) === -1){
             this.itensCarrinho.push(new ItemSacola(produto, 1, produto.preco));
           } else {
             this.itensCarrinho = this.itensCarrinho.map(itemCarrinho => {              
-              if(itemCarrinho.produto.id !== produto.id) return itemCarrinho;
-              
+              if(itemCarrinho.produto['_id'] !== produto['_id']) return itemCarrinho;
+          
               return {
                 ...itemCarrinho,
                 quantidade: itemCarrinho.quantidade += 1,
@@ -46,10 +48,10 @@ export class SushiCarrinhoComponent implements OnInit {
     console.log(item);
 
     this.itensCarrinho.forEach((itemCarrinho) => {
-      if(itemCarrinho.produto.id === item.produto.id){
+      if(itemCarrinho.produto['_id'] === item.produto['_id']){
         if(itemCarrinho.quantidade === 1){
           this.itensCarrinho
-            .splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto.id === item.produto.id), 1);
+            .splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto['_id'] === item.produto['_id']), 1);
         } else {
           itemCarrinho.quantidade -= 1;
           itemCarrinho.precoItem = itemCarrinho.precoItem - itemCarrinho.produto.preco 
