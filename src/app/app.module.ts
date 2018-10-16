@@ -32,6 +32,7 @@ import { SushiProdutoComponent } from './sushi-produto/sushi-produto.component';
 import { SushiProdutoItemComponent } from './sushi-produto/sushi-produto-item/sushi-produto-item.component';
 import { SushiProdutoEditComponent } from './sushi-produto/sushi-produto-edit/sushi-produto-edit.component';
 import { SushiProdutoService } from './sushi-produto/sushi-produto.service';
+import { SushiPedidoService } from './sushi-pedidos/sushi-pedido.service';
  
 
 @NgModule({
@@ -65,7 +66,7 @@ import { SushiProdutoService } from './sushi-produto/sushi-produto.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [SushiMainService, AuthService, AuthGuard, AuthAdminGuard, SushiEstoqueService, SushiProdutoService],
+  providers: [SushiMainService, AuthService, AuthGuard, AuthAdminGuard, SushiEstoqueService, SushiProdutoService, SushiPedidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

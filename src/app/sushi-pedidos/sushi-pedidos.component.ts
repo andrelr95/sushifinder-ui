@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SushiMainService } from '../sushi-main/sushi-main.service';
 
 @Component({
   selector: 'app-sushi-pedidos',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiPedidosComponent implements OnInit {
 
-  constructor() { }
+  pedido: Object;
+
+  constructor(
+    private sushiMainService: SushiMainService
+  ) { }
 
   ngOnInit() {
+    // this.sushiMainService.preOrder.subscribe((preOrder) => {
+    //   this.pedido = preOrder;
+    //   console.log("PEDIDO / TELA PEDIDOS: ", this.pedido);
+    // })
   }
 
 }

@@ -7,20 +7,14 @@ import { Subject } from 'rxjs';
 export class SushiMainService {
 
   produtoSelected = new EventEmitter<Produto>();
-  // cartItens: Produto[] = Produto[];
+  // preOrder: Subject<Object> = new Subject<Object>();
 
   constructor() { }
 
   setCartItens(produto: Produto){
-    console.log("PRODUTO SELECIONADO ", produto)
     this.produtoSelected.emit(produto);
-    // this.cartItens.push(produto);
   }
 
-  getCartItens() {
-    // return this.cartItens;
-  }
-  
 }
 
 
