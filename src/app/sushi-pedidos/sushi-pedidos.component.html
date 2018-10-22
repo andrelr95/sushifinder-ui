@@ -4,31 +4,24 @@
       <div class="thumbnail">
         <h1>PEDIDOS</h1>
         <div class="list-group">
-          <div class="list-group-item text-left">
-            <h4 class="list-group-item-heading">TEMAKI SUSHI</h4>
-            <p class="list-group-item-text">PREÇO UNITÁRIO: R$10,00</p>
-            <p class="list-group-item-text">QUANTIDADE: 2</p>
+          <div *ngFor="let pedidoItem of pedidoItens.produtos" class="list-group-item text-left">
+            <h4 class="list-group-item-heading">{{pedidoItem.produto.descricao}}</h4>
+            <p class="list-group-item-text">PREÇO UNITÁRIO: {{pedidoItem.produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+            <p class="list-group-item-text">QUANTIDADE: {{pedidoItem.quantidade}}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="thumbnail">
-        <h1>ENDEREÇO</h1>
+        <h1>ENDEREÇOS</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item text-right active">
-            <h4 class="list-group-item-heading">ENDEREÇO 1</h4>
+          <a *ngFor="let endereco of enderecos" class="list-group-item text-right active">
+            <h4 class="list-group-item-heading">ENDEREÇO</h4>
             <h4 class="list-group-item-text"><i class="fas fa-map-marker-alt pull-left"></i></h4>
-            <p class="list-group-item-text">RUA MÉXICO, 269 APTO. 31</p>
-            <p class="list-group-item-text">CUBATÃO-SP</p>
-            <p class="list-group-item-text">11533-230</p>
-          </a>
-          <a href="#" class="list-group-item text-right">
-            <h4 class="list-group-item-heading">ENDEREÇO 2</h4>
-            <h4 class="list-group-item-text"><i class="fas fa-map-marker-alt pull-left"></i></h4>
-            <p class="list-group-item-text">RUA URUGUAI, 1450 APTO. 31</p>
-            <p class="list-group-item-text">CUBATÃO-SP</p>
-            <p class="list-group-item-text">11533-220</p>
+            <p class="list-group-item-text">{{endereco.logradouro}} - {{endereco.numero}} - {{endereco.complemento}}</p>
+            <p class="list-group-item-text">{{endereco.cidade | uppercase}} - {{endereco.estado | uppercase}}</p>
+            <p class="list-group-item-text">{{endereco.cep}}</p>
           </a>
         </div>
       </div>
@@ -52,10 +45,9 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <h3>
-            TOTAL A PAGAR: R$40,00
+            TOTAL A PAGAR: {{pedidoItens.precoTotal | currency:'BRL':'symbol':'1.2-2'}}
             <span>
-              <button class="btn btn-success pull-right">FINALIZAR PEDIDO
-              </button>
+              <button (click)="onLog()" class="btn btn-success pull-right">FINALIZAR PEDIDO</button>
             </span>
           </h3>
         </div>

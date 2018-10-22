@@ -37,7 +37,7 @@ export class SushiEstoqueService {
   getEstoqueByType(tipo: string) {
     return this.http.get(host + path.estoque + '/itens/tipo', {
       headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
-      params: new HttpParams().set('tipo', tipo)
+      params: new HttpParams().set('tipo', tipo).set('ativo', 'true'), 
     }).toPromise()
   }
 

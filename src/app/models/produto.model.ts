@@ -5,6 +5,8 @@ export class Produto {
     public descricao: string;
     public preco: number;
     public ativo: boolean;
+    public produto: any;
+    public quantidade: number;
     public tipo: string;
     public ingredientes: Ingrediente[];
 

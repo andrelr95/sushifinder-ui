@@ -36,6 +36,12 @@ export class AuthService {
         return localStorage.getItem('user');
     }
 
+    getFullUser(id: string) {
+        return this.http.get(host + `/clientes/${id}`, {
+            headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.getToken() }),
+        }).toPromise();
+    }
+
     isAuthenticated(){
         return this.getToken() != null;
     }

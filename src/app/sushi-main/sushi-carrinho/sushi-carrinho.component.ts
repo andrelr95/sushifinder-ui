@@ -3,6 +3,9 @@ import { Produto } from '../../models/produto.model';
 import { SushiMainService } from '../sushi-main.service';
 import { ItemSacola } from '../../models/item-sacola.model';
 import { AuthService } from 'src/app/auth/auth.service';
+import { SushiPedidoService } from 'src/app/sushi-pedidos/sushi-pedido.service';
+import { PrePedido } from 'src/app/models/prePedido.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sushi-carrinho',
@@ -15,7 +18,9 @@ export class SushiCarrinhoComponent implements OnInit {
   precoTotal: number = 0;
 
   constructor(private sushiMainService: SushiMainService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private sushiPedidoService: SushiPedidoService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -61,33 +66,52 @@ export class SushiCarrinhoComponent implements OnInit {
         .reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual);
   }
 
-  onLog(){
-    let carrinho = JSON.parse(JSON.stringify(this.itensCarrinho));
+  onConfirmarPedido() {
 
-    let comidas = carrinho.filter((item) => item.produto.tipo === "comida")
+    let carrinho = {};
+    carrinho['produtos'] = JSON.parse(JSON.stringify(this.itensCarrinho));
+
+    let precoTotal = this.precoTotal;
+    carrinho['precoTotal'] = precoTotal;
+
+    let prePedido = new PrePedido(carrinho['produtos'], carrinho['precoTotal']);
+
+    this.sushiPedidoService.setPreOrder(prePedido);
+    this.router.navigate(['/pedidos']);
+
+  }
+
+  onLog(){
+    let carrinho = {};
+    carrinho['produtos'] = JSON.parse(JSON.stringify(this.itensCarrinho));
+
+    let comidas = carrinho['produtos'].filter((item) => item.produto.tipo === "comida")
     .map((comida) =>  new Object({ item: comida.produto['_id'], quantidade: comida.quantidade }));
 
-    let bebidas = carrinho.filter((item) => item.produto.tipo === "bebida")
+    let bebidas = carrinho['produtos'].filter((item) => item.produto.tipo === "bebida")
     .map((bebida) =>  new Object({ item: bebida.produto['_id'], quantidade: bebida.quantidade }));
 
     let precoTotal = this.precoTotal;
+    carrinho['precoTotal'] = precoTotal;
 
-    let cliente = this.authService.getUser();
+    let prePedido = new PrePedido(carrinho['produtos'], carrinho['precoTotal']);
 
-    let pedido = new Object({
-      comidas: comidas,
-      bebidas: bebidas,
-      precoTotal: precoTotal,
-      cliente: cliente
-    });
+    // let cliente = this.authService.getUser();
 
-    console.log("PREPEDIDO: ", carrinho);
-    console.log("COMIDAS ID: ", comidas);
-    console.log("BEBIDAS ID: ", bebidas);
-    console.log("CLIENTE: ", cliente);
-    console.log("PRECO TOTAL: ", precoTotal);
-    console.log("OBJETO PEDIDO BACKEND: ", JSON.stringify(pedido));
+    // let pedido = new Object({
+    //   comidas: comidas,
+    //   bebidas: bebidas,
+    //   precoTotal: precoTotal,
+    //   cliente: cliente
+    // });
 
-    // this.sushiMainService.preOrder.next(pedido);
+    // console.log("PREPEDIDO: ", carrinho);
+    // console.log("COMIDAS ID: ", comidas);
+    // console.log("BEBIDAS ID: ", bebidas);
+    // console.log("CLIENTE: ", cliente);
+    // console.log("PRECO TOTAL: ", precoTotal);
+    // carrinho['cliente'] = cliente;
+    console.log("OBJETO PEDIDO BACKEND: ", prePedido);
+    // this.sushiPedidoService.setPreOrder(prePedido);
   }
 }
