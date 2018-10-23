@@ -13,6 +13,7 @@ import { AuthGuard } from "./auth/auth-guard.service";
 import { SushiProibidoComponent } from "./sushi-proibido/sushi-proibido.component";
 import { AuthAdminGuard } from "./auth/auth-admin-guard.service";
 import { SushiProdutoComponent } from "./sushi-produto/sushi-produto.component";
+import { SushiPedidosAdminComponent } from "./sushi-pedidos-admin/sushi-pedidos-admin.component";
 
 const appRoutes: Routes = [
     { path: 'cardapio', canActivate: [AuthGuard],component: SushiMainComponent, children: [
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     { path: 'cadastro', component: SushiCadastroComponent },
     { path: 'login', component: SushiLoginComponent },
     { path: 'estoque', canActivate: [AuthGuard, AuthAdminGuard], component: SushiEstoqueComponent },
-    { path: 'pedidos', canActivate: [AuthGuard], component: SushiPedidosComponent },
+    { path: 'pedidos', canActivate: [AuthGuard, AuthAdminGuard], component: SushiPedidosAdminComponent },
+    { path: 'confirmar-pedido', canActivate: [AuthGuard], component: SushiPedidosComponent},
     { path: 'produtos', canActivate: [AuthGuard, AuthAdminGuard], component: SushiProdutoComponent },
     { path: 'proibido', component: SushiProibidoComponent }  
 ];
