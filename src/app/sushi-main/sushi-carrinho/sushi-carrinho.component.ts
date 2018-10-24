@@ -26,16 +26,16 @@ export class SushiCarrinhoComponent implements OnInit {
 
     this.sushiMainService.produtoSelected
       .subscribe((produto: Produto) => {
-          if(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto['_id'] === produto['_id']) === -1){
+          if(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.item['_id'] === produto['_id']) === -1){
             this.itensCarrinho.push(new ItemSacola(produto, 1, produto.preco));
           } else {
             this.itensCarrinho = this.itensCarrinho.map(itemCarrinho => {              
-              if(itemCarrinho.produto['_id'] !== produto['_id']) return itemCarrinho;
+              if(itemCarrinho.item['_id'] !== produto['_id']) return itemCarrinho;
           
               return {
                 ...itemCarrinho,
                 quantidade: itemCarrinho.quantidade += 1,
-                precoItem: itemCarrinho.quantidade*itemCarrinho.produto.preco
+                precoItem: itemCarrinho.quantidade*itemCarrinho.item.preco
               }
             })
           }
@@ -49,13 +49,13 @@ export class SushiCarrinhoComponent implements OnInit {
 
   onRemoveFromCart(item: ItemSacola) {
     this.itensCarrinho.forEach((itemCarrinho) => {
-      if(itemCarrinho.produto['_id'] === item.produto['_id']){
+      if(itemCarrinho.item['_id'] === item.item['_id']){
         if(itemCarrinho.quantidade === 1){
           this.itensCarrinho
-            .splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.produto['_id'] === item.produto['_id']), 1);
+            .splice(this.itensCarrinho.findIndex((itemCarrinho) => itemCarrinho.item['_id'] === item.item['_id']), 1);
         } else {
           itemCarrinho.quantidade -= 1;
-          itemCarrinho.precoItem = itemCarrinho.precoItem - itemCarrinho.produto.preco 
+          itemCarrinho.precoItem = itemCarrinho.precoItem - itemCarrinho.item.preco 
         }
       }
     })

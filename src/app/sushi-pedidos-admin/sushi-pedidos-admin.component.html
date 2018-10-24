@@ -2,26 +2,10 @@
   <div class="row">
     <div class="col-md-12 col-xs-12 col-sm-12 thumbnail max-size">
       <h1>ACOMPANHAR PEDIDOS</h1>
-      <div class="col-md-12">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">541214787</h3>
-          </div>
-          <div class="panel-body">
-            <h4>STATUS: CRIADO
-              <span>
-                <div class="pull-right">
-                  <button class="btn btn-danger" style="margin-left: 10px;">CANCELAR</button>
-                  <button class="btn btn-info" style="margin-left: 10px;">CRIADO</button>                  
-                  <button class="btn btn-warning" style="margin-left: 10px;">PREPARANDO</button>
-                  <button class="btn btn-primary" style="margin-left: 10px;">ENTREGANDO</button>
-                  <button class="btn btn-success" style="margin-left: 10px;">ENTREGUE</button>
-                </div>
-              </span>
-            </h4>
-          </div>
-        </div>
-      </div>
+        <app-sushi-pedidos-admin-item 
+          *ngFor="let pedidoItem of pedidos"
+          [pedido]="pedidoItem"
+        ></app-sushi-pedidos-admin-item>
     </div>
   </div>
 </div>

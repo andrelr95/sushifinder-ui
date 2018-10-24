@@ -2,13 +2,25 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ItemSacola } from '../models/item-sacola.model';
 import { PrePedido } from '../models/prePedido.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class SushiPedidoService {
 
   preOrder: PrePedido;
 
-  constructor() { }
+  constructor(private http: HttpClient,
+    private authService: AuthService) { }
+
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'x-access-token': this.authService.getToken()
+    }),
+    params: undefined
+  }
 
   getPreOrder(): PrePedido {
     return this.preOrder;
@@ -16,6 +28,14 @@ export class SushiPedidoService {
 
   setPreOrder(preOrder: PrePedido) {
     this.preOrder = preOrder;
+  }
+
+  getPedidos() {
+    return this.http.get(`http://localhost:3000/pedidos`, this.httpOptions).toPromise();
+  }
+
+  updatePedidoStatus(id: string, status: string) {
+    return this.http.put(`http://localhost:3000/pedidos/${id}`, { status: status }, this.httpOptions).toPromise();
   }
 
 }
