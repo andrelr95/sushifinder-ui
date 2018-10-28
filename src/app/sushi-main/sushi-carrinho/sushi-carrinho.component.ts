@@ -77,7 +77,7 @@ export class SushiCarrinhoComponent implements OnInit {
     let prePedido = new PrePedido(carrinho['produtos'], carrinho['precoTotal']);
 
     this.sushiPedidoService.setPreOrder(prePedido);
-    this.router.navigate(['/pedidos']);
+    this.router.navigate(['/confirmar-pedido']);
 
   }
 

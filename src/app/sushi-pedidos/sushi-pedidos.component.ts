@@ -38,11 +38,11 @@ export class SushiPedidosComponent implements OnInit {
     console.log(carrinho)
     // carrinho['produtos'] = JSON.parse(JSON.stringify(this.pedidoItens));
 
-    let comidas = carrinho.produtos.filter((item) => item.produto.tipo === "comida")
-    .map((comida) =>  new Object({ item: comida.produto['_id'], quantidade: comida.quantidade }));
+    let comidas = carrinho.produtos.filter((item) => item.item.tipo === "comida")
+    .map((comida) =>  new Object({ item: comida.item['_id'], quantidade: comida.quantidade }));
 
-    let bebidas = carrinho.produtos.filter((item) => item.produto.tipo === "bebida")
-    .map((bebida) =>  new Object({ item: bebida.produto['_id'], quantidade: bebida.quantidade }));
+    let bebidas = carrinho.produtos.filter((item) => item.item.tipo === "bebida")
+    .map((bebida) =>  new Object({ item: bebida.item['_id'], quantidade: bebida.quantidade }));
 
     let precoTotal = carrinho.precoTotal;
     carrinho['precoTotal'] = precoTotal;

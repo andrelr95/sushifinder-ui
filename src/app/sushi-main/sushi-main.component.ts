@@ -12,8 +12,8 @@ export class SushiMainComponent implements OnInit {
 
   constructor(private sushiProdutoService: SushiProdutoService) { }
 
-  // bebidaItens: Bebida[];
-  // comidaItens: Comida[];
+  bebidaItens: Bebida[];
+  comidaItens: Comida[];
 
   ngOnInit() {
     

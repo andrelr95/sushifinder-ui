@@ -18,6 +18,7 @@ export class SushiMainItemComponent implements OnInit {
 
   onSelected(){
     this.sushiMainService.setCartItens(this.produto);
+    console.log(this.produto);
   }
 
   onLog(){

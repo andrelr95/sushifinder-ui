@@ -35,6 +35,10 @@ import { SushiProdutoService } from './sushi-produto/sushi-produto.service';
 import { SushiPedidoService } from './sushi-pedidos/sushi-pedido.service';
 import { SushiPedidosAdminComponent } from './sushi-pedidos-admin/sushi-pedidos-admin.component';
 import { SushiPedidosAdminItemComponent } from './sushi-pedidos-admin/sushi-pedidos-admin-item/sushi-pedidos-admin-item.component';
+import { SushiPedidosClienteComponent } from './sushi-pedidos-cliente/sushi-pedidos-cliente.component';
+import { SushiPedidosClienteItemComponent } from './sushi-pedidos-cliente/sushi-pedidos-cliente-item/sushi-pedidos-cliente-item.component';
+import { SushiPedidosAtivoComponent } from './sushi-pedidos-cliente/sushi-pedidos-ativo/sushi-pedidos-ativo.component';
+import { SushiPedidosHistoricoComponent } from './sushi-pedidos-cliente/sushi-pedidos-historico/sushi-pedidos-historico.component';
  
 
 @NgModule({
@@ -58,7 +62,11 @@ import { SushiPedidosAdminItemComponent } from './sushi-pedidos-admin/sushi-pedi
     SushiProdutoItemComponent,
     SushiProdutoEditComponent,
     SushiPedidosAdminComponent,
-    SushiPedidosAdminItemComponent
+    SushiPedidosAdminItemComponent,
+    SushiPedidosClienteComponent,
+    SushiPedidosClienteItemComponent,
+    SushiPedidosAtivoComponent,
+    SushiPedidosHistoricoComponent
   ],
   imports: [
     BrowserModule,
