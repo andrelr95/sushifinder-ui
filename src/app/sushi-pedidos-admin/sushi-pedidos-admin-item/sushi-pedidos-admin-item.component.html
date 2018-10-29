@@ -1,27 +1,40 @@
 <div class="col-md-12">
-    <div class="panel panel-{{pedidoStatus}}">
-      <div class="panel-heading">
-        <h3 class="panel-title"><span *ngIf="!isLoading; else loading">Nº {{pedido.numero}}</span></h3>
+  <div class="panel panel-{{pedidoStatus}}">
+    <div class="panel-heading">
+      <div class="col-md-6">
+        <h4><span *ngIf="!isLoading && endereco; else loading">Nº {{pedido.numero}} | Status atual do pedido: {{pedido.status | uppercase}}</span></h4>
       </div>
-      <div class="panel-body">
-        <div class="col-md-4">
-          <h4>Status atual do pedido: {{pedido.status | uppercase}}</h4>
-        </div>
-        <div class="col-md-8">
-          <span>
-            <div class="pull-right">
-              <button class="btn btn-danger" (click)="onStatusChange('cancelado')" style="margin-left: 10px;">CANCELADO</button>
-              <button class="btn btn-info" (click)="onStatusChange('criado')" style="margin-left: 10px;">CRIADO</button>
-              <button class="btn btn-warning" (click)="onStatusChange('preparando')" style="margin-left: 10px;">PREPARANDO</button>
-              <button class="btn btn-primary" (click)="onStatusChange('entregando')" style="margin-left: 10px;">ENTREGANDO</button>
-              <button class="btn btn-success" (click)="onStatusChange('entregue')" style="margin-left: 10px;">ENTREGUE</button>
-            </div>
-          </span>
-        </div>
+      <div class="text-right">
+        <button class="btn btn-sm btn-danger" (click)="onStatusChange('cancelado')" style="margin-left: 10px;">CANCELADO</button>
+        <button class="btn btn-sm btn-info" (click)="onStatusChange('criado')" style="margin-left: 10px;">CRIADO</button>
+        <button class="btn btn-sm btn-warning" (click)="onStatusChange('preparando')" style="margin-left: 10px;">PREPARANDO</button>
+        <button class="btn btn-sm btn-primary" (click)="onStatusChange('entregando')" style="margin-left: 10px;">ENTREGANDO</button>
+        <button class="btn btn-sm btn-success" (click)="onStatusChange('entregue')" style="margin-left: 10px;">ENTREGUE</button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-12 table-responsive">
+        <table class="table table-bordered table-striped table-condensed table-sm">
+            <tbody>
+                <tr>
+                  <th class="text-center">Cliente</th>
+                    <td>{{clienteNome}}</td>
+                </tr>
+                <tr>
+                  <th class="text-center">CPF</th>
+                    <td>{{clienteCPF}}</td>
+                </tr>
+                <tr>
+                  <th class="text-center">Endereço</th>
+                    <td>{{endereco.logradouro}}, {{endereco.numero}} {{endereco.complemento}} - CEP: {{endereco.cep}}</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>
 
-  <ng-template #loading>
-      <span><i class="fas fa-circle-notch fa-spin"></i></span>
-  </ng-template>
+<ng-template #loading>
+  <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>

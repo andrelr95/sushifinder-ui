@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pedido } from 'src/app/models/pedido.model';
 import { SushiPedidoService } from 'src/app/sushi-pedidos/sushi-pedido.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Pessoa } from 'src/app/models/pessoa.model';
+import { Cliente } from 'src/app/models/cliente.model';
+import { Endereco } from 'src/app/models/endereco.model';
 
 @Component({
   selector: 'app-sushi-pedidos-admin-item',
@@ -9,15 +13,28 @@ import { SushiPedidoService } from 'src/app/sushi-pedidos/sushi-pedido.service';
 })
 export class SushiPedidosAdminItemComponent implements OnInit {
 
-  constructor( private sushiPedidoService: SushiPedidoService) { }
+  constructor( private sushiPedidoService: SushiPedidoService,
+               private authService: AuthService) { }
 
   @Input() pedido: Pedido;
   pedidoStatus: string = "";
   isLoading: boolean = false;
+  clienteNome: string;
+  clienteCPF: string;
+  endereco: Endereco;
 
   ngOnInit() {
     if(this.pedidoStatus === "") this.pedidoStatus = "info";
     this.pedidoStatus = this.panelStatusControl(this.pedido.status);
+
+    this.authService.getFullUser(this.pedido.cliente['_id'])
+      .then((response: Cliente) => {
+        this.clienteNome = response.pessoa.nome + ' ' + response.pessoa.sobrenome;
+        this.clienteCPF = response.pessoa.cpf;
+        this.endereco = response.pessoa.enderecos[0];
+        console.log(response)
+      })
+      .catch((err) => console.log(err));
 
   }
 
