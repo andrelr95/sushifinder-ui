@@ -1,12 +1,8 @@
 <div class="col-md-12">
-  <div class="panel panel-warning">
-    <div class="panel-heading">
-      <h3 class="panel-title"><span *ngIf="!isLoading; else loading">Nº 5421455</span></h3>
-    </div>
-    <div class="panel-body">
-      <div class="col-md-4">
-        <h4>Status atual do pedido: PREPARANDO</h4>
-      </div>
-    </div>
+  <div *ngIf="pedidosAtivos.length !== 0; else noItens">
+    <app-sushi-pedidos-cliente-item *ngFor="let pedidoAtivo of pedidosAtivos" [pedido]=pedidoAtivo></app-sushi-pedidos-cliente-item>
   </div>
 </div>
+<ng-template #noItens>
+  <h4>NÃO EXISTEM HISTORICO DE PEDIDOS</h4>
+</ng-template>

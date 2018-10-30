@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedido } from 'src/app/models/pedido.model';
+import { SushiPedidoService } from 'src/app/sushi-pedidos/sushi-pedido.service';
 
 @Component({
   selector: 'app-sushi-pedidos-ativo',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiPedidosAtivoComponent implements OnInit {
 
-  constructor() { }
+  pedidosAtivos: Pedido[];
+
+  constructor(private sushiPedidoService: SushiPedidoService) { }
 
   ngOnInit() {
-  }
+    this.sushiPedidoService.getPedidosUser()
+      .then((response: Pedido[]) => {
+        this.pedidosAtivos = response.filter((pedido: Pedido) => {
+          return pedido['ativo'] === true;
+        })
+      })
+      .catch((err) => console.log(err));
 
+  }
 }
