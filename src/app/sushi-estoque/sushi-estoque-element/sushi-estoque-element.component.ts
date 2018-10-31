@@ -17,9 +17,9 @@ export class SushiEstoqueElementComponent implements OnInit {
   
   ngOnInit() { }
 
-  onSelectIngrediente(ingrediente: Ingrediente){
-    console.log("onSelectIngrediente", ingrediente);
-    this.ingredienteSelect.emit(ingrediente);
+  onSelectIngrediente(){
+    this.ingredienteSelect.emit(this.ingrediente);
+    console.log("EMITIU", this.ingrediente);
   }
   
 

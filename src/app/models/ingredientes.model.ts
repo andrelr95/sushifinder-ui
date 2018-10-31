@@ -1,5 +1,5 @@
 export class Ingrediente {
-    public id?: string;
+    public _id?: string;
     public descricao: string;
     public tipo: string;
     public qtdeEstoque: number;

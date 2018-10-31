@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { SushiEstoqueService } from '../sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { NgModel, NgForm } from '@angular/forms';
@@ -8,12 +8,12 @@ import { NgModel, NgForm } from '@angular/forms';
   templateUrl: './sushi-estoque-edit.component.html',
   styleUrls: ['./sushi-estoque-edit.component.scss']
 })
-export class SushiEstoqueEditComponent implements OnInit {
+export class SushiEstoqueEditComponent implements OnInit, OnChanges {
 
   constructor(private sushiEstoqueService: SushiEstoqueService) { }
 
-  @Input() ingrediente: Ingrediente = new Ingrediente('','', 0, false);
-
+  ingrediente: Ingrediente;
+  @Input() selectedIngredient: Ingrediente;
   @Output() updateIngredientList = new EventEmitter<void>();
   @Output() searchResultList = new EventEmitter<Ingrediente[]>();
 
@@ -25,15 +25,19 @@ export class SushiEstoqueEditComponent implements OnInit {
 
 
   ngOnInit() {
-    this.ingrediente = new Ingrediente('','', 0, false);
-    console.log(this.ingrediente);
+
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    this.ingrediente = this.selectedIngredient;
   }
 
   onLog() {
-    console.log(this.ingrediente);
+    console.log(this.selectedIngredient);
   }
 
-  onClear(){
+  onClear() {
+    this.selectedIngredient = undefined;
     this.ingrediente = undefined;
   }
 
@@ -57,7 +61,7 @@ export class SushiEstoqueEditComponent implements OnInit {
     form.value['ativo'] = this.isActiveItem(form.value['qtdeEstoque']);
     console.log(form.value);
 
-    if (this.ingrediente === undefined) {
+    if (this.selectedIngredient === undefined) {
       this.sushiEstoqueService.saveEstoqueItem(form.value)
         .then((response) => {
           console.log('CRIANDO');
@@ -70,7 +74,7 @@ export class SushiEstoqueEditComponent implements OnInit {
           }, 1500);
         })
     } else {
-      this.sushiEstoqueService.updateEstoque(form.value, this.ingrediente['_id'])
+      this.sushiEstoqueService.updateEstoque(form.value, this.selectedIngredient['_id'])
         .then((response) => {
           console.log('ATUALIZANDO');
           this.showSuccessMessage = true;

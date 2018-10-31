@@ -19,14 +19,12 @@ export class SushiEstoqueComponent implements OnInit {
 
   ngOnInit() {
     this.getIngredients();
-    console.log('NG ON INIT');
   }
 
   getIngredients() {
     this.sushiEstoqueService.getEstoque()
     .then((response: Ingrediente[]) => {
       this.ingredientes = response;
-      console.log('UPDATED INGREDIENT LIST');
     })
     .catch((err) => {
       console.log(err);
@@ -34,15 +32,12 @@ export class SushiEstoqueComponent implements OnInit {
   }
 
   onReceiveIngredienteSelected(ingrediente: Ingrediente){
-    console.log('onReceiveIngredienteSelected', ingrediente);
     this.ingredienteSelected = ingrediente;
-    console.log('ingredienteSelected', this.ingredienteSelected);
   }
 
   onShowSearchResult(searchResponse: Ingrediente[]){
       this.ingredientes = searchResponse;
-      console.log('onShowSearchResultParameter: ', searchResponse);
-      console.log('onShowSearchResult: ', this.ingredientes);
+
   }
 
   onUpdateIngredientList() {
