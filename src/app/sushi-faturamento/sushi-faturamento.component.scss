@@ -24,6 +24,10 @@ h1 {
     }
 }
 
+label {
+    color: $primary-color;
+}
+
 .thumbnail {
     margin-left: 5px;
     &.max-size {

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SushiFaturamentoService } from './sushi-faturamento.service';
+import { MESES } from '../mocks/meses-mock';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sushi-faturamento',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SushiFaturamentoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sushiFaturamentoService: SushiFaturamentoService
+  ) { }
+
+  faturamento: any;
+  meses: Object[] = MESES;
 
   ngOnInit() {
+    this.sushiFaturamentoService.getFaturamentosById('112018')
+      .then((response) => {
+        this.faturamento = response;
+      })
+      .catch((err) => console.log(err));
   }
 
+  onBuscar(form: NgForm){
+    console.log(form.value);
+  }
 }
