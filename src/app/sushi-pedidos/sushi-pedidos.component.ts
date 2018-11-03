@@ -33,6 +33,33 @@ export class SushiPedidosComponent implements OnInit {
     
   }
 
+  onCreateOrder(){
+    let carrinho = JSON.parse(JSON.stringify(this.pedidoItens));
+
+    let comidas = carrinho.produtos.filter((item) => item.item.tipo === "comida")
+    .map((comida) =>  new Object({ item: comida.item['_id'], quantidade: comida.quantidade }));
+
+    let bebidas = carrinho.produtos.filter((item) => item.item.tipo === "bebida")
+    .map((bebida) =>  new Object({ item: bebida.item['_id'], quantidade: bebida.quantidade }));
+
+    let precoTotal = carrinho.precoTotal;
+    carrinho['precoTotal'] = precoTotal;
+
+    let pedido = new Object({
+      comidas: comidas,
+      bebidas: bebidas,
+      precoTotal: precoTotal,
+      cliente: this.authService.getUser()
+    });
+
+    this.sushiPedidoService.postPedidos(pedido)
+      .then((response) => {
+        console.log("SUCESSO BACKEND: ", response['message']);
+      })
+      .catch((err) => { console.log(err)});
+
+  }
+
   onLog(){
     let carrinho = JSON.parse(JSON.stringify(this.pedidoItens));
     console.log(carrinho)
@@ -64,7 +91,7 @@ export class SushiPedidosComponent implements OnInit {
     // console.log("CLIENTE: ", cliente);
     // console.log("PRECO TOTAL: ", precoTotal);
     // carrinho['cliente'] = cliente;
-    console.log("OBJETO PEDIDO BACKEND: ", pedido);
+    console.log("LOG PEDIDO MONTADO BACKEND: ", pedido);
     // this.sushiPedidoService.setPreOrder(prePedido);
   }
 

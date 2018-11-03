@@ -41,9 +41,12 @@ export class SushiPedidoService {
     }).toPromise();
   }
 
-
   updatePedidoStatus(id: string, status: string) {
     return this.http.put(`http://localhost:3000/pedidos/${id}`, { status: status }, this.httpOptions).toPromise();
+  }
+
+  postPedidos(pedido: any){
+    return this.http.post('http://localhost:3000/pedidos', pedido, this.httpOptions).toPromise();
   }
 
 }

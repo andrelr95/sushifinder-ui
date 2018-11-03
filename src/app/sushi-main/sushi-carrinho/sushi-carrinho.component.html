@@ -2,28 +2,34 @@
     <h3 style="font-weight: bold;">SACOLA</h3>
     <hr class="hr-custom">
     <div *ngIf="itensCarrinho.length !== 0; else noItens">
-    <div class="row" *ngFor="let itemCarrinho of itensCarrinho"> 
-        <div class="col-md-1">
-            <button type="button" class="btn btn-danger btn-xs" (click)="onRemoveFromCart(itemCarrinho)"><span class="glyphicon glyphicon-remove"></span></button>
+        <div class="row" *ngFor="let itemCarrinho of itensCarrinho">
+            <div class="col-md-1">
+                <button type="button" class="btn btn-danger btn-xs" (click)="onRemoveFromCart(itemCarrinho)"><span
+                        class="glyphicon glyphicon-remove"></span></button>
+            </div>
+            <div class="col-md-5">
+                <p>{{itemCarrinho.item.descricao}}</p>
+            </div>
+            <div class="col-md-3">
+                <p>{{itemCarrinho.precoItem | currency:'BRL':'symbol':'1.2-2'}}</p>
+            </div>
+            <div class="col-md-1">
+                <p>x{{itemCarrinho.quantidade}}</p>
+            </div>
         </div>
-        <div class="col-md-5">
-            <p>{{itemCarrinho.item.descricao}}</p>
-        </div>
-        <div class="col-md-3">
-            <p>{{itemCarrinho.precoItem | currency:'BRL':'symbol':'1.2-2'}}</p>
-        </div>
-        <div class="col-md-1"><p>x{{itemCarrinho.quantidade}}</p></div>
     </div>
-</div>
-    <ng-template #noItens> <h3>Não há itens no carrinho</h3></ng-template>
+    <ng-template #noItens>
+        <h3>Não há itens no carrinho</h3>
+    </ng-template>
     <hr class="hr-custom">
-    <div class="row box">
+    <div class="row">
         <div class="col-md-7">
-            <h3>Preço Total: {{precoTotal | currency:'BRL':'symbol':'1.2-2'}}</h3>
+            <h4>Preço Total: {{precoTotal | currency:'BRL':'symbol':'1.2-2'}}</h4>
         </div>
         <div class="col-md-5">
-            <button class="btn btn-success" (click)="onConfirmarPedido()" style=" margin-top: 10px;">Confirmar Pedido</button>
-            <button class="btn btn-primary" (click)="onLog()">Log</button>
+            <button class="btn btn-sm btn-success" (click)="onConfirmarPedido()" style=" margin-top: 10px;">Confirmar
+                Pedido</button>
+            <button class="btn btn-sm btn-primary" (click)="onLog()">Log</button>
         </div>
     </div>
 </div>

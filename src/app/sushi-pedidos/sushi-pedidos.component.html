@@ -47,7 +47,8 @@
           <h3>
             TOTAL A PAGAR: {{pedidoItens.precoTotal | currency:'BRL':'symbol':'1.2-2'}}
             <span>
-              <button (click)="onLog()" class="btn btn-success pull-right">FINALIZAR PEDIDO</button>
+              <button (click)="onCreateOrder()" class="btn btn-success pull-right">FINALIZAR PEDIDO</button>
+              <button (click)="onLog()" class="btn btn-success pull-right">LoG</button>
             </span>
           </h3>
         </div>

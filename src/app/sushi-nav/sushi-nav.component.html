@@ -24,11 +24,12 @@
           </ng-template>
           <ng-template [ngIf]="authService.isAuthenticated() && !authService.isAdmin()">
             <li ><a routerLink="/cardapio" routerLinkActive="active" >CARDAPIO</a></li>
-            <li ><a routerLink="/confirmar-pedido" routerLinkActive="active" >CONFIRMAR PEDIDO</a></li>
+            <!-- <li ><a routerLink="/confirmar-pedido" routerLinkActive="active" >CONFIRMAR PEDIDO</a></li> -->
             <li ><a routerLink="/acompanhar-pedidos" routerLinkActive="active" >ACOMPANHAR PEDIDOS</a></li>
             <li ><a (click)="onSignOutUser()">SAIR</a></li>
           </ng-template>
           <ng-template [ngIf]="authService.isAdmin()">
+            <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/faturamentos" routerLinkActive="active" >FATURAMENTOS</a></li>
             <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/pedidos" routerLinkActive="active" >PEDIDOS</a></li>
             <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/produtos" routerLinkActive="active" >PRODUTOS</a></li>
             <li ><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/estoque" routerLinkActive="active" >ESTOQUE</a></li>
