@@ -25,27 +25,40 @@
             </option>
           </select>
         </div>
-        <div>
-          <button type="submit" class="btn btn-info">BUSCAR</button>
+        <div class="form-group col-md-4">
+          <button type="submit" class="btn btn-info">
+            <span *ngIf="!isLoading; else loading">BUSCAR</span>
+          </button>
         </div>
       </form>
-      <table class="table table-bordered">
+      <table *ngIf="!error; else erro" class="table table-bordered">
         <thead>
           <tr class="active">
             <th class="text-center">Nº Pedido</th>
             <th class="text-center">Valor</th>
             <th class="text-center">Data do pedido</th>
+            <th class="text-center">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let pedido of faturamento?.pedidos" class="text-center success">
             <td>{{pedido.numero}}</td>
             <td>{{pedido.precoTotal | currency:'BRL':'symbol':'1.2-2'}}</td>
-            <td>{{pedido.dataPedido | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pedido.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+            <td>{{pedido.status | uppercase}}</td>
           </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>
+
+<ng-template #erro>
+  <div class="col-md-12 alert alert-danger" role="alert">
+    <p>{{errorMessage}}</p>
+  </div>
+</ng-template>

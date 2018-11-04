@@ -41,6 +41,7 @@ import { SushiPedidosAtivoComponent } from './sushi-pedidos-cliente/sushi-pedido
 import { SushiPedidosHistoricoComponent } from './sushi-pedidos-cliente/sushi-pedidos-historico/sushi-pedidos-historico.component';
 import { SushiFaturamentoComponent } from './sushi-faturamento/sushi-faturamento.component';
 import { SushiFaturamentoService } from './sushi-faturamento/sushi-faturamento.service';
+import { DialogService } from './dialog.service';
  
 
 @NgModule({
@@ -89,7 +90,8 @@ import { SushiFaturamentoService } from './sushi-faturamento/sushi-faturamento.s
     SushiEstoqueService, 
     SushiProdutoService, 
     SushiPedidoService,
-    SushiFaturamentoService
+    SushiFaturamentoService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

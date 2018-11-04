@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Pessoa } from 'src/app/models/pessoa.model';
 import { Cliente } from 'src/app/models/cliente.model';
 import { Endereco } from 'src/app/models/endereco.model';
+import { DialogService } from 'src/app/dialog.service';
 
 @Component({
   selector: 'app-sushi-pedidos-admin-item',
@@ -13,19 +14,25 @@ import { Endereco } from 'src/app/models/endereco.model';
 })
 export class SushiPedidosAdminItemComponent implements OnInit {
 
-  constructor( private sushiPedidoService: SushiPedidoService,
-               private authService: AuthService) { }
+  constructor(private sushiPedidoService: SushiPedidoService,
+    private authService: AuthService,
+    private dialogService: DialogService) { }
 
   @Input() pedido: Pedido;
   pedidoStatus: string = "";
   isLoading: boolean = false;
   clienteNome: string;
+  bloqueado: boolean;
   clienteCPF: string;
   endereco: Endereco;
 
   ngOnInit() {
-    if(this.pedidoStatus === "") this.pedidoStatus = "info";
+    if (this.pedidoStatus === "") this.pedidoStatus = "info";
     this.pedidoStatus = this.panelStatusControl(this.pedido.status);
+
+    if(this.pedido.status === 'cancelado' || this.pedido.status === 'entregue'){
+      this.bloqueado = true;
+    }
 
     this.authService.getFullUser(this.pedido.cliente['_id'])
       .then((response: Cliente) => {
@@ -40,9 +47,9 @@ export class SushiPedidosAdminItemComponent implements OnInit {
 
   panelStatusControl(status: string): string {
     let newStatus: string;
-    switch(status){
+    switch (status) {
       case 'criado':
-        newStatus =  "info";
+        newStatus = "info";
         break;
       case 'preparando':
         newStatus = "warning";
@@ -57,13 +64,12 @@ export class SushiPedidosAdminItemComponent implements OnInit {
         newStatus = "success";
         break;
       default:
-        newStatus =  "primary"
+        newStatus = "primary"
     }
     return newStatus;
   }
 
   onStatusChange(status: string) {
-    console.log(status);
     const id = this.pedido._id;
     this.isLoading = true;
     this.sushiPedidoService.updatePedidoStatus(id, status)
@@ -75,5 +81,35 @@ export class SushiPedidosAdminItemComponent implements OnInit {
         this.isLoading = false;
       })
       .catch((err) => console.log(err));
+  }
+
+  onStatusBlockChange(status: string) {
+    console.log(status);
+    const id = this.pedido._id;
+    if (status === 'cancelado' || status === 'entregue') {
+      this.dialogService.confirm('Uma vez que o pedido é mudado para "Cancelado" ou "Entregue" não será possível mudar. Deseja prosseguir?')
+      .then((resolve: boolean) => {
+        if (resolve) {
+          this.isLoading = true;
+          this.bloqueado = true;
+          this.sushiPedidoService.updatePedidoStatus(id, status)
+          .then((response) => {
+                console.log(response);
+                const statusResponse = response['data']['status'];
+                this.pedido.status = statusResponse
+                this.pedidoStatus = this.panelStatusControl(statusResponse);
+                this.isLoading = false;
+              })
+              .catch((err) => { 
+                console.log(err) 
+                this.isLoading = false;
+              });
+          } 
+        })
+        .catch(error => {
+          console.log(error);
+          this.isLoading = false;
+        })
+    }
   }
 }

@@ -16,6 +16,9 @@ export class SushiFaturamentoComponent implements OnInit {
 
   faturamento: any;
   meses: Object[] = MESES;
+  isLoading: boolean;
+  error: boolean = false;
+  errorMessage: string;
 
   ngOnInit() {
     this.sushiFaturamentoService.getFaturamentosById('112018')
@@ -27,5 +30,19 @@ export class SushiFaturamentoComponent implements OnInit {
 
   onBuscar(form: NgForm){
     console.log(form.value);
+    const codigo = form.value.mes + form.value.ano;
+    this.isLoading = true;
+    this.sushiFaturamentoService.getFaturamentosById(codigo)
+      .then((response) => {
+        this.faturamento = response;
+        this.error = false;
+        this.isLoading = false;
+      })
+      .catch((err) => {
+        this.error = true;
+        this.errorMessage = err.error.message;
+        this.isLoading = false;
+      })
+    
   }
 }
