@@ -1,19 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-xs-12 col-sm-12 thumbnail max-size">
-      <h1>Estoque</h1>
-      <app-sushi-estoque-element 
-        *ngFor="let ingredienteElement of ingredientes; index as i" 
-        [ingrediente]="ingredienteElement"
-        (ingredienteSelect)="onReceiveIngredienteSelected($event)">
-      </app-sushi-estoque-element>
+    <div class="col-md-8 col-xs-12 col-sm-12">
+      <div class="thumbnail max-size">
+        <h1>Estoque</h1>
+        <app-sushi-estoque-element *ngFor="let ingredienteElement of ingredientes; index as i" [ingrediente]="ingredienteElement" (ingredienteSelect)="onReceiveIngredienteSelected($event)">
+        </app-sushi-estoque-element>
+      </div>
     </div>
-    <div class="col-md-3 col-xs-12 col-sm-12 thumbnail">
-      <app-sushi-estoque-edit 
-        (updateIngredientList)="onUpdateIngredientList()"
-        (searchResultList)="onShowSearchResult($event)"
-        [selectedIngredient]="ingredienteSelected">
-      </app-sushi-estoque-edit>
+    <div class="col-md-4 col-xs-12 col-sm-12">
+      <div class="thumbnail">
+        <app-sushi-estoque-edit (updateIngredientList)="onUpdateIngredientList()" (searchResultList)="onShowSearchResult($event)" [selectedIngredient]="ingredienteSelected">
+        </app-sushi-estoque-edit>
+      </div>
     </div>
   </div>
 </div>

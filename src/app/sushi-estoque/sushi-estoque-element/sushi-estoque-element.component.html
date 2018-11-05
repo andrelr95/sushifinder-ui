@@ -5,7 +5,7 @@
       [ngClass]="{ disabled: !ingrediente.ativo }"
       (click)="onSelectIngrediente()">
       <span *ngIf="ingrediente.ativo; else empty;"></span>
-      <h4 class="list-group-item-heading">{{ingrediente.descricao}} <span class="label label-primary">{{ingrediente.tipo | titlecase}}</span></h4>
+      <h4 class="list-group-item-heading">{{ingrediente.descricao}} <span class="label label-primary pull-right">{{ingrediente.tipo | titlecase}}</span></h4>
       <h4 class="list-group-item-heading">{{i}}</h4>
       <p class="list-group-item-text">Quantidade em estoque: {{ingrediente.qtdeEstoque}}</p>
     </a>

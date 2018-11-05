@@ -1,19 +1,15 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-xs-12 col-sm-12 thumbnail max-size">
-            <h1>Produtos</h1>
-            <app-sushi-produto-item 
-              *ngFor="let produto of produtos"
-              [produtoItem]="produto"
-              (updateProductsList)="onRecieveUpdateEvent()"
-            ></app-sushi-produto-item>
-            <!-- <h3 *ngIf="produtos.length === 0">Lista de produtos vazia!</h3> -->
+        <div class="col-md-8 col-xs-12 col-sm-12">
+            <div class="thumbnail max-size">
+                <h1>Produtos</h1>
+                <app-sushi-produto-item *ngFor="let produto of produtos" [produtoItem]="produto" (updateProductsList)="onRecieveUpdateEvent()"></app-sushi-produto-item>
+            </div>
         </div>
-        <div class="col-md-3 col-xs-12 col-sm-12 thumbnail">
-            <app-sushi-produto-edit
-            (updateProductsList)="onRecieveUpdateEvent()"
-            (searchResultList)="onShowSearchResult($event)"
-            ></app-sushi-produto-edit>
+        <div class="col-md-4 col-xs-12 col-sm-12">
+            <div class="thumbnail">
+                <app-sushi-produto-edit (updateProductsList)="onRecieveUpdateEvent()" (searchResultList)="onShowSearchResult($event)"></app-sushi-produto-edit>
+            </div>
         </div>
     </div>
 </div>

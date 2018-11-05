@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <div *ngIf="historicoPedidos.length !== 0; else noItens">
+  <div *ngIf="historicoPedidos?.length !== 0; else noItens">
     <app-sushi-pedidos-cliente-item *ngFor="let historicoPedido of historicoPedidos" [pedido]="historicoPedido"></app-sushi-pedidos-cliente-item>
   </div>
 </div>

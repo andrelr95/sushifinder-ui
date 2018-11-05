@@ -6,6 +6,7 @@ $background-login: #D75D6A;
 $color-font-light: #E6E6E6;
 $color-font-dark: #111111;
 $primary-color: #3083C8;
+$max-height: 720px;
 
 $color-box-shadow: #9D444E;
 
@@ -21,9 +22,9 @@ h1 {
     color: $primary-color;
 }
 .thumbnail {
-    margin-left: 5px;
+    padding: 20px;
+    height: $max-height;
     &.max-size {
-        height: 850px;
         overflow-y: auto;
     }
 }
