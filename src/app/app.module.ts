@@ -42,6 +42,10 @@ import { SushiPedidosHistoricoComponent } from './sushi-pedidos-cliente/sushi-pe
 import { SushiFaturamentoComponent } from './sushi-faturamento/sushi-faturamento.component';
 import { SushiFaturamentoService } from './sushi-faturamento/sushi-faturamento.service';
 import { DialogService } from './dialog.service';
+import { SushiClientesComponent } from './sushi-clientes/sushi-clientes.component';
+import { SushiClientesService } from './sushi-clientes/sushi-clientes.service';
+
+import { Ng2BRPipesModule } from 'ng2-brpipes';
  
 
 @NgModule({
@@ -70,7 +74,8 @@ import { DialogService } from './dialog.service';
     SushiPedidosClienteItemComponent,
     SushiPedidosAtivoComponent,
     SushiPedidosHistoricoComponent,
-    SushiFaturamentoComponent
+    SushiFaturamentoComponent,
+    SushiClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { DialogService } from './dialog.service';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    Ng2BRPipesModule,
     ReactiveFormsModule
   ],
   providers: [
@@ -91,7 +97,11 @@ import { DialogService } from './dialog.service';
     SushiProdutoService, 
     SushiPedidoService,
     SushiFaturamentoService,
+    SushiClientesService,
     DialogService
+  ],
+  exports: [
+    Ng2BRPipesModule
   ],
   bootstrap: [AppComponent]
 })

@@ -16,6 +16,7 @@ import { SushiProdutoComponent } from "./sushi-produto/sushi-produto.component";
 import { SushiPedidosAdminComponent } from "./sushi-pedidos-admin/sushi-pedidos-admin.component";
 import { SushiPedidosClienteComponent } from "./sushi-pedidos-cliente/sushi-pedidos-cliente.component";
 import { SushiFaturamentoComponent } from "./sushi-faturamento/sushi-faturamento.component";
+import { SushiClientesComponent } from "./sushi-clientes/sushi-clientes.component";
 
 const appRoutes: Routes = [
     { path: 'cardapio', canActivate: [AuthGuard],component: SushiMainComponent, children: [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'estoque', canActivate: [AuthGuard, AuthAdminGuard], component: SushiEstoqueComponent },
     { path: 'pedidos', canActivate: [AuthGuard, AuthAdminGuard], component: SushiPedidosAdminComponent },
     { path: 'confirmar-pedido', canActivate: [AuthGuard], component: SushiPedidosComponent },
+    { path: 'clientes', canActivate: [AuthGuard, AuthAdminGuard], component: SushiClientesComponent},
     { path: 'faturamentos', canActivate: [AuthGuard, AuthAdminGuard], component: SushiFaturamentoComponent},
     { path: 'acompanhar-pedidos', canActivate: [AuthGuard], component: SushiPedidosClienteComponent },
     { path: 'produtos', canActivate: [AuthGuard, AuthAdminGuard], component: SushiProdutoComponent },
