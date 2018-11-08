@@ -12,12 +12,14 @@ export class SushiClientesComponent implements OnInit {
   constructor( private sushiClienteService: SushiClientesService ) { }
 
   clientes: Cliente[];
+  clientesToShow: Cliente[];
   searchText: string;
 
   ngOnInit() {
     this.sushiClienteService.getClientes()
       .then((response: Cliente[]) => {
         this.clientes = response;
+        this.clientesToShow = response;
         console.log(this.clientes);
       })
       .catch(err => console.log(err));
@@ -26,7 +28,10 @@ export class SushiClientesComponent implements OnInit {
   onBuscaPorCpf(event: KeyboardEvent) {
     this.searchText = (<HTMLInputElement>event.target).value;
     console.log(this.searchText);
-    //TODO BUSCA E BOTAO DELETE
+    this.clientesToShow = this.clientes.filter( (cliente) => {
+      console.log(cliente);
+      return cliente['pessoa']['cpf'].startsWith(this.searchText);
+    })
   }
 
   onDeleteCliente(){

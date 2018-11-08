@@ -21,7 +21,7 @@
               <th class="text-center">Role</th>
               <th class="text-center"> - </th>
             </tr>
-            <tr *ngFor="let cliente of clientes" class="text-center">
+            <tr *ngFor="let cliente of clientesToShow" class="text-center">
               <td>{{cliente?.pessoa.nome}}</td>
               <td>{{cliente?.pessoa.cpf | cpf}}</td>
               <td>{{cliente?.pessoa.telefone | telefone}}</td>
