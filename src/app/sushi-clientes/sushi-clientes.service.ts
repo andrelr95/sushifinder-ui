@@ -10,6 +10,8 @@ export class SushiClientesService {
   constructor( private http: HttpClient,
                private authService: AuthService ) { }
 
+  
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,8 +24,11 @@ export class SushiClientesService {
     return this.http.get(host.concat(path.clientes), this.httpOptions).toPromise();
   }
 
-  delete() {
-    //DELETE METHOD
+  delete(id: string) {
+    const uri = `/${id}`;
+    console.log(host.concat(path.clientes).concat(uri));
+
+    return this.http.delete(host.concat(path.clientes).concat(uri), this.httpOptions).toPromise();
   }
 
 }

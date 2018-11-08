@@ -35,16 +35,20 @@
         <thead>
           <tr class="active">
             <th class="text-center">Nº Pedido</th>
-            <th class="text-center">Valor</th>
+            <th class="text-center">Nome</th>
+            <th class="text-center">CPF</th>
             <th class="text-center">Data do pedido</th>
+            <th class="text-center">Valor</th>
             <th class="text-center">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let pedido of faturamento?.pedidos" class="text-center success">
             <td>{{pedido.numero}}</td>
-            <td>{{pedido.precoTotal | currency:'BRL':'symbol':'1.2-2'}}</td>
+            <td>{{pedido.cliente.pessoa.nome | uppercase}} {{pedido.cliente.pessoa.sobrenome | uppercase}}</td>
+            <td>{{pedido.cliente.pessoa.cpf | cpf}}</td>
             <td>{{pedido.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+            <td>{{pedido.precoTotal | currency:'BRL':'symbol':'1.2-2'}}</td>
             <td>{{pedido.status | uppercase}}</td>
           </tr>
         </tbody>

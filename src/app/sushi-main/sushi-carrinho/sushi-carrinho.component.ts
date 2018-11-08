@@ -81,6 +81,10 @@ export class SushiCarrinhoComponent implements OnInit {
 
   }
 
+  onCheckCart() {
+    return this.itensCarrinho.length === 0;
+  }
+
   onLog(){
     let carrinho = {};
     carrinho['produtos'] = JSON.parse(JSON.stringify(this.itensCarrinho));

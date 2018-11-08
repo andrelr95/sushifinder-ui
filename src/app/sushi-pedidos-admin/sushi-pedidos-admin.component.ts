@@ -9,16 +9,22 @@ import { Pedido } from '../models/pedido.model';
 })
 export class SushiPedidosAdminComponent implements OnInit {
 
-  constructor( private sushiPedidoService: SushiPedidoService ) { }
+  constructor(private sushiPedidoService: SushiPedidoService) { }
 
   pedidos: Pedido[];
   pedidoStatus: string = "";
 
   ngOnInit() {
     this.sushiPedidoService.getPedidos()
-      .then((response: Pedido[]) => { this.pedidos = response; console.log(this.pedidos); })
+      .then((response: Pedido[]) => {
+
+        this.pedidos = response.sort((a: any, b: any) => {
+          return a.dataPedido + b.dataPedido;
+        }).reverse();
+        console.log(this.pedidos);
+      })
       .catch((err) => console.log(err));
-    
-    }
+
+  }
 
 }

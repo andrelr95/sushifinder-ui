@@ -28,6 +28,10 @@
                   <th class="text-center">Endereço</th>
                     <td>{{endereco?.logradouro}}, {{endereco?.numero}} {{endereco?.complemento}} - CEP: {{endereco?.cep}}</td>
                 </tr>
+                <tr>
+                  <th class="text-center">Data do pedido</th>
+                    <td>{{pedido?.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+                </tr>
             </tbody>
         </table>
       </div>

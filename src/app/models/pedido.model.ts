@@ -8,6 +8,7 @@ export class Pedido {
     public status: string;
     public _id: string;
     public numero: string;
+    public dataPedido: Date;
     public precoTotal: number;
     public cliente: Pessoa;
 
@@ -25,6 +26,7 @@ export class Pedido {
         this.bebidas = bebidas;
         this.status = status;
         this._id = _id;
+        this.dataPedido = new Date;
         this.numero = numero;
         this.precoTotal = precoTotal;
         this.cliente = cliente;

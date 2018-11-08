@@ -3,6 +3,9 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="thumbnail">
         <h1>CLIENTES</h1>
+        <div *ngIf="activeMessage" class="col-md-12 alert alert-{{statusMessage}}" role="alert">
+            <p>{{resultMessage}}</p>
+        </div>
         <form class="form-inline">
           <div class="no-spaces">
             <div class="form-group">
@@ -27,7 +30,7 @@
               <td>{{cliente?.pessoa.telefone | telefone}}</td>
               <td>{{cliente?.pessoa.email}}</td>
               <td>{{cliente?.roles[0]}}</td>
-              <td><button class="btn btn-danger btn-sm">EXCLUIR</button></td>
+              <td><button [disabled]="cliente?.roles[0] === 'admin'" class="btn btn-danger btn-sm" (click)="onDeleteCliente(cliente)">EXCLUIR</button></td>
             </tr>
           </table>
         </div>

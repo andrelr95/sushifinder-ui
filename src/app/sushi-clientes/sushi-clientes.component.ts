@@ -14,6 +14,9 @@ export class SushiClientesComponent implements OnInit {
   clientes: Cliente[];
   clientesToShow: Cliente[];
   searchText: string;
+  activeMessage: boolean = true;
+  resultMessage: string = '';
+  statusMessage: string = '';
 
   ngOnInit() {
     this.sushiClienteService.getClientes()
@@ -34,8 +37,25 @@ export class SushiClientesComponent implements OnInit {
     })
   }
 
-  onDeleteCliente(){
-    //TODO DELETE LOGIC SERVICE
+  onDeleteCliente(cliente: Cliente){
+    this.activeMessage = true;
+    const id = cliente['_id'];
+
+    this.sushiClienteService.delete(id)
+      .then((response) => {
+        setTimeout(() => {
+          this.resultMessage = response['message'];
+          this.statusMessage = 'success';
+        }, 500);
+        this.activeMessage = false;
+        this.sushiClienteService.getClientes()
+          .then((clientes: Cliente[]) => {
+            this.clientes = clientes;
+            this.clientesToShow = clientes;
+          })
+          .catch(e => console.log(e));
+      })
+      .catch(err => console.log(err));
   }
 
 }

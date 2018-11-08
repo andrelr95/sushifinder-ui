@@ -27,9 +27,8 @@
             <h4>Preço Total: {{precoTotal | currency:'BRL':'symbol':'1.2-2'}}</h4>
         </div>
         <div class="col-md-5">
-            <button class="btn btn-sm btn-success" (click)="onConfirmarPedido()" style=" margin-top: 10px;">Confirmar
+            <button class="btn btn-success" (click)="onConfirmarPedido()" [disabled]="onCheckCart()" style=" margin-top: 10px;">Confirmar
                 Pedido</button>
-            <button class="btn btn-sm btn-primary" (click)="onLog()">Log</button>
         </div>
     </div>
 </div>

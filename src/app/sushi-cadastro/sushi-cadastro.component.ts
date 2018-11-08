@@ -5,6 +5,7 @@ import { Endereco } from '../models/endereco.model';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Pessoa } from '../models/pessoa.model';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sushi-cadastro',
@@ -21,7 +22,7 @@ export class SushiCadastroComponent implements OnInit {
   errorMessage: string = '';
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
 
@@ -63,6 +64,7 @@ export class SushiCadastroComponent implements OnInit {
             this.showErrorMessage = !this.showSuccessMessage;
             this.isLoading = false;
           }, 2000);
+          this.router.navigate(['/login']);
         } )
       .catch( (error) => {
         this.isLoading = false;

@@ -4,6 +4,7 @@ import { SushiPedidoService } from './sushi-pedido.service';
 import { ItemSacola } from '../models/item-sacola.model';
 import { AuthService } from '../auth/auth.service';
 import { PrePedido } from '../models/prePedido.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sushi-pedidos',
@@ -18,7 +19,8 @@ export class SushiPedidosComponent implements OnInit {
 
   constructor(
     private sushiPedidoService: SushiPedidoService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class SushiPedidosComponent implements OnInit {
 
     this.sushiPedidoService.postPedidos(pedido)
       .then((response) => {
+        this.router.navigate(['/acompanhar-pedidos']);
         console.log("SUCESSO BACKEND: ", response['message']);
       })
       .catch((err) => { console.log(err)});
