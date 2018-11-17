@@ -14,6 +14,7 @@ export class SushiPedidosClienteItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.pedido);
     if(this.pedidoStatus === "") this.pedidoStatus = "info";
     this.pedidoStatus = this.panelStatusControl(this.pedido.status);
   }

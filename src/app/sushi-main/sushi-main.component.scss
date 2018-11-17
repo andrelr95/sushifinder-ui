@@ -1,0 +1,7 @@
+.thumbnail {
+    margin-left: 5px;
+    &.max-size {
+        height: 550px;
+        overflow-y: auto;
+    }
+}

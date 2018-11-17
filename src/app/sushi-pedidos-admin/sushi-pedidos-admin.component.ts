@@ -17,14 +17,16 @@ export class SushiPedidosAdminComponent implements OnInit {
   ngOnInit() {
     this.sushiPedidoService.getPedidos()
       .then((response: Pedido[]) => {
-
-        this.pedidos = response.sort((a: any, b: any) => {
-          return a.dataPedido + b.dataPedido;
-        }).reverse();
+        this.pedidos = this.sortDatesArray(response).reverse();
         console.log(this.pedidos);
       })
       .catch((err) => console.log(err));
+  }
 
+  sortDatesArray(array: Pedido[]): Array<Pedido> {
+    return array.sort((a: any, b: any) => {
+      return a.dataPedido + b.dataPedido;
+    })
   }
 
 }
