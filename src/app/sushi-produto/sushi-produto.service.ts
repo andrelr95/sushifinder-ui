@@ -27,6 +27,11 @@ export class SushiProdutoService {
     return this.http.post(host + '/produtos', item, this.httpOptions).toPromise();
   }
 
+  updateProdutoItem(produto: Produto, item: Produto) {
+    delete item['_id']
+    return this.http.put(host + `/produtos/${produto['_id']}`, item, this.httpOptions).toPromise();
+  }
+
   getProdutos() {
     return this.http.get(host + '/produtos', this.httpOptions).toPromise();
   }
@@ -45,6 +50,10 @@ export class SushiProdutoService {
       headers: new HttpHeaders({ 'Content-Type':  'application/json', 'x-access-token': this.authService.getToken() }),
       params: new HttpParams().set('descricao', term)
     }).toPromise()
+  }
+
+  updateStatus(produto: Produto, status: boolean) {
+    return this.http.put(host + `/produtos/${produto['_id']}`, { ativo: status }, this.httpOptions).toPromise();
   }
 
   deleteProduto(produto: Produto){

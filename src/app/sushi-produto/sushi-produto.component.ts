@@ -12,6 +12,7 @@ export class SushiProdutoComponent implements OnInit {
   constructor(private sushiProdutoService: SushiProdutoService) { }
 
   produtos: Produto[];
+  selectedProduto: Produto;
 
   ngOnInit() {
     this.onGetProducts();
@@ -23,17 +24,22 @@ export class SushiProdutoComponent implements OnInit {
 
   onShowSearchResult(searchResponse: Produto[]){
     this.produtos = searchResponse;
-    console.log('onShowSearchResultParameter: ', searchResponse);
-    console.log('onShowSearchResult: ', this.produtos);
+}
+
+onRecieveProdutoEvent(produto: Produto){
+  this.selectedProduto = produto;
 }
 
   onGetProducts(){
     this.sushiProdutoService.getProdutos()
       .then( (response: Produto[]) => {
-        this.produtos = response;
-        console.log('Recebi a lista de produtos', this.produtos);
+        this.produtos = this.sortArrayByBoolean(response);
       })
       .catch( err => console.log('ERRO ->', err));
+  }
+
+  sortArrayByBoolean(arr: any[]): any[] {
+    return arr.sort((a, b) => { return (a.ativo === b.ativo)? 0: a.ativo? -1 : 1 });
   }
 
 }

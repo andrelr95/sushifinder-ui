@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <th class="text-center">Comidas</th>
-              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}, </span></td>
+              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}<span *ngIf="!last; else ponto">,  </span></span></td>
             </tr>
             <tr>
               <th class="text-center">Bebidas</th>
@@ -50,4 +50,8 @@
 
 <ng-template #loading>
   <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>
+
+<ng-template #ponto>
+  <span>.</span>
 </ng-template>

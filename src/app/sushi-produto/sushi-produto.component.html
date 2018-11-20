@@ -2,15 +2,18 @@
     <div class="row">
         <div class="col-md-8 col-xs-12 col-sm-12">
             <div class="thumbnail max-size">
-                <div class="row">
-                    <h1>Produtos</h1>
-                    <app-sushi-produto-item *ngFor="let produto of produtos" [produtoItem]="produto" (updateProductsList)="onRecieveUpdateEvent()"></app-sushi-produto-item>
-                </div>
+                <h1>Produtos</h1>
+                <app-sushi-produto-item *ngFor="let produto of produtos" 
+                [produtoItem]="produto" 
+                (updateProductsList)="onRecieveUpdateEvent()" 
+                (selectedProduto)="onRecieveProdutoEvent($event)"></app-sushi-produto-item>
             </div>
         </div>
         <div class="col-md-4 col-xs-12 col-sm-12">
             <div class="thumbnail">
-                <app-sushi-produto-edit (updateProductsList)="onRecieveUpdateEvent()" (searchResultList)="onShowSearchResult($event)"></app-sushi-produto-edit>
+                <app-sushi-produto-edit (updateProductsList)="onRecieveUpdateEvent()" 
+                (searchResultList)="onShowSearchResult($event)"
+                [selectedProdutoReceived]="selectedProduto"></app-sushi-produto-edit>
             </div>
         </div>
     </div>

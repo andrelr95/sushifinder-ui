@@ -81,10 +81,16 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+  <button *ngIf="selectedProdutoReceived === undefined; else atualizar" type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
       Salvar item
     </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
 </form>
 <div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>
-<button class="btn btn-primary" (click)="onLog()">LOG</button>
-<button class="btn btn-default" (click)="onClear()">LIMPAR</button>
+<!-- <button class="btn btn-primary" (click)="onLog()">LOG</button> -->
+<button class="btn btn-default btn-block" (click)="onClear()">Limpar formulário</button>
+
+<ng-template #atualizar>
+<button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+  Atualizar item
+</span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
+</ng-template>

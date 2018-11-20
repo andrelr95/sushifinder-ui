@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { SushiEstoqueService } from '../../sushi-estoque/sushi-estoque.service';
 import { Ingrediente } from '../../models/ingredientes.model';
 import { Produto } from '../../models/produto.model';
@@ -14,8 +14,9 @@ import { Subject, Observable, ObjectUnsubscribedError } from 'rxjs';
 export class SushiProdutoEditComponent implements OnInit {
 
   constructor(private sushiEstoqueService: SushiEstoqueService,
-              private sushiProdutoService: SushiProdutoService) { }
+    private sushiProdutoService: SushiProdutoService) { }
 
+  @Input() selectedProdutoReceived: Produto;
   @Output() updateProductsList = new EventEmitter<void>();
   @Output() searchResultList = new EventEmitter<Produto[]>();
 
@@ -25,7 +26,7 @@ export class SushiProdutoEditComponent implements OnInit {
   ingredientes: Ingrediente[] = [];
   ingredientesSelected: Subject<Ingrediente> = new Subject<Ingrediente>();
   ingredientesSelectedToShow: Ingrediente[] = [];
-  
+
   addProdutoForm: FormGroup;
 
   isLoading: boolean = false;
@@ -40,7 +41,7 @@ export class SushiProdutoEditComponent implements OnInit {
       })
       .catch(err => console.log(err));
 
-  
+
     this.ingredientesSelected.subscribe((response) => {
       this.ingredientesSelectedToShow.push(response);
     })
@@ -53,21 +54,37 @@ export class SushiProdutoEditComponent implements OnInit {
     });
   }
 
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    if (this.addProdutoForm) {
+      console.log(this.selectedProdutoReceived)
+      this.addProdutoForm.get('descricao').setValue(this.selectedProdutoReceived.descricao)
+      this.addProdutoForm.get('preco').setValue(this.selectedProdutoReceived.preco);
+      this.addProdutoForm.get('tipo').setValue(this.selectedProdutoReceived.tipo);
+      this.addProdutoForm.get('ingredientes').reset();
+      this.onClearIngredients();
+      this.selectedProdutoReceived.ingredientes.forEach((ingrediente) => {
+        const ingredienteId = ingrediente['_id'];
+        const ingredienteSelected = this.ingredientes.find((ingrediente) => ingrediente['_id'] === ingredienteId);
+        const control = new FormControl(ingredienteId);
+        this.ingredientesSelected.next(ingredienteSelected);
+        (<FormArray>this.addProdutoForm.get('ingredientes')).push(control)
+      })
+    }
+  }
+
   onAddIngrediente(ingrediente) {
-    // console.log(ingrediente.value);
     const ingredienteId = ingrediente.value;
     const ingredienteSelected = this.ingredientes.find((ingrediente) => ingrediente['_id'] === ingredienteId);
     const control = new FormControl(ingredienteId);
 
     this.ingredientesSelected.next(ingredienteSelected);
-  
-    console.log(control);
+
     (<FormArray>this.addProdutoForm.get('ingredientes')).push(control)
   }
 
   onClearIngredients() {
     this.ingredientesSelectedToShow = [];
-    while((<FormArray>this.addProdutoForm.get('ingredientes')).length !== 0){
+    while ((<FormArray>this.addProdutoForm.get('ingredientes')).length !== 0) {
       (<FormArray>this.addProdutoForm.get('ingredientes')).removeAt(0);
     }
   }
@@ -76,22 +93,46 @@ export class SushiProdutoEditComponent implements OnInit {
     console.log(this.addProdutoForm.get('tipo').value === 'comida');
   }
 
+  onClear() {
+    this.selectedProdutoReceived = undefined;
+    this.addProdutoForm = new FormGroup({
+      'descricao': new FormControl(null),
+      'preco': new FormControl(null),
+      'ingredientes': new FormArray([]),
+      'tipo': new FormControl('comida')
+    });
+  }
+
   onSubmit() {
     this.isLoading = true;
     this.addProdutoForm.value['ativo'] = true;
-    console.log(this.addProdutoForm.value);
 
-    this.sushiProdutoService.saveProdutoItem(this.addProdutoForm.value)
-    .then(response => {
-      this.showSuccessMessage = true;
-      this.successMessage = response['message'];
-      this.isLoading = false;
-      setTimeout(() => {
-        this.showSuccessMessage = false;
-        this.updateProductsList.emit();
-      }, 1000);
-    })
-    .catch(err => console.log(err));
+    if (this.selectedProdutoReceived === undefined) {
+      this.sushiProdutoService.saveProdutoItem(this.addProdutoForm.value)
+        .then(response => {
+          this.showSuccessMessage = true;
+          this.successMessage = response['message'];
+          this.isLoading = false;
+          setTimeout(() => {
+            this.showSuccessMessage = false;
+            this.updateProductsList.emit();
+          }, 1000);
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.sushiProdutoService.updateProdutoItem(this.selectedProdutoReceived, this.addProdutoForm.value)
+        .then(response => {
+          this.showSuccessMessage = true;
+          this.successMessage = response['message'];
+          this.isLoading = false;
+          setTimeout(() => {
+            this.showSuccessMessage = false;
+            this.updateProductsList.emit();
+          }, 1000);
+        })
+        .catch(err => console.log(err));
+    }
+
 
   }
 
@@ -100,9 +141,13 @@ export class SushiProdutoEditComponent implements OnInit {
       this.seachText = (<HTMLInputElement>event.target).value;
       this.sushiProdutoService.getProdutosByDescription(this.seachText)
         .then((response: Produto[]) => {
-          this.searchResultList.emit(response);
+          this.searchResultList.emit(this.sortArrayByBoolean(response));
           console.log('onSearchItem: ', response);
         });
     }, 1000)
+  }
+
+  sortArrayByBoolean(arr: any[]): any[] {
+    return arr.sort((a, b) => { return (a.ativo === b.ativo) ? 0 : a.ativo ? -1 : 1 });
   }
 }

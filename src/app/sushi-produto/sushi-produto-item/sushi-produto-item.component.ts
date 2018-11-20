@@ -14,16 +14,31 @@ export class SushiProdutoItemComponent implements OnInit {
 
   @Input() produtoItem: Produto;
   @Output() updateProductsList = new EventEmitter<void>();
+  @Output() selectedProduto = new EventEmitter<Produto>();
 
   isLoading: boolean = false;
 
   ngOnInit() {
-    console.log(this.produtoItem);
+  }
+
+  onUpdateStatus(status: boolean) {
+    this.isLoading = true;
+    this.sushiProdutoService.updateStatus(this.produtoItem, status)
+      .then((response) => {
+        setTimeout(() => {
+          this.updateProductsList.emit();
+          this.isLoading = false;
+        }, 500)
+      })
+      .catch( err => console.log(err));
+  }
+
+  onEditProduto(){
+    this.selectedProduto.emit(this.produtoItem);
   }
 
   onDeleteItem() {
     this.isLoading = true;
-    console.log(this.produtoItem);
     this.sushiProdutoService.deleteProduto(this.produtoItem)
       .then((response) => {
         console.log(response);
