@@ -18,12 +18,20 @@ export class SushiPedidosHistoricoComponent implements OnInit {
   ngOnInit() {
     this.sushiPedidoService.getPedidosUser()
       .then((response: Pedido[]) => {
-        this.historicoPedidos = response.filter((pedido: Pedido) => {
+        let historico = response.filter((pedido: Pedido) => {
           return pedido['ativo'] === false;
         })
+
+        this.historicoPedidos = this.sortDatesArray(historico).reverse();
       })
       .catch((err) => console.log(err));
 
+  }
+
+  sortDatesArray(array: Pedido[]): Array<Pedido> {
+    return array.sort((a: any, b: any) => {
+      return a.dataPedido + b.dataPedido;
+    })
   }
 
 }

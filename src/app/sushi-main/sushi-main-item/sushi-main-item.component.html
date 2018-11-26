@@ -4,7 +4,7 @@
         <span *ngFor="let ingrediente of produto.ingredientes"class="badge">{{ingrediente.descricao}}</span>
     </div>
     <div class="col-md-4 text-center">
-        <h3 style="font-weight: bold;">{{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</h3>
+        <h3 style="font-weight: bold;">{{produto.preco | real}}</h3>
         <button class="btn btn-custom" (click)="onSelected()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> QUERO!</button>
     </div>
 </div>

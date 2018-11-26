@@ -40,8 +40,8 @@
     </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
 </form>
 <div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>
-<button class="btn btn-primary" (click)="onLog()">LOG</button>
-<button class="btn btn-default" (click)="onClear()">LIMPAR</button>
+<!-- <button class="btn btn-primary" (click)="onLog()">LOG</button> -->
+<button class="btn btn-login btn-block btn-custom" (click)="onClear()">LIMPAR</button>
 
 <ng-template #update>
   <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>

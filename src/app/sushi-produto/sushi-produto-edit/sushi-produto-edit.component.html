@@ -29,7 +29,6 @@
     for="ingredienteNome">Ingredientes</label>
     <select
       name="ingredientes"
-      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
       class="form-control"
       #ingrediente
       id="produtoIngrediente">
@@ -39,6 +38,18 @@
         >{{ingrediente.descricao}}
       </option>
     </select>
+    <!-- <select
+      name="ingredientes"
+      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
+      class="form-control"
+      #ingrediente
+      id="produtoIngrediente">
+      <option 
+        *ngFor="let ingrediente of ingredientes"
+        [value]="ingrediente._id"
+        >{{ingrediente.descricao}}
+      </option>
+    </select> -->
     <h4>
       <span 
         class="badge"
@@ -48,16 +59,26 @@
     </h4>
     <button 
       type="button" 
-      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
       class="btn btn-primary btn-block" 
       (click)="onAddIngrediente(ingrediente)">Adicionar ingrediente
     </button>
+    <!-- <button 
+      type="button" 
+      [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
+      class="btn btn-primary btn-block" 
+      (click)="onAddIngrediente(ingrediente)">Adicionar ingrediente
+    </button> -->
     <button 
+      type="button" 
+      class="btn btn-default btn-block" 
+      (click)="onClearIngredients()">Limpar ingrediente
+    </button>
+    <!-- <button 
       type="button" 
       [disabled]="addProdutoForm.get('tipo').value === 'bebida'"
       class="btn btn-default btn-block" 
       (click)="onClearIngredients()">Limpar ingrediente
-    </button>
+    </button> -->
   </div>
   <div class="form-group">
     <label for="ingredienteNome">Preço</label>
@@ -76,7 +97,7 @@
           type="radio" 
           formControlName="tipo" 
           id="radio"
-          
+          (click)="tipoProduto === 'comida' ? onReloadIngredientes('ingrediente') : onReloadIngredientes(tipoProduto)"
           [value]="tipoProduto">{{tipoProduto | titlecase}}
       </label>
     </div>
@@ -87,7 +108,7 @@
 </form>
 <div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>
 <!-- <button class="btn btn-primary" (click)="onLog()">LOG</button> -->
-<button class="btn btn-default btn-block" (click)="onClear()">Limpar formulário</button>
+<button class="btn btn-login btn-block btn-custom" (click)="onClear()">Limpar formulário</button>
 
 <ng-template #atualizar>
 <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>

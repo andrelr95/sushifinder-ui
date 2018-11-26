@@ -89,8 +89,22 @@ export class SushiProdutoEditComponent implements OnInit {
     }
   }
 
-  onLog() {
-    console.log(this.addProdutoForm.get('tipo').value === 'comida');
+  onReloadIngredientes(tipo: string) {
+    this.sushiEstoqueService.getEstoqueByType(tipo)
+    .then((response: Ingrediente[]) => {
+      this.ingredientes = response;
+    })
+    .catch(err => console.log(err));
+  }
+
+  onLog(item: string) {
+    console.log(item);
+    // this.sushiEstoqueService.getEstoqueByType('ingrediente')
+    // .then((response: Ingrediente[]) => {
+    //   this.ingredientes = response;
+    // })
+    // .catch(err => console.log(err));
+    // console.log(this.addProdutoForm.get('tipo').value === 'comida');
   }
 
   onClear() {

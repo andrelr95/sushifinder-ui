@@ -16,11 +16,18 @@ export class SushiPedidosAtivoComponent implements OnInit {
   ngOnInit() {
     this.sushiPedidoService.getPedidosUser()
       .then((response: Pedido[]) => {
-        this.pedidosAtivos = response.filter((pedido: Pedido) => {
+        let ativos = response.filter((pedido: Pedido) => {
           return pedido['ativo'] === true;
         })
+
+        this.pedidosAtivos = this.sortDatesArray(ativos).reverse();
       })
       .catch((err) => console.log(err));
+  }
 
+  sortDatesArray(array: Pedido[]): Array<Pedido> {
+    return array.sort((a: any, b: any) => {
+      return a.dataPedido + b.dataPedido;
+    })
   }
 }

@@ -18,6 +18,10 @@
         <table class="table table-bordered table-striped table-condensed table-sm">
           <tbody>
             <tr>
+              <th class="text-center">Valor</th>
+              <td>{{pedido?.precoTotal | real}}</td>
+            </tr>
+            <tr>
               <th class="text-center">Cliente</th>
               <td>{{clienteNome}}</td>
             </tr>
@@ -35,7 +39,8 @@
             </tr>
             <tr>
               <th class="text-center">Comidas</th>
-              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}<span *ngIf="!last; else ponto">,  </span></span></td>
+              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}<span *ngIf="!last; else ponto">,
+                  </span></span></td>
             </tr>
             <tr>
               <th class="text-center">Bebidas</th>
