@@ -27,3 +27,12 @@ h1 {
         overflow-y: auto;
     }
 }
+
+.border-red {
+    border-color: #D80000;
+}
+
+.panel-custom {
+    background-color: #D80000;
+    color: $color-font-light;
+}

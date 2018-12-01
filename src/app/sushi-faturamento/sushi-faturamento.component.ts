@@ -21,7 +21,11 @@ export class SushiFaturamentoComponent implements OnInit {
   errorMessage: string;
 
   ngOnInit() {
-    this.sushiFaturamentoService.getFaturamentosById('112018')
+    let mes = (new Date().getMonth() + 1).toString();
+    let ano = new Date().getFullYear().toString();
+    let codigo = mes.concat(ano);
+
+    this.sushiFaturamentoService.getFaturamentosById(codigo)
       .then((response) => {
         this.faturamento = response;
       })
