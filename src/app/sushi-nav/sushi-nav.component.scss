@@ -1,0 +1,16 @@
+$primary-admin-color: #3083C8;
+$primary-default-color: #D80000;
+
+.navbar-default {
+  border-color: transparent;
+  border-radius: 0px;
+}
+
+.navbar-default .navbar-nav > li > a.admin.active  {
+  color: $primary-admin-color;
+}
+
+.navbar-default .navbar-nav > li > a.admin:hover {
+  color: $primary-admin-color;
+}
+

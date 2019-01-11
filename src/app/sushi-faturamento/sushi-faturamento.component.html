@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-xs-12 col-sm-12  thumbnail max-size">
+      <div class="col-md-4">
+        <h1>FATURAMENTO</h1>
+      </div>
+      <div class="col-md-4">
+        <h1 class="success">Valor: {{faturamento?.valorTotal | real}}</h1>
+      </div>
+      <div class="col-md-4">
+        <h1>{{faturamento?.mes | uppercase}}/{{faturamento?.ano}}</h1>
+      </div>
+      <form name="form" (ngSubmit)="onBuscar(f)" #f="ngForm">
+        <div class="form-group col-md-4" style="margin-bottom: 20px;">
+          <select class="form-control" placeholder="Novembro" id="mes" name="mes" ngModel="1">
+            <option *ngFor="let mes of meses" [value]="mes.id">
+              {{mes.descricao | titlecase}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <select class="form-control" placeholder="2018" name="ano" ngModel="2018" id="ano">
+            <option value="2018">
+              2018
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <button type="submit" class="btn btn-info">
+            <span *ngIf="!isLoading; else loading">BUSCAR</span>
+          </button>
+        </div>
+      </form>
+      <table *ngIf="!error; else erro" class="table table-bordered">
+        <thead>
+          <tr class="active">
+            <th class="text-center">Nº Pedido</th>
+            <th class="text-center">Nome</th>
+            <th class="text-center">CPF</th>
+            <th class="text-center">Data do pedido</th>
+            <th class="text-center">Valor</th>
+            <th class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of faturamento?.pedidos" class="text-center success">
+            <td>{{pedido.numero}}</td>
+            <td>{{pedido.cliente.pessoa.nome | uppercase}} {{pedido.cliente.pessoa.sobrenome | uppercase}}</td>
+            <td>{{pedido.cliente.pessoa.cpf | cpf}}</td>
+            <td>{{pedido.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+            <td>{{pedido.precoTotal | currency:'BRL':'symbol':'1.2-2'}}</td>
+            <td>{{pedido.status | uppercase}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>
+
+<ng-template #erro>
+  <div class="col-md-12 alert alert-danger" role="alert">
+    <p>{{errorMessage}}</p>
+  </div>
+</ng-template>

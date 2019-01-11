@@ -1,0 +1,56 @@
+<div class="col-md-12">
+  <div class="panel panel-{{pedidoStatus}}">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span *ngIf="pedido; else loading">Nº do pedido: {{pedido.numero}}</span></h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-4">
+        <h4 *ngIf="pedido">Status atual do pedido: {{pedido.status | titlecase}}</h4>
+      </div>
+      <div class="col-md-12 table-responsive">
+        <table class="table table-bordered table-striped table-condensed table-sm">
+          <tbody>
+            <tr>
+              <th class="text-center">Valor</th>
+              <td>{{pedido?.precoTotal | real}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Cliente</th>
+              <td>{{pedido?.cliente.pessoa.nome}} {{pedido?.cliente.pessoa.sobrenome}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">CPF</th>
+              <td>{{pedido?.cliente.pessoa.cpf}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Endereço</th>
+              <td>{{pedido?.cliente.pessoa.enderecos[0].logradouro}}, {{pedido?.cliente.pessoa.enderecos[0].numero}}
+                {{pedido?.cliente.pessoa.enderecos[0].complemento}} - CEP: {{pedido?.cliente.pessoa.enderecos[0].cep}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Data do pedido</th>
+              <td>{{pedido?.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Comidas</th>
+              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}<span *ngIf="!last; else ponto">,
+                  </span></span></td>
+            </tr>
+            <tr>
+              <th class="text-center">Bebidas</th>
+              <td><span *ngFor="let bebida of pedido.bebidas">{{bebida.item.descricao}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #ponto>
+  <span>.</span>
+</ng-template>
+
+<ng-template #loading>
+  <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>

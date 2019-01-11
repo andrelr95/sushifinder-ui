@@ -1,0 +1,14 @@
+$background-main: #464646;
+$background-form: #F9EFEF;
+$background-main-active: #E4DFDC;
+$border-form: #CDC9C6;
+$background-login: #D80000;
+$color-font-light: #E6E6E6;
+$color-font-dark: #111111;
+$color-box-shadow: #9D444E;
+
+li.row:hover{
+    padding: 10px 20px;
+    background-color: $background-main-active;
+    transition: 0.3s;
+}

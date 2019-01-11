@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-body" [ngClass]="{ disabled: !produtoItem.ativo }">
+    <div class="col-md-4">
+      <h4 style="font-weight: bold;">{{produtoItem.descricao}}</h4>
+      <span class="badge" *ngFor="let ingrediente of produtoItem.ingredientes">{{ingrediente.descricao}}</span>
+      <span class="badge" *ngIf="produtoItem.ingredientes.length === 0">Bebida</span>
+    </div>
+    <div class="col-md-4 text-center">
+      <h4>Preço: {{produtoItem.preco | real}}</h4>
+    </div>
+    <!-- <div class="col-md-2">
+      <button (click)="onEditProduto()" class="btn btn-sm btn-warning pull-right"><span><i class="fas fa-edit"></i>
+          Editar
+        </span>
+        <span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></span>
+      </button>
+    </div> -->
+    <div class="col-md-4">
+      <button *ngIf="produtoItem.ativo; else desabilitado" (click)="onUpdateStatus(false)" class="btn btn-sm btn-danger pull-right"><span><i
+            class="fas fa-arrow-alt-circle-down"></i>
+          Desabilitar
+        </span>
+        <span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #desabilitado>
+  <button (click)="onUpdateStatus(true)" style="margin-left: 5px;" class="btn btn-sm btn-success pull-right"><span><i
+        class="fas fa-arrow-alt-circle-up"></i>
+      Habilitar </span><span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></span>
+  </button>
+</ng-template>

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <h1>PEDIDOS</h1>
+        <div class="list-group">
+          <div *ngFor="let pedidoItem of pedidoItens.produtos" class="list-group-item text-left">
+            <h4 class="list-group-item-heading">{{pedidoItem.item.descricao}}</h4>
+            <p class="list-group-item-text">PREÇO UNITÁRIO: {{pedidoItem.item.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+            <p class="list-group-item-text">QUANTIDADE: {{pedidoItem.quantidade}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <h1>ENDEREÇOS</h1>
+        <div class="list-group">
+          <a *ngFor="let endereco of enderecos" class="list-group-item text-right active">
+            <h4 class="list-group-item-heading">ENDEREÇO</h4>
+            <h4 class="list-group-item-text"><i class="fas fa-map-marker-alt pull-left"></i></h4>
+            <p class="list-group-item-text">{{endereco.logradouro}} - {{endereco.numero}} - {{endereco.complemento}}</p>
+            <p class="list-group-item-text">{{endereco.cidade | uppercase}} - {{endereco.estado | uppercase}}</p>
+            <p class="list-group-item-text">{{endereco.cep}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <h1>PAGAMENTO</h1>
+        <div class="list-group">
+          <a href="#" class="list-group-item text-right">
+            <h4 class="list-group-item-heading"><i class="far fa-credit-card pull-left"></i>CARTÃO DE CREDITO/DEBITO</h4>
+          </a>
+          <a href="#" class="list-group-item text-right active">
+            <h4 class="list-group-item-heading"><i class="fas fa-money-bill-alt pull-left"></i>DINHEIRO</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>
+            TOTAL A PAGAR: {{pedidoItens.precoTotal | currency:'BRL':'symbol':'1.2-2'}}
+            <span>
+              <button (click)="onCreateOrder()" class="btn btn-success pull-right">FINALIZAR PEDIDO</button>
+            </span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

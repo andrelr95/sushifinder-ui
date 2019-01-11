@@ -1,0 +1,8 @@
+<div class="col-md-12">
+  <div *ngIf="pedidosAtivos?.length !== 0; else noItens">
+    <app-sushi-pedidos-cliente-item *ngFor="let pedidoAtivo of pedidosAtivos" [pedido]=pedidoAtivo></app-sushi-pedidos-cliente-item>
+  </div>
+</div>
+<ng-template #noItens>
+  <h4>NÃO EXISTEM PEDIDOS PENDENTES</h4>
+</ng-template>

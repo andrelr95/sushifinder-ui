@@ -1,0 +1,50 @@
+<h1>Gerenciar</h1>
+<hr>
+<label for="buscaItem">Buscar item do estoque</label>
+<div class="inner-addon right-addon">
+  <i class="fas fa-search"></i>
+  <input 
+  type="text" 
+  class="form-control input-custom" 
+  id="buscaItem"
+  name="buscaItem"
+  placeholder="Digite algo aqui..."  
+  (keyup)="onSearchItem($event)">
+</div>
+<hr>
+
+<form (ngSubmit)="onSaveItem(form)" #form="ngForm">
+  <div class="form-group">
+    <label for="ingredienteNome">Adicionar Ingrediente</label>
+    <input type="text" class="form-control input-custom" id="ingredienteNome" name="descricao" placeholder="Arroz" [ngModel]="ingrediente?.descricao">
+  </div>
+  <div class="form-group">
+    <label for="ingredienteQuantidade">Quantidade</label>
+    <input type="text" class="form-control input-custom" id="ingredienteQuantidade" name="qtdeEstoque" placeholder="500" ngModel [value]="ingrediente?.qtdeEstoque">
+  </div>
+  <div class="form-group radio-inline">
+    <div class="radio" *ngFor="let tipoItem of tiposItem">
+      <label>
+        <input 
+          type="radio" 
+          name="tipo" 
+          id="radio" 
+          ngModel="ingrediente"
+          [value]="tipoItem"
+          >{{tipoItem | titlecase}}
+      </label>
+    </div>
+  </div>
+  <button *ngIf="selectedIngredient === undefined; else update" type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+      Salvar item
+    </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
+</form>
+<div *ngIf="showSuccessMessage == true" class="alert alert-success text-center" role="alert">{{successMessage}}</div>
+<!-- <button class="btn btn-primary" (click)="onLog()">LOG</button> -->
+<button class="btn btn-login btn-block btn-custom" (click)="onClear()">LIMPAR</button>
+
+<ng-template #update>
+  <button type="submit" class="btn btn-login btn-block btn-custom"><span><i class="fas fa-save"></i>
+    Atualizar item
+  </span><i *ngIf="isLoading == true" class="fas fa-circle-notch fa-spin"></i></button>
+</ng-template>

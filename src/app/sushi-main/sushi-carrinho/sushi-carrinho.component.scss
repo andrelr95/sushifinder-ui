@@ -1,0 +1,28 @@
+$background-main: #464646;
+$background-form: #F9EFEF;
+$background-main-active: #E4DFDC;
+$border-form: #CDC9C6;
+$background-login: #D80000;
+$color-font-light: #E6E6E6;
+$color-font-dark: #111111;
+$color-box-shadow: #9D444E;
+$color-primary: #D80000;
+$color-secundary: #E6E6E6;
+$color-secundary-oposite: #111111;
+
+
+hr.hr-custom{
+    background-color: $background-main;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.row.box {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: $color-box-shadow;
+    border-radius: 5px;
+}
+

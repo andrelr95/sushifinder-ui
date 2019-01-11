@@ -1,0 +1,30 @@
+<div class="text-center">
+    <h3 style="font-weight: bold;">SACOLA</h3>
+    <div class="col-md-7">
+        <h3>Preço Total: {{precoTotal | real}}</h3>
+    </div>
+    <div class="col-md-5">
+        <button class="btn btn-success" (click)="onConfirmarPedido()" [disabled]="onCheckCart()" style=" margin-top: 10px;">Confirmar
+            Pedido</button>
+    </div>
+    <hr class="hr-custom">
+
+    <div *ngIf="itensCarrinho.length !== 0; else noItens">    
+        <hr class="hr-custom">
+        <ul class="list-group" *ngFor="let itemCarrinho of itensCarrinho">
+            <li class="list-group-item col-md-12" style="margin-bottom: 5px;">
+                <button type="button" class="btn btn-danger btn-xs pull-left" (click)="onRemoveFromCart(itemCarrinho)">
+                    <span class="glyphicon glyphicon-minus">
+                    </span>
+                </button>
+                <h4>{{itemCarrinho.item.descricao}} | {{itemCarrinho.precoItem | real}}<span class="badge pull-right">{{itemCarrinho.quantidade}}</span></h4>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<ng-template #noItens>
+    <h3>Não há itens no carrinho</h3>
+</ng-template>

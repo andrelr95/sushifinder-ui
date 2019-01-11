@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  sushiFinderApi: {
+    host: 'http://localhost:3000',
+    path: {
+      estoque: '/estoque',
+      authenticate: '/authenticate',
+      clientes: '/clientes'
+    }
+  }
 };
 
 /*

@@ -1,0 +1,62 @@
+<div class="col-md-12">
+  <div class="panel panel-{{pedidoStatus}}">
+    <div class="panel-heading">
+      <div class="col-md-6">
+        <h4><span *ngIf="!isLoading && endereco; else loading">Nº {{pedido.numero}} | Status atual do pedido:
+            {{pedido.status | uppercase}}</span></h4>
+      </div>
+      <div class="text-right">
+        <button class="btn btn-sm btn-danger" [disabled]="bloqueado" (click)="onStatusBlockChange('cancelado')" style="margin-left: 10px;">CANCELADO</button>
+        <button class="btn btn-sm btn-info" [disabled]="bloqueado" (click)="onStatusChange('criado')" style="margin-left: 10px;">CRIADO</button>
+        <button class="btn btn-sm btn-warning" [disabled]="bloqueado" (click)="onStatusChange('preparando')" style="margin-left: 10px;">PREPARANDO</button>
+        <button class="btn btn-sm btn-primary" [disabled]="bloqueado" (click)="onStatusChange('entregando')" style="margin-left: 10px;">ENTREGANDO</button>
+        <button class="btn btn-sm btn-success" [disabled]="bloqueado" (click)="onStatusBlockChange('entregue')" style="margin-left: 10px;">ENTREGUE</button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-12 table-responsive">
+        <table class="table table-bordered table-striped table-condensed table-sm">
+          <tbody>
+            <tr>
+              <th class="text-center">Valor</th>
+              <td>{{pedido?.precoTotal | real}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Cliente</th>
+              <td>{{clienteNome}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">CPF</th>
+              <td>{{clienteCPF}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Endereço</th>
+              <td>{{endereco?.logradouro}}, {{endereco?.numero}} {{endereco?.complemento}} - CEP: {{endereco?.cep}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Data do pedido</th>
+              <td>{{pedido?.dataPedido | date: 'dd/MM/yyyy - HH:mm'}}</td>
+            </tr>
+            <tr>
+              <th class="text-center">Comidas</th>
+              <td><span *ngFor="let comida of pedido.comidas; let last = last;">{{comida.item.descricao}}<span *ngIf="!last; else ponto">,
+                  </span></span></td>
+            </tr>
+            <tr>
+              <th class="text-center">Bebidas</th>
+              <td><span *ngFor="let bebida of pedido.bebidas">{{bebida.item.descricao}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <span><i class="fas fa-circle-notch fa-spin"></i></span>
+</ng-template>
+
+<ng-template #ponto>
+  <span>.</span>
+</ng-template>

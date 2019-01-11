@@ -1,0 +1,9 @@
+<div class="col-md-12">
+  <div *ngIf="historicoPedidos?.length !== 0; else noItens">
+    <app-sushi-pedidos-cliente-item *ngFor="let historicoPedido of historicoPedidos" [pedido]="historicoPedido"></app-sushi-pedidos-cliente-item>
+  </div>
+</div>
+
+<ng-template #noItens>
+  <h4>NÃO EXISTEM PEDIDOS ATIVOS</h4>
+</ng-template>

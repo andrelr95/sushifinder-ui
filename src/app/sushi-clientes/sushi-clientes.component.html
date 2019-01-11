@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="thumbnail">
+        <h1>CLIENTES</h1>
+        <div *ngIf="activeMessage" class="col-md-12 alert alert-{{statusMessage}}" role="alert">
+            <p>{{resultMessage}}</p>
+        </div>
+        <form class="form-inline">
+          <div class="no-spaces">
+            <div class="form-group">
+              <input class="form-control" (keyup)="onBuscaPorCpf($event)" name="cpf" type="text" placeholder="Busca por CPF">
+              <button style="margin-left: 10px;" type="submit" class="btn btn-primary">BUSCAR</button>
+            </div>
+          </div>
+        </form>
+        <div class="table-wrapper-scroll-y">
+          <table class="table table-striped table-sm table-bordered table-condensed">
+            <tr class="info">
+              <th class="text-center">Nome</th>
+              <th class="text-center">CPF</th>
+              <th class="text-center">Telefone:</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Role</th>
+              <th class="text-center"> - </th>
+            </tr>
+            <tr *ngFor="let cliente of clientesToShow" class="text-center">
+              <td>{{cliente?.pessoa.nome}}</td>
+              <td>{{cliente?.pessoa.cpf | cpf}}</td>
+              <td>{{cliente?.pessoa.telefone | telefone}}</td>
+              <td>{{cliente?.pessoa.email}}</td>
+              <td>{{cliente?.roles[0]}}</td>
+              <td><button [disabled]="cliente?.roles[0] === 'admin'" class="btn btn-danger btn-sm" (click)="onDeleteCliente(cliente)">EXCLUIR</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

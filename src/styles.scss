@@ -1,1 +1,241 @@
+
+
+
 /* You can add global styles to this file, and also import other style files */
+$background-main: #464646;
+$background-form: #F9EFEF;
+$background-main-active: #E4DFDC;
+$border-form: #CDC9C6;
+$background-login: #D80000;
+$color-font-light: #E6E6E6;
+$color-font-dark: #111111;
+$color-box-shadow: #9D444E;
+$color-primary: #D80000;
+$color-secundary: #FCFDFD;
+$color-secundary-oposite: #111111;
+
+$navbar-admin-color-primary: #3083C8;
+$navbar-admin-color-secunday: $color-secundary;
+$navbar-default-color-primary: $color-primary;
+$navbar-default-color-secundary: $color-secundary;
+
+
+$break-small: 360px;
+$break-large: 1200px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  background-color: $background-main;
+}
+
+html.login, body.login{
+  background-color: $background-login;
+}
+
+.box-wrapper {
+  // padding: 15px;
+  border-color: $background-main-active;
+  border-style: solid;
+  border-width: 0.5px;
+  // min-height: 185px;
+  // position: relative;
+}
+
+.margin-default {
+  margin: 15px 0px;
+}
+
+p.price {
+  color: $background-login;
+  font-size: x-large;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 10px;
+}
+
+.box-content {
+  padding: 5px;
+  height: 100%;
+}
+
+.nav-tabs.nav-justified>li>a {
+  color: $color-font-dark;
+}
+
+.nav-tabs>li.active>a {
+  background-color: $background-main-active;
+}
+
+.navbar-default .navbar-brand{
+  color: $background-main;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: $color-font-light;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  background-color: $color-font-light;
+  color: $navbar-default-color-primary;
+}
+
+.navbar {
+  background-color: $navbar-default-color-primary;
+}
+
+
+label {
+  color: #D75D6A;
+}
+
+h1, h3 {
+  color: $background-login;
+}
+
+hr {
+  background-color: $background-main;
+  height: 1px;
+
+  .light {
+    background-color: $color-font-light;
+  }
+}
+
+.btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  color: $color-font-light;
+  background-color: black;
+
+}
+
+.link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: $background-login;
+}
+
+.height-center {
+  margin-top: 250px;
+  height: 400px;
+}
+
+ul.nav.navbar-nav li a.active {
+  background-color: $navbar-default-color-secundary;
+  color: $navbar-default-color-primary;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: $background-main;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: $navbar-default-color-secundary;
+  color: $navbar-default-color-primary;
+
+}
+
+.form-control.input-custom:focus {
+  border-color: $background-main;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $background-login;
+}
+
+.navbar-brand {
+  padding: 7px 0px;
+}
+
+@media (max-width: 768px){
+  .navbar>.container .navbar-brand {
+    margin-left: 15px;
+  }
+  .box-wrapper {
+    margin-bottom: 5px
+  }
+
+  .margin-default {
+    margin: 15px 0px;
+  }
+}
+
+@media (min-width: 768px){
+  .navbar>.container .navbar-brand {
+    margin-left: 0px;
+  }
+}
+
+.form-box {
+  border-radius: 2px;
+  border-style: solid;
+  border-color: $border-form;
+  border-width: 0.5px;
+  background-color: #FFF;
+  padding: 0;
+}
+
+.btn.btn-custom {
+  color: $color-font-light;
+  background-color: $background-login;
+}
+
+.btn.btn-custom:hover {
+  transition: 0.3s;
+  transform: scale(0.95);
+}
+
+.btn.btn-login{
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  color: $background-login;
+  background-color: transparent;
+  border-color: $background-login;
+}
+
+.btn.btn-login.btn-custom:hover {
+  color: $color-font-light;
+  background-color: $background-login;
+  border-color: $background-main;
+}
+
+.login-box,
+.register-box {
+  background-color: $background-login;
+  border-color: $color-box-shadow;
+  color: $color-font-dark;
+  box-shadow: 0px 0px 15px $color-box-shadow;
+  border-style: solid;
+  border-width: 1px;
+  width: 360px;
+  margin: 7% auto;
+}
+
+@media (max-width: 768px) {
+
+  .login-box,
+  .register-box {
+    width: 90%;
+    margin-top: 50px;
+  }
+}
+
+.login-box-body,
+.register-box-body {
+  background: #fff;
+  padding: 20px;
+  border-top: 0;
+  color: #666;
+}
+.login-box-body .form-control-feedback,
+.register-box-body .form-control-feedback {
+  color: #777;
+}

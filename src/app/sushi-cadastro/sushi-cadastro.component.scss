@@ -1,0 +1,43 @@
+
+$background-form: #FAF5F1;
+$border-form: #CDC9C6;
+$color-font-light: #E6E6E6;
+$color-font-dark: #111111;
+$color-box-shadow: #9D444E;
+$background-main: #FAF5F1;
+$background-main-active: #E4DFDC;
+$background-login: #D80000;
+$color-font-light: #E6E6E6;
+$color-font-dark: #111111;
+$color-box-shadow: #D80000;
+
+$break-small: 360px;
+$break-large: 1200px;
+
+.form-box {
+    border-radius: 20px;
+    border-style: solid;
+    border-color: $border-form;
+    border-width: 0.5px;
+    background-color: $background-form;
+    padding: 50px 60px;
+}
+
+.no-gap {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-custom {
+    width: 200px;
+    height: 50px;
+    font-size: 1.5em;
+}
+
+.no-gap .btn-custom {
+    margin-top: 30px;
+}
+
+hr {
+    background-color: $background-login;
+}

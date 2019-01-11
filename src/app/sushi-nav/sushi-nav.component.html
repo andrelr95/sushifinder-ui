@@ -1,0 +1,43 @@
+<nav [ngStyle]="{ backgroundColor: getAdminColor() }" class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <img src="img/logo-small-no-bg.png" class="img-responsive center-block" alt="Responsive image"> -->
+      <a class="navbar-brand img-responsive center-block" href="#">
+        <img alt="Brand" src="assets/img/logo-small-no-bg.png">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li><a routerLink="/cadastro" routerLinkActive="active">CADASTRO</a></li>
+          <li><a routerLink="/login" routerLinkActive="active">ENTRAR</a></li>
+        </ng-template>
+        <ng-template [ngIf]="authService.isAuthenticated() && !authService.isAdmin()">
+          <li><a routerLink="/cardapio/comidas" routerLinkActive="active">CARDAPIO</a></li>
+          <!-- <li ><a routerLink="/confirmar-pedido" routerLinkActive="active" >CONFIRMAR PEDIDO</a></li> -->
+          <li><a routerLink="/acompanhar-pedidos" routerLinkActive="active">ACOMPANHAR PEDIDOS</a></li>
+          <li><a (click)="onSignOutUser()"><span class="glyphicon glyphicon-off"></span></a></li>
+        </ng-template>
+        <ng-template [ngIf]="authService.isAdmin()">
+          <li><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/clientes" routerLinkActive="active">CLIENTES</a></li>
+          <li><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/faturamentos" routerLinkActive="active">FATURAMENTOS</a></li>
+          <li><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/pedidos" routerLinkActive="active">PEDIDOS</a></li>
+          <li><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/produtos" routerLinkActive="active">PRODUTOS</a></li>
+          <li><a [ngClass]="{admin: authService.isAdmin()}" routerLink="/estoque" routerLinkActive="active">ESTOQUE</a></li>
+          <li><a [ngClass]="{admin: authService.isAdmin()}" (click)="onSignOutUser()">SAIR <span>(ADMIN)</span></a></li>
+        </ng-template>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
